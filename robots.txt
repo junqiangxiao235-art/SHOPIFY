@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://junqiangxiao235-art.github.io/SHOPIFY/sitemap.xml
