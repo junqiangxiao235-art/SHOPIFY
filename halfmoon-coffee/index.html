@@ -15,86 +15,63 @@
 
 <title>Halfmoon Coffee Roasters — Specialty coffee, roasted to order</title><meta name="description" content="Small-batch specialty coffee, roasted to order every Monday and Thursday in Portland, Oregon. Direct-trade, traceable, delicious.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/shop.css"><style>:root{--head:"Bricolage Grotesque",sans-serif;--body:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--head-w:800;--head-ls:-.03em;--ink:#1f1a17;--bg:#fffaf3;--soft:#f5ebdd;--line:#eadcc8;--muted:#6a564c;--accent:#c24e14;--accent-ink:#b34712;--on-accent:#fff;--ann-bg:#c24e14;--ann-ink:#fff;--ft-bg:#1f1a17;--ft-ink:#f5ebdd;--r-btn:999px;--r-card:18px;--r-sm:10px;--r-badge:999px;--card-ratio:1/1;--badge-bg:#1f1a17;--badge-ink:#fff;--sale:#c24e14}.logo{font-size:28px;letter-spacing:-.04em}.hero{background:#1f1a17;color:#fff5ea;padding:0;overflow:hidden}.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center;min-height:640px}.hero h1{font-size:clamp(48px,6.6vw,96px)}.hero .eyebrow{color:#fff5ea}.hero h1 em{font-style:normal;color:#ffd7c2}.hero p{font-size:18px;opacity:.85;margin:22px 0 32px;max-width:480px}.hero .ph{height:100%;min-height:560px;position:relative}.hero .ph img{position:absolute;inset:40px 0 40px 0;width:100%;height:calc(100% - 80px);object-fit:cover;border-radius:24px}.hero .chip{position:absolute;bottom:70px;left:-30px;background:#fff5ea;color:#1f1a17;border-radius:16px;padding:14px 18px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.3)}.roasts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.roast{border-radius:18px;padding:28px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s}.roast:hover{transform:translateY(-4px)}.roast h3{font-size:28px}.roast .dots{display:flex;gap:5px}.roast .dots i{width:12px;height:12px;border-radius:50%;border:1.5px solid currentColor}.roast .dots i.f{background:currentColor}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button{border:1.5px solid var(--line);background:none;border-radius:999px;padding:9px 18px;cursor:pointer;font-weight:600;font-size:14px}.tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}.subbox{background:var(--accent);color:#fff;border-radius:28px;padding:60px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.subbox h2{font-size:clamp(34px,4.5vw,60px)}.plans{display:grid;gap:12px}.plan{background:#fff;color:var(--ink);border-radius:16px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center}.plan b{font-size:18px}.plan .p{font-family:var(--head);font-size:26px;font-weight:800}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}.steps .n{font-family:var(--head);font-size:60px;color:var(--accent);font-weight:800;line-height:1}@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;padding-top:50px}.hero .ph{min-height:380px}.hero .chip{left:10px}.roasts{grid-template-columns:1fr 1fr}.subbox{grid-template-columns:1fr;padding:32px}.steps{grid-template-columns:1fr}}</style><style id="home">
-.hairline{font-size:12px;letter-spacing:.04em;text-align:center;padding:8px 16px;color:#d9cfc3;background:#241c18}
-header.site{background:#241c18;color:#f6f1ea;border-bottom-color:transparent}
-header.site .icon-btn,header.site .logo,header.site nav.main a{color:#f6f1ea}
-@media(max-width:820px){nav.main{background:#241c18}}
-.label-screen{min-height:calc(100vh - 96px);background:#241c18;color:#f6f1ea;display:grid;grid-template-columns:1fr minmax(220px,320px) 1fr;gap:24px;align-items:center;padding:4vh 4vw 8vh}
-.bag-stage{position:relative;height:min(64vh,520px)}
-.bag-meta{display:grid;gap:22px}
-.bag-meta h1{font-family:var(--head);font-weight:700;font-size:clamp(40px,5vw,72px);line-height:.92;letter-spacing:-.04em}
-.bag-meta dt{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#d9cfc3}
-.bag-meta dd{font-size:18px;margin:0}
-.facts{display:grid;gap:14px}
-.hm-toggle{display:flex;flex-wrap:wrap;gap:8px}
-.hm-toggle button,.hm-add{border:1px solid #f6f1ea;background:transparent;color:#f6f1ea;border-radius:999px;padding:12px 16px;cursor:pointer}
-.hm-toggle button.on,.hm-add{background:#f6f1ea;color:#241c18}
-.hm-add{margin-top:8px}
-.roast-scroll{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;background:#241c18}
-.roast-panel{flex:0 0 100%;min-height:78vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:flex-end;padding:8vh 6vw;text-decoration:none}
-.roast-panel span{font-size:12px;letter-spacing:.18em;text-transform:uppercase}
-.roast-panel h2{font-family:var(--head);font-size:clamp(56px,9vw,120px);line-height:.9;letter-spacing:-.04em;margin:8px 0}
-.roast-panel p{font-size:18px;max-width:28ch}
-.mini-foot{padding:28px 0 80px;color:#d9cfc3;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media(max-width:820px){
-.label-screen{grid-template-columns:1fr;padding:24px 0 48px;text-align:left}
-.bag-stage{height:420px;margin:0 auto;width:min(260px,70vw)}
-}
-
-</style>
-</head><body>
-<p class="hairline">Roasted after you order · Free US shipping over $40 · Skip or cancel a subscription anytime</p>
+<link rel="stylesheet" href="../assets/shop.css"><style>:root{--head:"Bricolage Grotesque",sans-serif;--body:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;--head-w:800;--head-ls:-.03em;--ink:#1f1a17;--bg:#fffaf3;--soft:#f5ebdd;--line:#eadcc8;--muted:#6a564c;--accent:#c24e14;--accent-ink:#b34712;--on-accent:#fff;--ann-bg:#c24e14;--ann-ink:#fff;--ft-bg:#1f1a17;--ft-ink:#f5ebdd;--r-btn:999px;--r-card:18px;--r-sm:10px;--r-badge:999px;--card-ratio:1/1;--badge-bg:#1f1a17;--badge-ink:#fff;--sale:#c24e14}.logo{font-size:28px;letter-spacing:-.04em}.hero{background:#1f1a17;color:#fff5ea;padding:0;overflow:hidden}.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:50px;align-items:center;min-height:640px}.hero h1{font-size:clamp(48px,6.6vw,96px)}.hero .eyebrow{color:#fff5ea}.hero h1 em{font-style:normal;color:#ffd7c2}.hero p{font-size:18px;opacity:.85;margin:22px 0 32px;max-width:480px}.hero .ph{height:100%;min-height:560px;position:relative}.hero .ph img{position:absolute;inset:40px 0 40px 0;width:100%;height:calc(100% - 80px);object-fit:cover;border-radius:24px}.hero .chip{position:absolute;bottom:70px;left:-30px;background:#fff5ea;color:#1f1a17;border-radius:16px;padding:14px 18px;font-size:13px;box-shadow:0 10px 30px rgba(0,0,0,.3)}.roasts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.roast{border-radius:18px;padding:28px;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s}.roast:hover{transform:translateY(-4px)}.roast h3{font-size:28px}.roast .dots{display:flex;gap:5px}.roast .dots i{width:12px;height:12px;border-radius:50%;border:1.5px solid currentColor}.roast .dots i.f{background:currentColor}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button{border:1.5px solid var(--line);background:none;border-radius:999px;padding:9px 18px;cursor:pointer;font-weight:600;font-size:14px}.tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}.subbox{background:var(--accent);color:#fff;border-radius:28px;padding:60px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}.subbox h2{font-size:clamp(34px,4.5vw,60px)}.plans{display:grid;gap:12px}.plan{background:#fff;color:var(--ink);border-radius:16px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center}.plan b{font-size:18px}.plan .p{font-family:var(--head);font-size:26px;font-weight:800}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}.steps .n{font-family:var(--head);font-size:60px;color:var(--accent);font-weight:800;line-height:1}@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;padding-top:50px}.hero .ph{min-height:380px}.hero .chip{left:10px}.roasts{grid-template-columns:1fr 1fr}.subbox{grid-template-columns:1fr;padding:32px}.steps{grid-template-columns:1fr}}</style><link rel="stylesheet" href="../assets/home.css">
+</head><body class="store-home">
+<div class="announce" id="announce" data-static></div>
 <header class="site" id="header"></header>
 <main id="main">
-<section class="label-screen">
-<div class="bag-meta">
-<p style="letter-spacing:.2em;text-transform:uppercase;font-size:12px">Halfmoon · Portland</p>
-<h1>Ethiopia Guji</h1>
-<dl class="facts">
-<div><dt>Origin</dt><dd>Yirgacheffe</dd></div>
-<div><dt>Altitude</dt><dd>1,950–2,200 m</dd></div>
-<div><dt>Process</dt><dd>Natural</dd></div>
-</dl>
-</div>
-<div class="bag-stage" aria-hidden="true">
-<span class="mock bag" style="--c1:#f6d7a8;--c2:#c47a3a"><span class="pack"><span class="mk">◐ halfmoon</span><strong>Ethiopia Guji</strong><em>Yirgacheffe · 250g</em><i>Natural</i></span></span>
-</div>
-<div class="bag-meta">
-<dl class="facts">
-<div><dt>Tasting notes</dt><dd>Blueberry, jasmine, cacao nib</dd></div>
-<div><dt>Bag</dt><dd>250g, whole bean unless you choose a grind</dd></div>
-</dl>
+<section class="hero"><div class="wrap">
+<div>
+<p class="kicker">Light roast · 250g</p>
+<h1>Ethiopia Guji, roasted after you order.</h1>
+<p class="lead">Blueberry, jasmine, cacao nib. Subscribe is selected; switch to one-time if you want a single bag.</p>
 <div data-hm-product="ethiopia-guji">
-<div class="hm-toggle" role="group" aria-label="Purchase type">
-<button type="button" data-hm-buy="once" aria-pressed="false">One-time</button>
-<button type="button" data-hm-buy="sub" class="on" aria-pressed="true">Subscribe</button>
+<div class="hm-toggle" role="group" aria-label="Purchase type" style="margin-bottom:10px">
+<button type="button" data-hm-buy="sub" class="on" aria-pressed="true">Subscribe · $18.70</button>
+<button type="button" data-hm-buy="once" aria-pressed="false">One-time · $22.00</button>
 </div>
-<button type="button" class="hm-add" data-hm-add>Add this bag</button>
+<button class="btn accent" type="button" data-hm-add>Add Ethiopia Guji</button>
 </div>
-<p style="font-size:13px;color:#d9cfc3">Subscribe renews every 2 weeks. Cancel before the next roast.</p>
+<p class="reassure">Free shipping over $40 · Roasted to order · Cancel a subscription anytime · Secure demo checkout</p>
 </div>
-</section>
-<div class="roast-scroll" aria-label="Roast levels">
-<a class="roast-panel" href="product.html?id=ethiopia-guji" style="background:#f3e6cf;color:#1f1a17"><span>01 · Light</span><h2>Fruity</h2><p>Ethiopia Guji. Tea-like, floral, best as a pour-over.</p></a>
-<a class="roast-panel" href="product.html?id=house-blend" style="background:#e7c4a0;color:#1f1a17"><span>02 · Medium</span><h2>Balanced</h2><p>House blend. Chocolate and hazelnut, easy with milk.</p></a>
-<a class="roast-panel" href="product.html?id=night-shift" style="background:#7a3418;color:#fff"><span>03 · Dark</span><h2>Night shift</h2><p>Cocoa and molasses. Built for espresso.</p></a>
-<a class="roast-panel" href="product.html?id=decaf-colombia" style="background:#241c18;color:#f6f1ea"><span>04 · Decaf</span><h2>Evening</h2><p>Colombia, sugarcane process. Apple and panela.</p></a>
+<figure class="hero-photo hero-video">
+<img src="media/pour-poster.jpg" alt="Coffee pouring from a glass carafe into a plain white mug" width="960" height="540" fetchpriority="high" decoding="async">
+<video muted loop playsinline preload="none" poster="media/pour-poster.jpg" data-hero aria-hidden="true">
+<source data-src="media/pour.webm" type="video/webm">
+<source data-src="media/pour.mp4" type="video/mp4">
+</video>
+<span class="scrim" aria-hidden="true"></span>
+</figure>
+</div></section>
+<section style="padding-top:32px"><div class="wrap">
+<h2>Roast level</h2>
+<div class="roasts" style="margin-top:16px">
+<a class="roast" href="product.html?id=ethiopia-guji" style="background:#f3e6cf;color:#1f1a17"><b>Light</b><p>Ethiopia Guji · blueberry, jasmine · $22.00</p></a>
+<a class="roast" href="product.html?id=house-blend" style="background:#e7c4a0;color:#1f1a17"><b>Medium</b><p>House blend · chocolate, hazelnut · $18.00</p></a>
+<a class="roast" href="product.html?id=night-shift" style="background:#7a3418;color:#fff"><b>Dark</b><p>Night Shift · cocoa, molasses · $19.00</p></a>
+<a class="roast" href="product.html?id=decaf-colombia" style="background:#241c18;color:#f6f1ea"><b>Decaf</b><p>Colombia · apple, panela · $20.00</p></a>
 </div>
-<section id="subscribe" style="background:#f6f1ea;color:#241c18;padding:10vh 0">
-<div class="wrap">
-<p style="letter-spacing:.16em;text-transform:uppercase;font-size:12px">Plans</p>
-<h2 style="font-family:var(--head);font-size:clamp(36px,5vw,64px);line-height:.95;margin:8px 0 8px">Two bags, on a schedule.</h2>
-<p style="max-width:46ch;margin-bottom:22px">Pick a size. The button price follows the card. 250g is about 18 cups.</p>
-<div class="plans">
+</div></section>
+<section id="shop" style="padding-top:0"><div class="wrap">
+<div class="sec-head"><h2>Coffee</h2><a href="#shop">Shop all</a></div>
+<div class="grid" data-grid="Coffee" data-limit="4" data-plain id="mainGrid"></div>
+</div></section>
+<section id="subscribe" style="background:var(--soft)"><div class="wrap">
+<h2>Subscription plans</h2>
+<p class="lead">The button price follows the card you select. Grind and frequency sit under the cards.</p>
+<div class="subgrid">
 <button type="button" class="plan" data-plan="Solo" data-add="-18"><span><b>Solo</b><br><small>1 bag / 2 weeks · ~18 cups</small></span><span class="p">$18</span></button>
 <button type="button" class="plan" data-plan="Roaster’s Choice" data-add="0"><span><b>Roaster’s Choice</b><br><small>2 bags / 2 weeks · ~36 cups</small></span><span class="p">$36</span></button>
 <button type="button" class="plan" data-plan="Office" data-add="28"><span><b>Office</b><br><small>1kg / month · ~70 cups</small></span><span class="p">$64</span></button>
 </div>
-<button class="btn" type="button" data-add="subscription" style="margin-top:18px;background:#241c18;color:#f6f1ea">Start a plan</button>
-</div>
-</section>
+<button class="btn accent" type="button" data-add="subscription" style="margin-top:16px">Start a plan</button>
+</div></section>
+<section class="news"><div class="wrap">
+<h2>New coffees, once a month</h2>
+<form data-news><label for="news-email">Email address</label><input id="news-email" name="email" type="email" autocomplete="email" required placeholder="Email"><button class="btn accent" type="submit">Sign up</button></form>
+<div class="ok">You are on the list.</div>
+</div></section>
 </main>
-<footer style="background:#241c18"><div class="wrap mini-foot"><span>© 2026 Halfmoon Coffee · Demo by 拾光. Fictional roaster — no coffee is shipped.</span><a href="../index.html">Portfolio</a></div></footer>
+<footer class="site"><div class="wrap"><div class="ft-grid"><div><div class="logo">◐ halfmoon</div><p>Small-batch coffee roasted in Portland. Demo by 拾光. Fictional roaster — nothing ships.</p><p class="media-credit">Hero video: Ketut Subiyanto on <a href="https://www.pexels.com/video/a-person-pouring-coffee-on-the-cup-4392069/">Pexels</a>.</p></div><div><h4>Shop</h4><ul><li><a href="#shop">Coffee</a></li><li><a href="#subscribe">Subscriptions</a></li><li><a href="product.html?id=pourover-kit">Brew gear</a></li></ul></div><div><h4>Help</h4><ul><li><button type="button" class="linkish" data-policy="shipping">Shipping</button></li><li><button type="button" class="linkish" data-policy="refund">Returns</button></li></ul></div><div><h4>Contact</h4><ul><li><a href="../index.html#contact">Studio</a></li><li><button type="button" class="linkish" data-note="Contact">Contact this demo</button></li></ul></div></div></div></footer>
 
 <script>window.STORE={"id": "halfmoon", "name": "Halfmoon Coffee Roasters", "logo": "◐ halfmoon", "currency": "USD", "symbol": "$", "cents": true, "freeShip": 40, "shipFee": 5.95, "announce": ["☕ Roasted to order — ships within 48h", "Free US shipping on orders $40+", "Subscribe & save 15% on every bag", "New: Ethiopia Guji Natural is back"], "nav": [["Shop coffee", "index.html#shop", "Coffee"], ["Subscriptions", "index.html#subscribe"], ["Brew gear", "index.html?cat=Gear#shop", "Gear"], ["Our roastery", "index.html#how"]], "perks": ["☕ Roasted to order — ships within 48 hours", "📦 Free US shipping over $40", "🔁 Subscribe & save 15%, cancel anytime", "🌱 Direct-trade, fully traceable"], "details": [["Tasting notes & origin", "<ul><li>Process: washed / natural (see bag)</li><li>Altitude: 1,800–2,200 masl</li><li>Roasted in small batches on a 15kg Loring</li></ul>"], ["Brew recipe", "V60: 15g coffee · 250g water at 94°C · 2:45 total. Espresso: 18g in · 40g out · 28–32s."], ["Shipping", "Roasted Mon & Thu, shipped same day. 2–4 days across the US, 5–10 days international."]], "products": [{"id": "ethiopia-guji", "name": "Ethiopia Guji Natural", "sub": "Blueberry · jasmine · cacao nib", "cat": "Coffee", "price": 22, "rating": 4.9, "reviews": 812, "img": "photo-1559056199-641a0ac8b55e", "imgs": [], "badge": "Light roast", "variants": {"label": "Grind", "options": [{"name": "Whole bean", "add": 0}, {"name": "Espresso", "add": 0}, {"name": "Filter / V60", "add": 0}, {"name": "French press", "add": 0}]}, "desc": "A juicy, fruit-forward natural from smallholders in the Guji zone. Roasted light to let the berry notes sing. 250g bag, roasted to order.", "mock": "bag", "tint": ["#f6d7a8", "#c47a3a"], "subSave": true, "tags": ["light"], "hint": "Not sure? Choose Whole bean — it stays fresh longest. Each bag is 250g."}, {"id": "house-blend", "name": "Halfmoon House Blend", "sub": "Milk chocolate · hazelnut · toffee", "cat": "Coffee", "price": 18, "compare": 21, "rating": 4.8, "reviews": 1460, "img": "photo-1611854779393-1b2da9d400fe", "imgs": [], "badge": "Best seller", "variants": {"label": "Grind", "options": [{"name": "Whole bean", "add": 0}, {"name": "Espresso", "add": 0}, {"name": "Filter / V60", "add": 0}, {"name": "French press", "add": 0}]}, "desc": "Our everyday crowd-pleaser — Brazil and Colombia, medium roast. Brilliant as espresso, great with milk. 250g.", "mock": "bag", "tint": ["#e7c39a", "#a86432"], "subSave": true, "tags": ["balanced"], "hint": "Not sure? Choose Whole bean — it stays fresh longest. Each bag is 250g."}, {"id": "night-shift", "name": "Night Shift Espresso", "sub": "Dark cocoa · molasses · cherry", "cat": "Coffee", "price": 19, "rating": 4.8, "reviews": 604, "img": "photo-1447933601403-0c6688de566e", "imgs": [], "variants": {"label": "Grind", "options": [{"name": "Whole bean", "add": 0}, {"name": "Espresso", "add": 0}, {"name": "Filter / V60", "add": 0}, {"name": "French press", "add": 0}]}, "desc": "A syrupy espresso blend with serious body. Built for flat whites and late-night deadlines. 250g.", "mock": "bag", "tint": ["#d7b48a", "#6b3a24"], "subSave": true, "tags": ["dark"], "hint": "Not sure? Choose Whole bean — it stays fresh longest. Each bag is 250g."}, {"id": "decaf-colombia", "name": "Colombia Sugarcane Decaf", "sub": "Red apple · panela · caramel", "cat": "Coffee", "price": 20, "rating": 4.7, "reviews": 233, "img": "photo-1587734195503-904fca47e0e9", "imgs": [], "badge": "Decaf", "variants": {"label": "Grind", "options": [{"name": "Whole bean", "add": 0}, {"name": "Espresso", "add": 0}, {"name": "Filter / V60", "add": 0}, {"name": "French press", "add": 0}]}, "desc": "Naturally decaffeinated using sugarcane ethyl acetate — all the sweetness, none of the jitters. 250g.", "mock": "bag", "tint": ["#f3e6d4", "#8d6a45"], "subSave": true, "tags": ["decaf"], "hint": "Not sure? Choose Whole bean — it stays fresh longest. Each bag is 250g."}, {"id": "subscription", "name": "Roaster’s Choice Subscription", "sub": "2 bags every 2 or 4 weeks", "cat": "Subscriptions", "price": 36, "compare": 42.35, "rating": 4.9, "reviews": 2108, "img": "photo-1511920170033-f8396924c348", "imgs": [], "badge": "Save 15%", "variants": {"label": "Frequency", "options": [{"name": "Every 2 weeks", "add": 0}, {"name": "Every 4 weeks", "add": 0}, {"name": "Monthly gift (3 mo)", "add": 0}]}, "desc": "Two rotating single origins picked by our head roaster, shipped within 48h of roasting. Skip, pause or cancel anytime.", "mock": "bag", "tint": ["#f4e1c4", "#8d4e2a"], "subscription": true}, {"id": "pourover-kit", "name": "Pour-Over Starter Kit", "sub": "Dripper · carafe · 100 filters", "cat": "Gear", "price": 58, "compare": 72, "rating": 4.8, "reviews": 318, "img": "photo-1442512595331-e89e73853f31", "imgs": ["photo-1495474472287-4d71bcdd2085"], "desc": "Everything you need to brew cafe-quality filter coffee at home. Includes a bag of Ethiopia Guji."}, {"id": "camp-mug", "name": "Enamel Camp Mug", "sub": "12 oz · speckled black", "cat": "Merch", "price": 16, "rating": 4.9, "reviews": 145, "img": "photo-1442512595331-e89e73853f31", "imgs": [], "badge": "New", "desc": "Rugged enamel mug for campfire brews and desk coffee alike.", "mock": "enamel", "tint": ["#1f1a17", "#3a2f2a"]}, {"id": "tasting-box", "name": "Origin Tasting Box", "sub": "4 × 100g · great as a gift", "cat": "Coffee", "price": 34, "rating": 4.9, "reviews": 389, "img": "photo-1497935586351-b67a49e012bf", "imgs": [], "badge": "Gift", "variants": {"label": "Grind", "options": [{"name": "Whole bean", "add": 0}, {"name": "Espresso", "add": 0}, {"name": "Filter / V60", "add": 0}, {"name": "French press", "add": 0}]}, "desc": "A flight of four origins from four continents, with tasting cards and brew recipes.", "mock": "bag", "tint": ["#f8e7c8", "#b56a32"], "subSave": true, "tags": ["light"], "hint": "Not sure? Choose Whole bean — it stays fresh longest. Each bag is 250g."}], "reviews": [{"name": "Marcus T.", "loc": "Austin, TX", "av": "photo-1500648767791-00dcc994a43e", "text": "The Guji tastes like blueberry jam. I switched from supermarket coffee and genuinely can’t go back. Subscription is so easy to skip when I travel."}, {"name": "Priya S.", "loc": "Melbourne, AU", "av": "photo-1494790108377-be9c29b29330", "text": "Roast date was 2 days before it landed on my doorstep. House Blend is my daily flat white — rich, chocolatey, perfect."}, {"name": "Hannah L.", "loc": "Seattle, WA", "av": "photo-1438761681033-6461ffad8d80", "text": "Bought the tasting box for my dad and now we compare notes every week. Beautiful packaging, great brew guides."}], "t": {"rvHead": "What our regulars say"}};</script><script src="../assets/shop.js" defer></script></body></html>

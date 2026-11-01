@@ -1,5 +1,11 @@
 (function(){
 const S=window.STORE;if(!S)return;
+{
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const conn=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+ const slow=!!(conn&&(conn.saveData||conn.effectiveType==='slow-2g'||conn.effectiveType==='2g'));
+ if(reduce||slow)document.documentElement.setAttribute('data-motion','off');
+}
 const KEY='cart_'+S.id;const CKEY='cur_'+S.id;
 const $=(q,el=document)=>el.querySelector(q),$$=(q,el=document)=>[...el.querySelectorAll(q)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -77,7 +83,7 @@ document.addEventListener('keydown',e=>{
   else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
 });
 function chrome(){
- const ann=$('#announce');if(ann){const msgs=S.announce.map(m=>`<span>${m}</span>`).join('');ann.innerHTML=`<div class="track">${msgs}${msgs}${msgs}${msgs}</div>`}
+ const ann=$('#announce');if(ann){if(ann.hasAttribute('data-static')){ann.textContent=S.announce[0]||''}else{const msgs=S.announce.map(m=>`<span>${m}</span>`).join('');ann.innerHTML=`<div class="track">${msgs}${msgs}${msgs}${msgs}</div>`}}
  const h=$('#header');if(h){
   const curOpts=S.rates?Object.keys(S.rates).map(c=>`<option ${c===cur?'selected':''}>${c}</option>`).join(''):'';
   const curSel=S.rates?`<select class="cur-select" aria-label="Currency">${curOpts}</select>`:'';
@@ -130,19 +136,22 @@ function photoHTML(id,alt,opts={}){
  const set=opts.widths?` srcset="${srcset(id,opts.widths)}" sizes="${opts.sizes||'100vw'}"`:'';
  return `<img src="${srcOf(id,w)}"${set} alt="${esc(alt)}" width="${w}" height="${h}" ${lazy} decoding="async">`;
 }
-function card(p){
+function card(p, plain){
  const sale=p.compare&&p.compare>p.price;
  const badge=p.badge?`<span class="badge ${/sale|off|%/i.test(p.badge)?'sale':''}">${esc(p.badge)}</span>`:(sale?`<span class="badge sale">${S.t.sale||'Sale'}</span>`:'');
- const media=p.mock?mockHTML(p):photoHTML(p.img,p.name,{w:700,h:875,widths:[400,700],sizes:'(max-width:820px) 46vw, 22vw'});
- return `<div class="card">${badge}<a class="media" href="product.html?id=${p.id}">${media}</a><button class="btn quick" type="button" data-add="${p.id}">${S.t.quickAdd||'Quick add'} · ${money(p.price+(opts(p)[0]?opts(p)[0].add:0))}</button><div class="info"><a class="name" href="product.html?id=${p.id}">${esc(p.name)}</a>${p.sub?`<div class="sub">${esc(p.sub)}</div>`:''}<div class="stars"><span class="s" aria-hidden="true">${stars(p.rating)}</span><span>${p.rating.toFixed(1)} (${p.reviews})</span></div><div class="price"><span class="now ${sale?'on-sale':''}">${S.t.from&&p.variants?S.t.from+' ':''}${money(p.price)}</span>${sale?`<s>${money(p.compare)}</s>`:''}</div></div></div>`;
+ const media=p.mock?mockHTML(p):photoHTML(p.img,p.name,{w:700,h:875,widths:[400,700],sizes:'(max-width:820px) 46vw, 25vw'});
+ const stars=plain?'':`<div class="stars"><span class="s" aria-hidden="true">${stars(p.rating)}</span><span>${p.rating.toFixed(1)} (${p.reviews})</span></div>`;
+ return `<div class="card">${badge}<a class="media" href="product.html?id=${p.id}">${media}</a><div class="info"><a class="name" href="product.html?id=${p.id}">${esc(p.name)}</a>${p.sub?`<div class="sub">${esc(p.sub)}</div>`:''}${stars}<div class="price"><span class="now ${sale?'on-sale':''}">${S.t.from&&p.variants?S.t.from+' ':''}${money(p.price)}</span>${sale?`<s>${money(p.compare)}</s>`:''}</div></div><button class="btn quick" type="button" data-add="${p.id}">Add · ${money(p.price)}</button></div>`;
 }
 S.card=card;
 function applyFilter(f){
  const g=$('#mainGrid');if(!g)return;
  const ps=S.products.filter(p=>!f||f==='all'||p.cat===f||(p.tags||[]).includes(f));
- g.innerHTML=ps.map(card).join('')||'<p>Nothing in this group yet.</p>';
+ g.innerHTML=ps.map(p=>card(p,g.hasAttribute('data-plain'))).join('')||'<p>Nothing in this group yet.</p>';
+ g.style.minHeight='0';
  $$('[data-filter]').forEach(x=>{const on=x.dataset.filter===f;x.classList.toggle('on',on);if(x.tagName==='BUTTON')x.setAttribute('aria-pressed',on?'true':'false')});
  const shop=document.getElementById('shop');if(shop)shop.scrollIntoView({behavior:'smooth',block:'start'});
+ revealCards();
 }
 function openPicker(p){
  lastFocus=document.activeElement;
@@ -162,7 +171,8 @@ function openPicker(p){
  openLayer($('#pick'));($('[data-o]',body)||$('#pickAdd')).focus();
 }
 function grids(){
- $$('[data-grid]').forEach(g=>{const f=g.dataset.grid;let ps=S.products;if(f&&f!=='all')ps=ps.filter(p=>p.cat===f||(p.tags||[]).includes(f));if(g.dataset.limit)ps=ps.slice(0,+g.dataset.limit);g.innerHTML=ps.map(card).join('')});
+ $$('[data-grid]').forEach(g=>{const f=g.dataset.grid;let ps=S.products;if(f&&f!=='all')ps=ps.filter(p=>p.cat===f||(p.tags||[]).includes(f));if(g.dataset.limit)ps=ps.slice(0,+g.dataset.limit);const plain=g.hasAttribute('data-plain');g.innerHTML=ps.map(p=>card(p,plain)).join('')});
+ revealCards();
  document.addEventListener('click',e=>{
   const filt=e.target.closest('[data-filter]');
   if(filt&&$('#mainGrid')){e.preventDefault();applyFilter(filt.dataset.filter);return}
@@ -360,6 +370,32 @@ function quiz(){
  document.addEventListener('click',e=>{if(e.target.closest('[data-quiz]')){e.preventDefault();i=0;render();lastFocus=document.activeElement;openLayer($('#quiz'));const b=$('#quizBody button');if(b)b.focus()}});
  render();
 }
+function revealCards(){
+ if(document.documentElement.getAttribute('data-motion')==='off')return;
+ if(!document.body.classList.contains('store-home')||!('IntersectionObserver' in window))return;
+ if(!revealCards.io){
+  revealCards.io=new IntersectionObserver(entries=>{
+   entries.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');revealCards.io.unobserve(e.target)});
+  },{threshold:.18});
+ }
+ $$('.store-home .card').forEach(c=>{
+  if(c.dataset.reveal)return;
+  if(c.getBoundingClientRect().top<innerHeight*.92)return;
+  c.dataset.reveal='1';c.classList.add('reveal');revealCards.io.observe(c);
+ });
+}
+function heroMotion(){
+ const v=document.querySelector('video[data-hero]');
+ if(!v||document.documentElement.getAttribute('data-motion')==='off')return;
+ const arm=()=>{
+  v.querySelectorAll('source[data-src]').forEach(s=>{if(!s.getAttribute('src'))s.src=s.dataset.src});
+  const play=()=>{v.classList.add('is-on');const p=v.play();if(p)p.catch(()=>{})};
+  v.addEventListener('canplay',play,{once:true});
+  v.load();
+ };
+ if(document.readyState==='complete'){if('requestIdleCallback' in window)requestIdleCallback(arm,{timeout:1200});else setTimeout(arm,400)}
+ else window.addEventListener('load',()=>{if('requestIdleCallback' in window)requestIdleCallback(arm,{timeout:1200});else setTimeout(arm,400)});
+}
 function homeBuy(){
  $$('[data-hm-product]').forEach(box=>{
   const p=P(box.dataset.hmProduct);if(!p)return;
@@ -385,6 +421,6 @@ function orgLd(){
 }
 document.addEventListener('DOMContentLoaded',()=>{
  const main=$('main');if(main&&!main.id)main.id='main';
- chrome();grids();reviews();pdp();checkout();renderCart();policies();plans();quiz();homeBuy();orgLd();
+ chrome();grids();reviews();pdp();checkout();renderCart();policies();plans();quiz();homeBuy();heroMotion();orgLd();
 });
 })();
