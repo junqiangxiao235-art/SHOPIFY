@@ -1,3 +1,8 @@
+# This file is published at /SHOPIFY/robots.txt.
+# GitHub project Pages does not serve a project robots.txt to crawlers of the
+# user domain root, so discovery here relies on the sitemap URL and on
+# <meta name="robots"> (checkout pages are noindex).
+
 User-agent: *
 Allow: /
 

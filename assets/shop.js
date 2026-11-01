@@ -95,8 +95,10 @@ function chrome(){
  $('#ov').onclick=closeAll;$('#dClose').onclick=closeAll;$('#sClose').onclick=closeAll;$('#pickClose').onclick=closeAll;
  $('#sq').oninput=e=>{const q=e.target.value.toLowerCase();const r=S.products.filter(p=>!q||(p.name+p.cat+(p.sub||'')).toLowerCase().includes(q)).slice(0,8);$('#sr').innerHTML=r.map(p=>`<a href="product.html?id=${p.id}">${thumb(p,48)}<span>${esc(p.name)}<br><b>${money(p.price)}</b></span></a>`).join('')||'<p>No results</p>'};
  $$('form[data-news]').forEach(f=>f.onsubmit=e=>{e.preventDefault();f.reset();const ok=f.parentElement.querySelector('.ok');if(ok)ok.style.display='block';toast(S.t.subscribed||'Thanks for subscribing!')});
- if(!$('#demoBadge')){
-  document.body.insertAdjacentHTML('beforeend',`<div class="demo-badge" id="demoBadge"><span>Demo by 拾光</span><a href="../index.html">Back to portfolio</a><span aria-hidden="true">/</span><a href="../index.html#contact">Contact</a></div>`);
+ if(!$('#demoLine') && !/Demo by 拾光/.test((document.querySelector('footer')||document.body).textContent)){
+  const line=`<p class="demo-line" id="demoLine">Demo by 拾光 · <a href="../index.html">Portfolio</a> · <a href="../index.html#contact">Contact</a></p>`;
+  const foot=document.querySelector('footer');
+  if(foot) foot.insertAdjacentHTML('beforeend', line);
  }
 }
 function openCart(){const d=$('#drawer');if(!d)return;const ae=document.activeElement;if(!ae||!ae.closest||!ae.closest('#pick,#quiz,#infoDlg'))lastFocus=ae;shut($('#sp'));shut($('#pick'));openLayer(d);$('#dClose').focus()}
@@ -119,6 +121,7 @@ function mockHTML(p){
  const c=p.tint||(p.mock==='bottle'?['#f7d5de','#e7b7c3']:['#f0e2cf','#c4895c']);
  if(p.mock==='bag')return `<span class="mock bag" style="--c1:${c[0]};--c2:${c[1]}"><span class="pack"><span class="mk">◐ halfmoon</span><strong>${esc(p.name)}</strong><em>${esc(p.sub||'250g')}</em><i>${esc(p.badge||'Label-free bag')}</i></span></span>`;
  if(p.mock==='bottle')return `<span class="mock bottle" style="--c1:${c[0]};--c2:${c[1]}"><span class="vial"><span class="cap"></span><span class="lbl"><b>dewlune</b><strong>${esc(p.name)}</strong></span></span></span>`;
+ if(p.mock==='enamel')return `<span class="mock enamel" style="--c1:${c[0]};--c2:${c[1]}"><span class="cup"><span class="handle"></span><span class="muglbl"><b>◐ halfmoon</b><strong>${esc(p.name)}</strong></span></span></span>`;
  return '';
 }
 function photoHTML(id,alt,opts={}){
@@ -227,7 +230,6 @@ function pdp(){
  const rel=$('[data-related]');if(rel)rel.innerHTML=S.products.filter(x=>x.id!==p.id).slice(0,4).map(card).join('');
  const rv=$('#pdpReviews');if(rv){rv.innerHTML=`<div class="rv-summary"><div><div class="rv-big">${p.rating.toFixed(1)}</div><div class="stars"><span class="s" aria-hidden="true">${stars(p.rating)}</span>Product rating · ${p.reviews} ${S.t.reviews||'reviews'}</div></div></div><h3 style="font-size:22px;margin:0 0 14px">Store reviews</h3><p class="hint" style="margin-top:0">From other orders in this demo shop, not only this product.</p><div class="reviews">${S.reviews.slice(0,3).map(reviewHTML).join('')}</div>`}
  const ld={ '@context':'https://schema.org','@type':'Product',name:p.name,image:p.mock?[]:[srcOf(p.img,1200)],description:p.desc,sku:p.id,brand:{'@type':'Brand',name:S.name},offers:{'@type':'Offer',priceCurrency:S.currency,price:p.price,availability:'https://schema.org/InStock',url:location.href}};
- if(p.rating)ld.aggregateRating={'@type':'AggregateRating',ratingValue:p.rating,reviewCount:p.reviews};
  setLd(ld);
 }
 function sizeGuideHTML(){return `<table style="width:100%;border-collapse:collapse;font-size:14px"><tr><th align="left">Size</th><th align="left">Duvet cover</th></tr>${[['Twin','173 × 224 cm · 68 × 88 in'],['Queen','229 × 229 cm · 90 × 90 in'],['King','264 × 229 cm · 104 × 90 in'],['Cal King','264 × 213 cm · 104 × 84 in']].map(r=>`<tr><td style="padding:6px 8px 6px 0">${r[0]}</td><td>${r[1]}</td></tr>`).join('')}</table><p class="hint">Measurements are the finished cover. This is a demo size chart.</p>`}
@@ -316,20 +318,22 @@ function policies(){
  $$('[data-note]').forEach(b=>{b.addEventListener('click',()=>openInfo(b.dataset.note,`<p>${esc(b.dataset.note)} is part of this fictional demo store. No separate page is published.</p>`))});
 }
 function plans(){
- const btn=document.querySelector('[data-add="subscription"]');if(!btn)return;
- if(!$('#planFreq'))btn.insertAdjacentHTML('beforebegin','<label class="plan-freq">Grind <select id="planGrind" aria-label="Grind"><option>Whole bean</option><option>Espresso</option><option>Filter / V60</option><option>French press</option></select></label><label class="plan-freq">Frequency <select id="planFreq" aria-label="Frequency"><option>Every 2 weeks</option><option>Every 4 weeks</option></select></label>');
+ const root=document.querySelector('#subscribe');if(!root)return;
+ const btn=root.querySelector('[data-add="subscription"]');if(!btn)return;
+ if(!root.querySelector('#planFreq'))btn.insertAdjacentHTML('beforebegin','<label class="plan-freq">Grind <select id="planGrind" aria-label="Grind"><option>Whole bean</option><option>Espresso</option><option>Filter / V60</option><option>French press</option></select></label><label class="plan-freq">Frequency <select id="planFreq" aria-label="Frequency"><option>Every 2 weeks</option><option>Every 4 weeks</option></select></label>');
  let chosen=null;
+ const cards=$$('.plan', root);
  function paint(){
-  $$('.plan').forEach(c=>c.classList.toggle('on',c===chosen));
+  cards.forEach(c=>c.classList.toggle('on',c===chosen));
   if(!chosen){btn.textContent='Choose a plan';btn.removeAttribute('data-plan-chosen');return}
   const add=+chosen.dataset.add||0;const price=36+add;
-  const freq=$('#planFreq').value;const grind=$('#planGrind').value;
+  const freq=root.querySelector('#planFreq').value;const grind=root.querySelector('#planGrind').value;
   btn.dataset.planChosen='1';btn.dataset.v=`${chosen.dataset.plan} · ${grind} · ${freq}`;btn.dataset.addAmt=String(add);
-  btn.textContent=`Start ${chosen.dataset.plan} — ${money(price)} →`;
+  btn.textContent=`Start ${chosen.dataset.plan} — ${money(price)}`;
  }
- $$('.plan').forEach(c=>{c.setAttribute('role','button');c.tabIndex=0;c.setAttribute('aria-pressed','false');const go=()=>{chosen=c;$$('.plan').forEach(x=>x.setAttribute('aria-pressed',x===c?'true':'false'));paint()};c.onclick=go;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}});
- $('#planFreq').onchange=paint;$('#planGrind').onchange=paint;
- const popular=$$('.plan')[1];if(popular){chosen=popular;popular.setAttribute('aria-pressed','true');paint()}
+ cards.forEach(c=>{c.setAttribute('role','button');c.tabIndex=0;const go=()=>{chosen=c;cards.forEach(x=>x.setAttribute('aria-pressed',x===c?'true':'false'));paint()};c.onclick=go;c.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}});
+ root.querySelector('#planFreq').onchange=paint;root.querySelector('#planGrind').onchange=paint;
+ const popular=cards[1]||cards[0];if(popular){chosen=popular;popular.setAttribute('aria-pressed','true');paint()}
 }
 function quiz(){
  if(!S.quiz)return;
@@ -356,6 +360,23 @@ function quiz(){
  document.addEventListener('click',e=>{if(e.target.closest('[data-quiz]')){e.preventDefault();i=0;render();lastFocus=document.activeElement;openLayer($('#quiz'));const b=$('#quizBody button');if(b)b.focus()}});
  render();
 }
+function homeBuy(){
+ $$('[data-hm-product]').forEach(box=>{
+  const p=P(box.dataset.hmProduct);if(!p)return;
+  let purchase='sub';
+  const paint=()=>{
+   $$('[data-hm-buy]',box).forEach(b=>{const on=b.dataset.hmBuy===purchase;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on?'true':'false')});
+   const once=box.querySelector('[data-hm-buy="once"]');
+   const sub=box.querySelector('[data-hm-buy="sub"]');
+   if(once)once.textContent=`One-time · ${money(p.price)}`;
+   if(sub)sub.textContent=`Subscribe · ${money(Math.round(p.price*85)/100)}`;
+  };
+  $$('[data-hm-buy]',box).forEach(b=>b.onclick=()=>{purchase=b.dataset.hmBuy;paint()});
+  const go=box.querySelector('[data-hm-add]');
+  if(go)go.onclick=()=>{const v=purchase==='sub'?'Whole bean · Subscribe every 2 weeks':'Whole bean';add(p.id,v,1,0,purchase)};
+  paint();
+ });
+}
 function setLd(data){let el=$('#jsonld');if(!el){el=document.createElement('script');el.id='jsonld';el.type='application/ld+json';document.head.appendChild(el)}el.textContent=JSON.stringify(data)}
 function orgLd(){
  if($('#pdp')||$('#coForm'))return;
@@ -364,6 +385,6 @@ function orgLd(){
 }
 document.addEventListener('DOMContentLoaded',()=>{
  const main=$('main');if(main&&!main.id)main.id='main';
- chrome();grids();reviews();pdp();checkout();renderCart();policies();plans();quiz();orgLd();
+ chrome();grids();reviews();pdp();checkout();renderCart();policies();plans();quiz();homeBuy();orgLd();
 });
 })();

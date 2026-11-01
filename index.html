@@ -12,16 +12,17 @@
 const STUDIO = {
   name: "拾光独立站工作室",
   shortName: "拾光",
-  email: "hello@example.com", /* TODO: 换成真实邮箱 */
-  wechat: "TODO_WECHAT_ID", /* TODO: 换成微信号 */
-  formAction: "https://formspree.io/f/TODO_FORM_ID", /* TODO: 换成 Formspree 表单地址；仍含 TODO 时，提交会打开邮件草稿 */
+  email: "hello@example.com", /* 含 example.com 或 TODO 时，页面不展示邮箱 */
+  wechat: "TODO_WECHAT_ID", /* 含 TODO 或留空时，不展示微信 */
+  formAction: "https://formspree.io/f/TODO_FORM_ID", /* 含 TODO 或留空时，不展示表单，也不会打开邮件 */
   subject: "独立站搭建咨询",
   prices: {
-    starter: "¥2,999 起", /* TODO */
-    standard: "¥6,999 起", /* TODO */
-    flagship: "面议" /* TODO */
+    starter: "¥2,999 起",
+    standard: "¥6,999 起",
+    flagship: "面议"
   },
-  who: "TODO：用两三句话介绍你是谁、做过哪些品类、你负责设计还是也负责搭建。上线前替换这段，不要留着占位。",
+  who: "拾光做 Shopify 风格的独立站原型：先把首页、商品和结账做成可以点击的样子，确认结构和视觉后，再落到正式店铺。下面四个店都是虚构品牌，用来演示不同品类的购买路径。",
+  testimonials: [], /* 填入 {quote, name} 后才会显示评价区 */
   seoTitle: "拾光独立站工作室 · Shopify 风格独立站作品集",
   seoDescription: "四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。"
 };
@@ -36,11 +37,11 @@ const STUDIO = {
 <meta property="og:title" content="拾光独立站工作室 · Shopify 风格独立站作品集">
 <meta property="og:description" content="四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。">
 <meta property="og:url" content="https://junqiangxiao235-art.github.io/SHOPIFY/">
-<meta property="og:image" content="https://junqiangxiao235-art.github.io/SHOPIFY/shots/thumbs/lumen-loom.jpg">
+<meta property="og:image" content="https://junqiangxiao235-art.github.io/SHOPIFY/shots/og/hub.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="拾光独立站工作室 · Shopify 风格独立站作品集">
 <meta name="twitter:description" content="四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。">
-<meta name="twitter:image" content="https://junqiangxiao235-art.github.io/SHOPIFY/shots/thumbs/lumen-loom.jpg">
+<meta name="twitter:image" content="https://junqiangxiao235-art.github.io/SHOPIFY/shots/og/hub.jpg">
 <script type="application/ld+json" id="ldjson"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -130,7 +131,7 @@ document.querySelector('meta[name="description"]').setAttribute('content', STUDI
 document.getElementById('ldjson').textContent = JSON.stringify({
   "@context":"https://schema.org",
   "@graph":[
-    {"@type":"Organization","name":STUDIO.name,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","email":STUDIO.email,"logo":"https://junqiangxiao235-art.github.io/SHOPIFY/favicon.svg"},
+    {"@type":"Organization","name":STUDIO.name,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","logo":"https://junqiangxiao235-art.github.io/SHOPIFY/favicon.svg"},
     {"@type":"WebSite","name":STUDIO.name,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","description":STUDIO.seoDescription}
   ]
 });
@@ -149,7 +150,7 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <a href="#faq">常见问题</a>
 <a href="#contact">联系</a>
 </nav>
-<a class="btn tiny" href="#contact">免费咨询</a>
+<a class="btn tiny" href="#contact" data-contact-cta hidden>免费咨询</a>
 </header>
 <main id="main">
 <div class="hero">
@@ -170,19 +171,19 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <p class="sub">每张卡写了挑战、设计决定、以及你进店后该点哪里。店里的品牌、评价和价格都是示范，不是在售商品。</p>
 <div class="cards">
 <a class="card" href="lumen-loom/index.html">
-<div class="shot"><img src="shots/thumbs/lumen-loom.webp" width="960" height="2000" alt="Lumen & Loom 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="shot"><img src="shots/thumbs/lumen-loom.webp" width="960" height="1600" alt="Lumen & Loom 示范店整页截图" loading="lazy" decoding="async"></div>
 <div class="body">
 <div class="chips"><span>跨境家居</span><span>多币种</span><span>包税</span></div>
 <h3>Lumen &amp; Loom</h3>
-<div class="case"><span><b>挑战</b> 欧美买家怕到货再被收关税，床品又怕选错尺码。</span><span><b>决定</b> 公告、商品页和结账都写明包税，并给被套一张尺码表。手机菜单里保留币种切换。</span><span><b>看这里</b> 顶部 DDP 文案、被套页的 Size guide、结账里的 Duties included。</span></div>
+<div class="case"><span><b>挑战</b> 欧美买家怕到货再被收关税，床品又怕选错尺码。</span><span><b>决定</b> 公告、商品页和结账都写明包税，并给被套一张尺码表。手机菜单里保留币种切换。</span><span><b>看这里</b> 杂志式首页：左侧亚麻特写，右侧大标题，再一屏只讲一件商品。</span></div>
 <span class="go">试试切换币种和尺码表 →</span>
 </div></a>
 <a class="card" href="halfmoon-coffee/index.html">
-<div class="shot"><img src="shots/thumbs/halfmoon-coffee.webp" width="960" height="2000" alt="Halfmoon Coffee 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="shot"><img src="shots/thumbs/halfmoon-coffee.webp" width="960" height="1600" alt="Halfmoon Coffee 示范店整页截图" loading="lazy" decoding="async"></div>
 <div class="body">
 <div class="chips"><span>精品咖啡</span><span>订阅</span></div>
 <h3>Halfmoon Coffee</h3>
-<div class="case"><span><b>挑战</b> 首页在讲订阅省 15%，但以前点套餐卡没有反应。</span><span><b>决定</b> 套餐卡可选，商品页可以在一次购买和订阅之间切换，结账写明续费。</span><span><b>看这里</b> 首页 Solo / Office 卡、任意咖啡页的 Subscribe &amp; save、结账里的续费说明。</span></div>
+<div class="case"><span><b>挑战</b> 首页在讲订阅省 15%，但以前点套餐卡没有反应。</span><span><b>决定</b> 套餐卡可选，商品页可以在一次购买和订阅之间切换，结账写明续费。</span><span><b>看这里</b> 首屏就是一袋自己的豆子，旁边切换一次购买或订阅。</span></div>
 <span class="go">试试选一个订阅方案 →</span>
 </div></a>
 <a class="card" href="mara-lin-studio/index.html">
@@ -194,11 +195,11 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <span class="go">试试数字商品结账 →</span>
 </div></a>
 <a class="card" href="dewlune-skin/index.html">
-<div class="shot"><img src="shots/thumbs/dewlune-skin.webp" width="960" height="2000" alt="Dewlune 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="shot"><img src="shots/thumbs/dewlune-skin.webp" width="960" height="1600" alt="Dewlune 示范店整页截图" loading="lazy" decoding="async"></div>
 <div class="body">
 <div class="chips"><span>护肤</span><span>肤质</span></div>
 <h3>Dewlune</h3>
-<div class="case"><span><b>挑战</b> “做个肤质测试”之前只是滚到页面下面，规格加价也不进价格。</span><span><b>决定</b> 三题小测试会推荐一个产品；50 ml / 300 ml 的加价写进按钮和购物车。前后对比改成步骤图，不再用假的同一张脸。</span><span><b>看这里</b> 首页 Take the skin quiz，以及精华页的 50 ml。</span></div>
+<div class="case"><span><b>挑战</b> “做个肤质测试”之前只是滚到页面下面，规格加价也不进价格。</span><span><b>决定</b> 三题小测试会推荐一个产品；50 ml / 300 ml 的加价写进按钮和购物车。前后对比改成步骤图，不再用假的同一张脸。</span><span><b>看这里</b> 第二屏是肤质测试；成分各占一整屏，瓶子是自己的标签。</span></div>
 <span class="go">试试肤质小测试 →</span>
 </div></a>
 </div>
@@ -207,9 +208,9 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <section id="who">
 <div class="who">
 <div>
-<h2>我是谁</h2>
-<p class="sub">这段是留给站主的自我介绍。现在是占位，不是虚构履历。</p>
-<div class="todo"><small>待替换 · 不要当成已发布简介</small><p data-cfg="who">TODO：用两三句话介绍你是谁、做过哪些品类、你负责设计还是也负责搭建。上线前替换这段，不要留着占位。</p></div>
+<h2>工作室</h2>
+<p class="sub">四个示范店是作品，不是在售商品。</p>
+<p data-cfg="who">拾光做 Shopify 风格的独立站原型：先把首页、商品和结账做成可以点击的样子，确认结构和视觉后，再落到正式店铺。下面四个店都是虚构品牌，用来演示不同品类的购买路径。</p>
 </div>
 <div class="panel">
 <h3>这些店证明什么</h3>
@@ -244,39 +245,35 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 
 <section id="price">
 <h2>套餐</h2>
-<p class="sub">数字是占位，在文件顶部的 STUDIO.prices 里改。按钮会把套餐名带到联系表。</p>
+<p class="sub">三档范围，最终按需求报价。</p>
 <div class="price">
 <article>
 <span>入门</span>
 <b data-cfg="prices.starter">¥2,999 起</b>
 <p class="note">适合先把一个店的首页、商品页和购物车做出来。</p>
 <ul><li>约 7 天</li><li>最多 20 个商品的结构</li><li>手机端主路径</li></ul>
-<button class="btn" type="button" data-inquiry="入门店铺">咨询这个套餐</button>
+<button class="btn" type="button" data-inquiry="入门店铺" data-contact-cta hidden>咨询这个套餐</button>
 </article>
 <article class="hot">
 <span>标准 · 更多人从这里开始</span>
 <b data-cfg="prices.standard">¥6,999 起</b>
 <p class="note">适合要多币种、订阅或一套完整购买路径的品牌。</p>
 <ul><li>视觉按品牌重做</li><li>多币种与运费/关税说明</li><li>约 14 天，含 1 个月修改</li></ul>
-<button class="btn" type="button" data-inquiry="品牌标准店">咨询这个套餐</button>
+<button class="btn" type="button" data-inquiry="品牌标准店" data-contact-cta hidden>咨询这个套餐</button>
 </article>
 <article>
 <span>旗舰</span>
 <b data-cfg="prices.flagship">面议</b>
 <p class="note">订阅规则、数字商品、应用对接这类要单独估。</p>
 <ul><li>定制模块</li><li>第三方应用怎么接</li><li>可以按月继续改</li></ul>
-<button class="btn ghost" type="button" data-inquiry="定制旗舰店">咨询这个套餐</button>
+<button class="btn ghost" type="button" data-inquiry="定制旗舰店" data-contact-cta hidden>咨询这个套餐</button>
 </article>
 </div>
 </section>
 
-<section id="voices">
+<section id="voices" hidden>
 <h2>客户怎么说</h2>
-<p class="sub">这里故意空着。没有真实许可的评价我不会编。换成真客户的原话后再拿掉“待替换”。</p>
-<div class="slots">
-<article class="slot"><strong>待替换 · 评价 1</strong>TODO：客户原话。姓名、品牌、能不能公开，都等你填。</article>
-<article class="slot"><strong>待替换 · 评价 2</strong>TODO：另一条真实反馈。不要写成“销量提升 300%”这种没有出处的句子。</article>
-</div>
+<div class="slots" id="voiceSlots"></div>
 </section>
 
 <section id="faq">
@@ -289,17 +286,20 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 
 <section id="contact">
 <h2>联系</h2>
-<p class="sub">邮箱和微信还是占位。提交后，如果 Formspree 地址还没换，会打开一封写给你配置邮箱的草稿。</p>
+<p class="sub" id="contactSoon">联系方式即将公布。四个示范店现在就可以点开试用。</p>
 <div class="contact-grid">
 <div>
+<div id="emailBlock" hidden>
 <p class="note">邮箱</p>
 <p><a id="mailLink" href="mailto:hello@example.com">hello@example.com</a></p>
+</div>
+<div id="wechatBlock" hidden>
 <p class="note" style="margin-top:16px">微信</p>
 <p class="wechat"><span data-cfg="wechat">TODO_WECHAT_ID</span></p>
-<p class="note" id="wechatFlag">待替换：把配置里的 wechat 换成你的微信号。</p>
 <button class="btn ghost tiny" type="button" id="copyWx">复制微信号</button>
 </div>
-<form id="contactForm">
+</div>
+<form id="contactForm" hidden>
 <label for="c-name">怎么称呼你</label>
 <input id="c-name" name="name" required autocomplete="name">
 <label for="c-email">邮箱</label>
@@ -319,40 +319,62 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <p>图片来自 Unsplash，或是店内自己画的包装示意。价格、邮箱和微信在本页顶部的配置里替换。</p>
 </footer>
 </div>
-<div class="mobile-cta"><a class="btn" href="#contact">免费咨询</a></div>
+<div class="mobile-cta" data-contact-cta hidden><a class="btn" href="#contact">免费咨询</a></div>
 <script>
 document.querySelectorAll('[data-cfg]').forEach(function(el){
   var v=STUDIO, path=el.dataset.cfg.split('.');
   path.forEach(function(k){ v=v&&v[k]; });
   if(v!=null) el.textContent=v;
 });
-var mail=document.getElementById('mailLink');
-mail.textContent=STUDIO.email;
-mail.href='mailto:'+STUDIO.email+'?subject='+encodeURIComponent(STUDIO.subject);
-if(!String(STUDIO.wechat).includes('TODO')) document.getElementById('wechatFlag').hidden=true;
-document.getElementById('copyWx').onclick=function(){
+function unset(v){
+  if(v==null) return true;
+  var s=String(v).trim();
+  if(!s) return true;
+  if(/TODO/i.test(s)) return true;
+  if(/example\.com/i.test(s)) return true;
+  return false;
+}
+var emailOk=!unset(STUDIO.email);
+var wechatOk=!unset(STUDIO.wechat);
+var formOk=!unset(STUDIO.formAction);
+document.getElementById('emailBlock').hidden=!emailOk;
+if(emailOk){
+  var mail=document.getElementById('mailLink');
+  mail.textContent=STUDIO.email;
+  mail.href='mailto:'+STUDIO.email+'?subject='+encodeURIComponent(STUDIO.subject);
+}
+document.getElementById('wechatBlock').hidden=!wechatOk;
+if(wechatOk) document.getElementById('copyWx').onclick=function(){
   navigator.clipboard&&navigator.clipboard.writeText(STUDIO.wechat);
   this.textContent='已复制';
 };
+var form=document.getElementById('contactForm');
+form.hidden=!formOk;
+if(formOk){
+  document.getElementById('formNote').textContent='表单会提交到你配置的地址。';
+  form.action=STUDIO.formAction;
+  form.method='POST';
+}
+var anyContact=emailOk||wechatOk||formOk;
+document.getElementById('contactSoon').hidden=anyContact;
+document.querySelectorAll('[data-contact-cta]').forEach(function(el){ el.hidden=!anyContact; });
+var voices=(STUDIO.testimonials||[]).filter(function(t){ return t && !unset(t.quote) && !unset(t.name); });
+var voiceSection=document.getElementById('voices');
+if(!voices.length) voiceSection.remove();
+else {
+  voiceSection.hidden=false;
+  document.getElementById('voiceSlots').innerHTML=voices.map(function(t){
+    return '<article class="slot"><p>'+t.quote+'</p><strong>'+t.name+'</strong></article>';
+  }).join('');
+}
 document.querySelectorAll('[data-inquiry]').forEach(function(b){
   b.onclick=function(){
+    if(!formOk) return;
     var box=document.getElementById('c-msg');
     box.value='我想咨询「'+b.dataset.inquiry+'」。\n产品：\n目标市场：';
     document.getElementById('contact').scrollIntoView({behavior:'smooth'});
     box.focus();
   };
-});
-var form=document.getElementById('contactForm');
-var placeholder=!STUDIO.formAction || STUDIO.formAction.indexOf('TODO')!==-1;
-document.getElementById('formNote').textContent=placeholder
-  ? '联系方式仍是占位。现在提交会打开邮件草稿，不会发给陌生人。'
-  : '表单会提交到你配置的 Formspree 地址。';
-form.addEventListener('submit', function(e){
-  if(!placeholder){ form.action=STUDIO.formAction; form.method='POST'; return; }
-  e.preventDefault();
-  var data=new FormData(form);
-  var body='称呼: '+data.get('name')+'\n邮箱: '+data.get('email')+'\n微信: '+(data.get('wechat')||'')+'\n\n'+data.get('message');
-  location.href='mailto:'+STUDIO.email+'?subject='+encodeURIComponent(STUDIO.subject)+'&body='+encodeURIComponent(body);
 });
 </script>
 </body>
