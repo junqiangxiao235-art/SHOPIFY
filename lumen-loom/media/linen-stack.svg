@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="A stack of three folded linen sheets">
+  <rect width="800" height="600" fill="#f6f1e8"/>
+  <g opacity=".25" stroke="#c9bba6" stroke-width="1">
+    <path d="M0 40 H800 M0 80 H800 M0 120 H800 M0 160 H800"/>
+  </g>
+  <g>
+    <rect x="150" y="340" width="500" height="92" rx="4" fill="#e7dccb"/>
+    <path d="M150 372 H650" stroke="#f4ecdf" stroke-width="14"/>
+    <path d="M168 356 H280 M168 392 H240" stroke="#cbbba4" stroke-width="1.5" opacity=".7"/>
+    <rect x="124" y="268" width="552" height="96" rx="4" fill="#f3eadc"/>
+    <path d="M124 302 H676" stroke="#fff8ee" stroke-width="16"/>
+    <path d="M146 286 H300 M146 330 H220" stroke="#d9ccb8" stroke-width="1.5" opacity=".8"/>
+    <rect x="98" y="186" width="604" height="104" rx="4" fill="#e4c79a"/>
+    <path d="M98 224 H702" stroke="#f6e7cc" stroke-width="18"/>
+    <path d="M120 204 H340 M120 248 H260 M420 210 H560" stroke="#c9ae86" stroke-width="1.5" opacity=".75"/>
+  </g>
+</svg>

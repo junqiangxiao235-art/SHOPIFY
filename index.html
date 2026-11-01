@@ -1,53 +1,381 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>拾光独立站工作室 · Shopify / 独立站搭建作品集</title><meta name="description" content="专注 Shopify 风格独立站搭建：跨境 DTC、咖啡、创作者、美妆护肤等电商店铺设计与开发。">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
+/* ============================================================
+   STUDIO CONFIG — 只改这里
+   TODO: 上线前替换邮箱、微信号、Formspree 地址、价格和自我介绍。
+   页面上的店名、价格、联系方式都从这份配置读取。
+   ============================================================ */
+const STUDIO = {
+  name: "拾光独立站工作室",
+  shortName: "拾光",
+  email: "hello@example.com", /* 含 example.com 或 TODO 时，页面不展示邮箱 */
+  wechat: "TODO_WECHAT_ID", /* 含 TODO 或留空时，不展示微信 */
+  formAction: "https://formspree.io/f/TODO_FORM_ID", /* 含 TODO 或留空时，不展示表单，也不会打开邮件 */
+  subject: "独立站搭建咨询",
+  prices: {
+    starter: "¥2,999 起",
+    standard: "¥6,999 起",
+    flagship: "面议"
+  },
+  who: "拾光做 Shopify 风格的独立站原型：先把首页、商品和结账做成可以点击的样子，确认结构和视觉后，再落到正式店铺。下面四个店都是虚构品牌，用来演示不同品类的购买路径。",
+  testimonials: [], /* 填入 {quote, name} 后才会显示评价区 */
+  seoTitle: "拾光独立站工作室 · Shopify 风格独立站作品集",
+  seoDescription: "四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。"
+};
+</script>
+<title>拾光独立站工作室 · Shopify 风格独立站作品集</title>
+<meta name="description" content="四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。">
+<link rel="canonical" href="https://junqiangxiao235-art.github.io/SHOPIFY/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="拾光独立站工作室">
+<meta property="og:title" content="拾光独立站工作室 · Shopify 风格独立站作品集">
+<meta property="og:description" content="四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。">
+<meta property="og:url" content="https://junqiangxiao235-art.github.io/SHOPIFY/">
+<meta property="og:image" content="https://junqiangxiao235-art.github.io/SHOPIFY/shots/og/hub.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="拾光独立站工作室 · Shopify 风格独立站作品集">
+<meta name="twitter:description" content="四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。">
+<meta name="twitter:image" content="https://junqiangxiao235-art.github.io/SHOPIFY/shots/og/hub.jpg">
+<script type="application/ld+json" id="ldjson"></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}html,body{overflow-x:clip}body{font-family:Inter,"Noto Sans SC",sans-serif;background:#0b0c10;color:#eef0f4;line-height:1.7}a{color:inherit;text-decoration:none}
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-header{display:flex;justify-content:space-between;align-items:center;padding:22px 0}.logo{font-weight:900;font-size:20px;letter-spacing:.02em}.logo i{font-style:normal;color:#95bf47}
-header nav{display:flex;gap:26px;font-size:14px;opacity:.85}
-.hero{padding:90px 0 70px;position:relative}.hero:before{content:"";position:absolute;inset:-100px -20% auto;height:600px;background:radial-gradient(closest-side,rgba(149,191,71,.18),transparent);z-index:-1}
-.tag{display:inline-flex;gap:8px;align-items:center;border:1px solid #2a2d36;border-radius:99px;padding:6px 14px;font-size:13px;color:#b9c0cc}.tag b{width:8px;height:8px;border-radius:50%;background:#95bf47}
-h1{font-size:clamp(38px,6vw,76px);line-height:1.12;font-weight:900;margin:22px 0 20px;letter-spacing:-.02em}h1 em{font-style:normal;background:linear-gradient(90deg,#95bf47,#5ed1b6);-webkit-background-clip:text;color:transparent}
-.lead{font-size:18px;color:#a8afbb;max-width:640px}
-.cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}.btn{padding:14px 26px;border-radius:12px;font-weight:700;font-size:15px}.btn.p{background:#95bf47;color:#0b0c10}.btn.s{border:1px solid #333845}
-.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:60px}.kpi div{border:1px solid #1f222b;border-radius:16px;padding:20px;background:#111319}.kpi b{font-size:30px;display:block;font-weight:800}.kpi span{font-size:13px;color:#8d94a1}
-section{padding:70px 0}h2{font-size:clamp(28px,3.4vw,40px);font-weight:900;margin-bottom:8px}.sub{color:#8d94a1;margin-bottom:36px}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.card{background:#111319;border:1px solid #1f222b;border-radius:22px;overflow:hidden;transition:.25s;display:flex;flex-direction:column}.card:hover{transform:translateY(-6px);border-color:#95bf47}
-.shot{aspect-ratio:16/10;overflow:hidden;background:#1a1d24;position:relative}.shot img{width:100%;height:auto;display:block;transition:transform 4s ease}.card:hover .shot img{transform:translateY(calc(-100% + 375px))}
-.browser{height:30px;background:#1a1d24;display:flex;align-items:center;gap:6px;padding:0 14px}.browser i{width:10px;height:10px;border-radius:50%;background:#3a3f4b}
-.body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:10px;flex:1}.body h3{font-size:22px}.body p{color:#a8afbb;font-size:14.5px}
-.chips{display:flex;flex-wrap:wrap;gap:6px}.chips span{font-size:12px;border:1px solid #2a2d36;border-radius:99px;padding:3px 10px;color:#b9c0cc}
-.go{margin-top:auto;padding-top:12px;font-weight:700;color:#95bf47}
-.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feat div{background:#111319;border:1px solid #1f222b;border-radius:18px;padding:26px}.feat h3{font-size:18px;margin:10px 0 6px}.feat p{font-size:14px;color:#a8afbb}.feat .e{font-size:26px}
-.price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.price div{border:1px solid #1f222b;border-radius:20px;padding:30px;background:#111319}.price .hot{border-color:#95bf47;box-shadow:0 0 0 1px #95bf47 inset}.price b{font-size:34px;display:block;margin:10px 0}.price ul{list-style:none;font-size:14px;color:#a8afbb;display:grid;gap:8px;margin-top:14px}.price li:before{content:"✓ ";color:#95bf47}
-.contact{background:linear-gradient(135deg,#95bf47,#5ed1b6);color:#0b0c10;border-radius:28px;padding:60px;text-align:center}.contact h2{color:#0b0c10}.contact p{margin:6px 0 24px}.contact .btn{background:#0b0c10;color:#fff;display:inline-block}
-footer{padding:40px 0;color:#6b7280;font-size:13px;text-align:center}
-@media(max-width:820px){.cards,.feat,.price{grid-template-columns:1fr}.kpi{grid-template-columns:1fr 1fr}header nav{display:none}.contact{padding:36px 22px}.card:hover .shot img{transform:none}}
-</style></head><body>
-<div class="wrap"><header><div class="logo">拾光<i>·</i>独立站工作室</div><nav><a href="#work">作品案例</a><a href="#service">服务内容</a><a href="#price">套餐价格</a><a href="#contact">联系合作</a></nav></header>
-<div class="hero"><span class="tag"><b></b>Shopify / 独立站 · 设计 + 开发 + 上线</span><h1>为你的品牌打造<br><em>会卖货的</em>独立站</h1><p class="lead">从跨境 DTC 品牌到咖啡、美妆、创作者小店，我们做高转化的 Shopify 风格店铺：品牌视觉、商品详情、购物车与结账流程、移动端体验，一站式交付。</p>
-<div class="cta"><a class="btn p" href="#work">查看作品案例 →</a><a class="btn s" href="#contact">免费咨询报价</a></div>
-<div class="kpi"><div><b>4 个</b><span>行业示范店铺，在线可体验</span></div><div><b>7–14 天</b><span>标准店铺交付周期</span></div><div><b>100%</b><span>移动端适配</span></div><div><b>1 对 1</b><span>上线培训与售后</span></div></div></div></div>
-<section id="work"><div class="wrap"><h2>作品案例</h2><p class="sub">以下均为虚构品牌的完整示范店铺：可浏览商品、加入购物车、体验结账流程。点击进入在线体验。</p>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;background:#0b0c10;color:#eef0f4;line-height:1.65}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #f4f7fb;outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:12px;top:-40px;background:#95bf47;color:#0b0c10;padding:8px 12px;z-index:5}
+.skip:focus{top:12px}
+header.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0;flex-wrap:wrap}
+.logo{font-weight:800;font-size:20px}.logo i{font-style:normal;color:#95bf47}
+nav{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px}
+nav a{padding:6px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:700;border:1px solid transparent;cursor:pointer;background:#95bf47;color:#0b0c10}
+.btn.ghost{background:transparent;border-color:#333845;color:#eef0f4}
+.btn.tiny{padding:8px 12px;font-size:13px}
+h1{font-size:clamp(36px,6vw,68px);line-height:1.12;letter-spacing:-.03em;margin:16px 0}
+h1 em{font-style:normal;color:#b6e07a}
+h2{font-size:clamp(26px,3vw,36px);letter-spacing:-.02em;margin-bottom:8px}
+.lead{font-size:18px;color:#c5cad3;max-width:640px}
+.hero{padding:28px 0 20px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px}
+.kpis div{border:1px solid #23262f;background:#12141a;border-radius:14px;padding:16px}
+.kpis b{display:block;font-size:22px}
+.kpis span{color:#c5cad3;font-size:13px}
+section{padding:64px 0}
+.sub{color:#c5cad3;margin-bottom:28px;max-width:640px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card{background:#12141a;border:1px solid #23262f;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.shot{aspect-ratio:16/10;overflow:hidden;background:#1a1d24}
+.shot img{width:100%;height:auto}
+.card:hover .shot img{transform:translateY(calc(-100% + 220px));transition:transform 4s ease}
+.body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:12px;border:1px solid #2e3340;border-radius:99px;padding:2px 8px;color:#d5dbe6}
+.case{display:grid;gap:6px;font-size:14px;color:#d5dbe6}
+.case b{color:#95bf47;font-weight:700}
+.go{margin-top:auto;color:#95bf47;font-weight:700}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.panel{background:#12141a;border:1px solid #23262f;border-radius:16px;padding:20px}
+.panel h3{margin:10px 0 6px;font-size:18px}
+.panel p,.panel li{color:#c5cad3;font-size:14px}
+.panel ol,.panel ul{padding-left:18px;display:grid;gap:6px}
+.icon{width:28px;height:28px;color:#95bf47}
+.who{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.todo{border:1px dashed #95bf47;border-radius:16px;padding:18px;background:#14180f;color:#e7f5d4}
+.todo small{display:block;letter-spacing:.08em;text-transform:uppercase;font-size:11px;margin-bottom:8px;color:#95bf47}
+.steps{counter-reset:s;display:grid;gap:12px}
+.steps li{list-style:none;background:#12141a;border:1px solid #23262f;border-radius:14px;padding:16px 16px 16px 64px;position:relative}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:50%;background:#95bf47;color:#0b0c10;display:grid;place-items:center;font-weight:800}
+.price{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.price article{border:1px solid #23262f;border-radius:18px;padding:22px;background:#12141a;display:flex;flex-direction:column;gap:8px}
+.price .hot{border-color:#95bf47}
+.price b{font-size:32px}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.slot{border:1px dashed #3a4150;border-radius:16px;padding:18px;color:#b7bec8}
+.slot strong{display:block;color:#eef0f4;margin-bottom:6px}
+details{border-top:1px solid #23262f;padding:14px 0}
+summary{cursor:pointer;font-weight:700}
+details p{color:#c5cad3;margin-top:8px}
+form{display:grid;gap:10px}
+label{font-size:13px;font-weight:700}
+input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #333845;background:#0e1016}
+textarea{min-height:120px;resize:vertical}
+.note{font-size:13px;color:#c5cad3}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px}
+.wechat{font-size:20px;font-weight:800}
+footer{padding:28px 0 96px;color:#c5cad3;font-size:13px;text-align:center}
+.mobile-cta{display:none}
+@media(max-width:820px){
+  .cards,.grid3,.price,.who,.contact-grid,.slots,.kpis{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
+  .mobile-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#0b0c10;border-top:1px solid #23262f}
+  .mobile-cta .btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card:hover .shot img{transform:none}}
+</style>
+<script>
+document.title = STUDIO.seoTitle;
+document.querySelector('meta[name="description"]').setAttribute('content', STUDIO.seoDescription);
+['og:title','twitter:title'].forEach(function(p){var n=document.querySelector('meta[property="'+p+'"], meta[name="'+p+'"]'); if(n) n.setAttribute('content', STUDIO.seoTitle)});
+['og:description','twitter:description'].forEach(function(p){var n=document.querySelector('meta[property="'+p+'"], meta[name="'+p+'"]'); if(n) n.setAttribute('content', STUDIO.seoDescription)});
+document.getElementById('ldjson').textContent = JSON.stringify({
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Organization","name":STUDIO.name,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","logo":"https://junqiangxiao235-art.github.io/SHOPIFY/favicon.svg"},
+    {"@type":"WebSite","name":STUDIO.name,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","description":STUDIO.seoDescription}
+  ]
+});
+</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<div class="wrap">
+<header class="bar">
+<div class="logo"><span data-cfg="shortName">拾光</span><i>·</i>独立站</div>
+<nav aria-label="页内导航">
+<a href="#work">作品</a>
+<a href="#who">关于我</a>
+<a href="#process">过程</a>
+<a href="#price">价格</a>
+<a href="#faq">常见问题</a>
+<a href="#contact">联系</a>
+</nav>
+<a class="btn tiny" href="#contact" data-contact-cta hidden>免费咨询</a>
+</header>
+<main id="main">
+<div class="hero">
+<p style="color:#95bf47;font-weight:700;font-size:13px;letter-spacing:.08em">SHOPIFY 风格交互原型 · 设计 + 结构 + 可点击的结账</p>
+<h1>为品牌做一个<br><em>真的能试用的</em>独立站</h1>
+<p class="lead">下面四个店都是虚构品牌，但购物车、规格加价、订阅和结账是通的。先看每个案例要解决的问题，再点进去按提示试一次。</p>
+<div class="cta"><a class="btn" href="#work">看四个案例</a><a class="btn ghost" href="#contact">谈一个你的店</a></div>
+<div class="kpis">
+<div><b>7–14 天</b><span>标准店铺的交付周期</span></div>
+<div><b>2 轮</b><span>视觉改稿含在套餐里</span></div>
+<div><b>30 天</b><span>上线后免费修改</span></div>
+<div><b>24 小时</b><span>工作日咨询回复</span></div>
+</div>
+</div>
+
+<section id="work">
+<h2>作品案例</h2>
+<p class="sub">每张卡写了挑战、设计决定、以及你进店后该点哪里。店里的品牌、评价和价格都是示范，不是在售商品。</p>
 <div class="cards">
-<a class="card" href="lumen-loom/index.html"><div class="browser"><i></i><i></i><i></i></div><div class="shot"><img src="shots/thumbs/lumen-loom.jpg" alt="Lumen & Loom 截图"></div><div class="body"><div class="chips"><span>跨境 DTC</span><span>家居生活</span><span>多币种</span><span>英文</span></div><h3>Lumen &amp; Loom · 跨境家居品牌站</h3><p>面向欧美市场的中国家居品牌：多币种切换、包税配送说明、信任徽章、媒体背书，适合工厂/外贸转型 DTC 的卖家。</p><span class="go">在线体验 →</span></div></a>
-<a class="card" href="halfmoon-coffee/index.html"><div class="browser"><i></i><i></i><i></i></div><div class="shot"><img src="shots/thumbs/halfmoon-coffee.jpg" alt="Halfmoon 截图"></div><div class="body"><div class="chips"><span>精品咖啡</span><span>订阅制</span><span>商品筛选</span></div><h3>Halfmoon · 精品咖啡烘焙电商</h3><p>咖啡豆、订阅套餐、器具周边一体化：按风味选豆、订阅省 15%、研磨度选项与满额包邮进度条。</p><span class="go">在线体验 →</span></div></a>
-<a class="card" href="mara-lin-studio/index.html"><div class="browser"><i></i><i></i><i></i></div><div class="shot"><img src="shots/thumbs/mara-lin-studio.jpg" alt="Mara Lin 截图"></div><div class="body"><div class="chips"><span>个人品牌</span><span>数字产品</span><span>课程</span><span>周边</span></div><h3>Mara Lin Studio · 创作者个人品牌店</h3><p>博主/摄影师变现店铺：Lightroom 预设、在线课程、Notion 模板与周边商品，粉丝数据展示与免费资料引流。</p><span class="go">在线体验 →</span></div></a>
-<a class="card" href="dewlune-skin/index.html"><div class="browser"><i></i><i></i><i></i></div><div class="shot"><img src="shots/thumbs/dewlune-skin.jpg" alt="Dewlune 截图"></div><div class="body"><div class="chips"><span>美妆护肤</span><span>功效背书</span><span>礼盒套装</span></div><h3>Dewlune · 美妆护肤品牌站</h3><p>温柔高级的护肤品牌：按肌肤问题选品、临床数据前后对比、成分故事、套装与满赠，适合美妆/个护新品牌。</p><span class="go">在线体验 →</span></div></a>
-</div></div></section>
-<section id="service"><div class="wrap"><h2>每个店铺都包含</h2><p class="sub">按真实 Shopify 主题标准打造，拿来即可运营。</p><div class="feat">
-<div><span class="e">🛒</span><h3>完整购物流程</h3><p>商品列表、详情页多规格选择、侧滑购物车、数量增减、结账页。</p></div>
-<div><span class="e">📱</span><h3>移动端优先</h3><p>超过 70% 订单来自手机，每个页面都针对小屏优化。</p></div>
-<div><span class="e">⭐</span><h3>转化组件</h3><p>公告栏、促销角标、评分评价、满额包邮进度、信任徽章、邮件订阅。</p></div>
-<div><span class="e">🌍</span><h3>跨境能力</h3><p>多语言、多币种、海外支付方式展示、运费与关税说明。</p></div>
-<div><span class="e">🎨</span><h3>品牌视觉</h3><p>根据品牌调性定制字体、配色与版式，拒绝千篇一律的模板感。</p></div>
-<div><span class="e">🚀</span><h3>上线与培训</h3><p>域名绑定、Shopify 后台配置、上架商品与运营培训。</p></div></div></div></section>
-<section id="price"><div class="wrap"><h2>套餐参考</h2><p class="sub">以下为示例价格，最终按需求报价。</p><div class="price">
-<div><span>入门店铺</span><b>¥2,999 起</b><p style="color:#8d94a1;font-size:14px">适合新品牌快速开店</p><ul><li>首页 + 商品页 + 购物车</li><li>最多 20 个商品上架</li><li>移动端适配</li><li>7 天交付</li></ul></div>
-<div class="hot"><span>品牌标准店 · 最受欢迎</span><b>¥6,999 起</b><p style="color:#8d94a1;font-size:14px">适合跨境 / DTC 品牌</p><ul><li>品牌视觉定制</li><li>多语言 + 多币种</li><li>评价、订阅、营销组件</li><li>14 天交付 + 1 个月维护</li></ul></div>
-<div><span>定制旗舰店</span><b>面议</b><p style="color:#8d94a1;font-size:14px">复杂需求 / 订阅 / 数字产品</p><ul><li>定制功能开发</li><li>第三方应用对接</li><li>SEO 与速度优化</li><li>长期运营支持</li></ul></div></div></div></section>
-<section id="contact"><div class="wrap"><div class="contact"><h2>想要一个这样的店铺？</h2><p>告诉我你的产品和目标市场，24 小时内给你方案和报价。</p><a class="btn" href="mailto:hello@example.com?subject=独立站搭建咨询">发送咨询 →</a></div></div></section>
-<footer>© 2026 拾光独立站工作室 · 作品集中的品牌均为虚构示范，图片来自 Unsplash</footer>
-</body></html>
+<a class="card" href="lumen-loom/index.html">
+<div class="shot"><img src="shots/thumbs/lumen-loom.webp" width="960" height="1600" alt="Lumen & Loom 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>跨境家居</span><span>多币种</span><span>包税</span></div>
+<h3>Lumen &amp; Loom</h3>
+<div class="case"><span><b>挑战</b> 欧美买家怕到货再被收关税，床品又怕选错尺码。</span><span><b>决定</b> 公告、商品页和结账都写明包税，并给被套一张尺码表。手机菜单里保留币种切换。</span><span><b>看这里</b> 杂志式首页：左侧亚麻特写，右侧大标题，再一屏只讲一件商品。</span></div>
+<span class="go">试试切换币种和尺码表 →</span>
+</div></a>
+<a class="card" href="halfmoon-coffee/index.html">
+<div class="shot"><img src="shots/thumbs/halfmoon-coffee.webp" width="960" height="1600" alt="Halfmoon Coffee 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>精品咖啡</span><span>订阅</span></div>
+<h3>Halfmoon Coffee</h3>
+<div class="case"><span><b>挑战</b> 首页在讲订阅省 15%，但以前点套餐卡没有反应。</span><span><b>决定</b> 套餐卡可选，商品页可以在一次购买和订阅之间切换，结账写明续费。</span><span><b>看这里</b> 首屏就是一袋自己的豆子，旁边切换一次购买或订阅。</span></div>
+<span class="go">试试选一个订阅方案 →</span>
+</div></a>
+<a class="card" href="mara-lin-studio/index.html">
+<div class="shot"><img src="shots/thumbs/mara-lin-studio.webp" width="960" height="2000" alt="Mara Lin Studio 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>创作者</span><span>数字产品</span></div>
+<h3>Mara Lin Studio</h3>
+<div class="case"><span><b>挑战</b> 预设是下载品，却和卫衣走同一套收货地址，还收运费。</span><span><b>决定</b> 购物车里全是数字商品时，结账藏起地址，运费显示为免费的数字交付。画作尺寸加价会进总价。</span><span><b>看这里</b> 把 ALPINE 预设加入购物车再去结账；或打开 Dolomites 选 A2。</span></div>
+<span class="go">试试数字商品结账 →</span>
+</div></a>
+<a class="card" href="dewlune-skin/index.html">
+<div class="shot"><img src="shots/thumbs/dewlune-skin.webp" width="960" height="1600" alt="Dewlune 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>护肤</span><span>肤质</span></div>
+<h3>Dewlune</h3>
+<div class="case"><span><b>挑战</b> “做个肤质测试”之前只是滚到页面下面，规格加价也不进价格。</span><span><b>决定</b> 三题小测试会推荐一个产品；50 ml / 300 ml 的加价写进按钮和购物车。前后对比改成步骤图，不再用假的同一张脸。</span><span><b>看这里</b> 第二屏是肤质测试；成分各占一整屏，瓶子是自己的标签。</span></div>
+<span class="go">试试肤质小测试 →</span>
+</div></a>
+</div>
+</section>
+
+<section id="who">
+<div class="who">
+<div>
+<h2>工作室</h2>
+<p class="sub">四个示范店是作品，不是在售商品。</p>
+<p data-cfg="who">拾光做 Shopify 风格的独立站原型：先把首页、商品和结账做成可以点击的样子，确认结构和视觉后，再落到正式店铺。下面四个店都是虚构品牌，用来演示不同品类的购买路径。</p>
+</div>
+<div class="panel">
+<h3>这些店证明什么</h3>
+<p>它们是 Shopify 风格的交互原型，用来确认结构、文案和购买路径。确认之后可以在 Shopify 主题里实现。这里没有后台、没有真正的多语言切换，也不接支付。</p>
+</div>
+</div>
+</section>
+
+<section id="process">
+<h2>合作怎么走</h2>
+<p class="sub">四步，不把“上线”说成第一步就结束。</p>
+<ol class="steps">
+<li><b>听产品和市场</b><p>你卖什么、卖给谁、现在卡在信任、订阅还是结账。</p></li>
+<li><b>定结构和视觉</b><p>首页模块、商品页、购物车和结账先做成可点击的原型，像下面这些店。</p></li>
+<li><b>落到 Shopify</b><p>确认后再做主题、商品和基础应用。原型阶段不假装已经是可运营的后台。</p></li>
+<li><b>交接到你手里</b><p>上架说明、一轮改稿，以及上线后 30 天内的修改。</p></li>
+</ol>
+</section>
+
+<section id="included">
+<h2>原型里通常会做的</h2>
+<p class="sub">按这个作品集能点到的深度来，而不是一张只有首页的效果图。</p>
+<div class="grid3">
+<article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><h3>买得到的路径</h3><p>列表、规格、加价、购物车和结账错误状态，而不是只有按钮样子。</p></article>
+<article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><h3>手机上的主路径</h3><p>菜单、加购和结账在窄屏上还能用，币种这类卖点不会被藏掉。</p></article>
+<article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 21h10"/></svg><h3>和品类有关的模块</h3><p>咖啡的订阅、护肤的测试、跨境的关税、数字商品的免运费，不四家套同一句话。</p></article>
+<article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/></svg><h3>跨境信息</h3><p>多币种、关税说明、按国家变化的运费。语言切换如果要做，会单独写进范围，不在这里假装已经有了。</p></article>
+<article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg><h3>品牌视觉</h3><p>字体、颜色和组件跟着品牌走，并且文字和按钮对比度达到可读的标准。</p></article>
+<article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><h3>交接</h3><p>你能自己改公告、商品和价格的说明，加上上线后 30 天的修改。</p></article>
+</div>
+</section>
+
+<section id="price">
+<h2>套餐</h2>
+<p class="sub">三档范围，最终按需求报价。</p>
+<div class="price">
+<article>
+<span>入门</span>
+<b data-cfg="prices.starter">¥2,999 起</b>
+<p class="note">适合先把一个店的首页、商品页和购物车做出来。</p>
+<ul><li>约 7 天</li><li>最多 20 个商品的结构</li><li>手机端主路径</li></ul>
+<button class="btn" type="button" data-inquiry="入门店铺" data-contact-cta hidden>咨询这个套餐</button>
+</article>
+<article class="hot">
+<span>标准 · 更多人从这里开始</span>
+<b data-cfg="prices.standard">¥6,999 起</b>
+<p class="note">适合要多币种、订阅或一套完整购买路径的品牌。</p>
+<ul><li>视觉按品牌重做</li><li>多币种与运费/关税说明</li><li>约 14 天，含 1 个月修改</li></ul>
+<button class="btn" type="button" data-inquiry="品牌标准店" data-contact-cta hidden>咨询这个套餐</button>
+</article>
+<article>
+<span>旗舰</span>
+<b data-cfg="prices.flagship">面议</b>
+<p class="note">订阅规则、数字商品、应用对接这类要单独估。</p>
+<ul><li>定制模块</li><li>第三方应用怎么接</li><li>可以按月继续改</li></ul>
+<button class="btn ghost" type="button" data-inquiry="定制旗舰店" data-contact-cta hidden>咨询这个套餐</button>
+</article>
+</div>
+</section>
+
+<section id="voices" hidden>
+<h2>客户怎么说</h2>
+<div class="slots" id="voiceSlots"></div>
+</section>
+
+<section id="faq">
+<h2>常见问题</h2>
+<details open><summary>这是已经装好的 Shopify 主题吗？</summary><p>不是。你现在点的是静态原型，用来确认长什么样、怎么买。确认后才在 Shopify 里实现。所以这里没有后台，也不能真的扣款。</p></details>
+<details><summary>可以做多语言吗？</summary><p>可以做进项目范围，但四个示范店没有语言切换。不要把“多语言”理解成已经交付。</p></details>
+<details><summary>我需要先准备什么？</summary><p>产品、大致价格、目标市场，以及你在意的一个购买理由（包税、订阅、数字下载或肤质）。没有品牌手册也可以先做一版方向。</p></details>
+<details><summary>改稿和上线后的修改怎么算？</summary><p>标准套餐含两轮视觉改稿，上线后 30 天内的小修改不另收费。新模块另计。</p></details>
+</section>
+
+<section id="contact">
+<h2>联系</h2>
+<p class="sub" id="contactSoon">联系方式即将公布。四个示范店现在就可以点开试用。</p>
+<div class="contact-grid">
+<div>
+<div id="emailBlock" hidden>
+<p class="note">邮箱</p>
+<p><a id="mailLink" href="mailto:hello@example.com">hello@example.com</a></p>
+</div>
+<div id="wechatBlock" hidden>
+<p class="note" style="margin-top:16px">微信</p>
+<p class="wechat"><span data-cfg="wechat">TODO_WECHAT_ID</span></p>
+<button class="btn ghost tiny" type="button" id="copyWx">复制微信号</button>
+</div>
+</div>
+<form id="contactForm" hidden>
+<label for="c-name">怎么称呼你</label>
+<input id="c-name" name="name" required autocomplete="name">
+<label for="c-email">邮箱</label>
+<input id="c-email" name="email" type="email" required autocomplete="email">
+<label for="c-wechat">微信（可选）</label>
+<input id="c-wechat" name="wechat" autocomplete="off">
+<label for="c-msg">你想做什么店</label>
+<textarea id="c-msg" name="message" required placeholder="产品和目标市场，想参考哪一个示范店"></textarea>
+<button class="btn" type="submit">发送咨询</button>
+<p class="note" id="formNote"></p>
+</form>
+</div>
+</section>
+</main>
+<footer>
+<p>© 2026 <span data-cfg="name">拾光独立站工作室</span> · 四个店里的品牌都是虚构示范，没有在售商品。</p>
+<p>图片来自 Unsplash，或是店内自己画的包装示意。价格、邮箱和微信在本页顶部的配置里替换。</p>
+</footer>
+</div>
+<div class="mobile-cta" data-contact-cta hidden><a class="btn" href="#contact">免费咨询</a></div>
+<script>
+document.querySelectorAll('[data-cfg]').forEach(function(el){
+  var v=STUDIO, path=el.dataset.cfg.split('.');
+  path.forEach(function(k){ v=v&&v[k]; });
+  if(v!=null) el.textContent=v;
+});
+function unset(v){
+  if(v==null) return true;
+  var s=String(v).trim();
+  if(!s) return true;
+  if(/TODO/i.test(s)) return true;
+  if(/example\.com/i.test(s)) return true;
+  return false;
+}
+var emailOk=!unset(STUDIO.email);
+var wechatOk=!unset(STUDIO.wechat);
+var formOk=!unset(STUDIO.formAction);
+document.getElementById('emailBlock').hidden=!emailOk;
+if(emailOk){
+  var mail=document.getElementById('mailLink');
+  mail.textContent=STUDIO.email;
+  mail.href='mailto:'+STUDIO.email+'?subject='+encodeURIComponent(STUDIO.subject);
+}
+document.getElementById('wechatBlock').hidden=!wechatOk;
+if(wechatOk) document.getElementById('copyWx').onclick=function(){
+  navigator.clipboard&&navigator.clipboard.writeText(STUDIO.wechat);
+  this.textContent='已复制';
+};
+var form=document.getElementById('contactForm');
+form.hidden=!formOk;
+if(formOk){
+  document.getElementById('formNote').textContent='表单会提交到你配置的地址。';
+  form.action=STUDIO.formAction;
+  form.method='POST';
+}
+var anyContact=emailOk||wechatOk||formOk;
+document.getElementById('contactSoon').hidden=anyContact;
+document.querySelectorAll('[data-contact-cta]').forEach(function(el){ el.hidden=!anyContact; });
+var voices=(STUDIO.testimonials||[]).filter(function(t){ return t && !unset(t.quote) && !unset(t.name); });
+var voiceSection=document.getElementById('voices');
+if(!voices.length) voiceSection.remove();
+else {
+  voiceSection.hidden=false;
+  document.getElementById('voiceSlots').innerHTML=voices.map(function(t){
+    return '<article class="slot"><p>'+t.quote+'</p><strong>'+t.name+'</strong></article>';
+  }).join('');
+}
+document.querySelectorAll('[data-inquiry]').forEach(function(b){
+  b.onclick=function(){
+    if(!formOk) return;
+    var box=document.getElementById('c-msg');
+    box.value='我想咨询「'+b.dataset.inquiry+'」。\n产品：\n目标市场：';
+    document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+    box.focus();
+  };
+});
+</script>
+</body>
+</html>
