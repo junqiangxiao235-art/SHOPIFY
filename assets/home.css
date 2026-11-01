@@ -96,7 +96,8 @@ html:not([data-motion="off"]) .store-home .ken-frame img{animation:hero-ken 22s 
 .store-home section.hero.hero-bleed{padding:0;background:#1a120e;color:#fff5ea;position:relative;overflow:hidden}
 .store-home .hero-bleed .hero-video{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;aspect-ratio:auto;border-radius:0;margin:0}
 .store-home .hero-bleed .hero-video img,.store-home .hero-bleed .hero-video video{width:100%;height:100%;max-width:none;object-fit:cover;object-position:center center}
-.store-home .hero-bleed .scrim{background:linear-gradient(180deg,rgba(20,12,8,.28),rgba(20,12,8,.12) 38%,rgba(20,12,8,.78))}
+.store-home .hero-bleed .scrim{background:linear-gradient(90deg,rgba(16,10,7,.62) 0%,rgba(16,10,7,.5) 46%,rgba(16,10,7,.22) 100%)}
+.store-home .hero-bleed .bleed-copy{width:100%;box-sizing:border-box;background:rgba(16,10,7,.72);padding:22px 22px 16px;border-radius:16px;max-width:560px}
 .store-home .hero-bleed > .wrap{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;min-height:min(68vh,620px);padding-top:64px;padding-bottom:28px;grid-template-columns:none}
 .store-home .hero-bleed .kicker,.store-home .hero-bleed .lead{color:#fff5ea}
 .store-home .hero-bleed .lead{max-width:36ch}

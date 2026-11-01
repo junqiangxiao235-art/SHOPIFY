@@ -248,12 +248,24 @@ footer.site .linkish{opacity:.9}
 .mock.cover span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#c6f432}
 .mock.cover strong{font-size:22px;line-height:1.05;margin:6px 0}
 .mock.cover em{font-style:normal;font-size:13px;opacity:.8}
-.mock.doc{background:#e7e7e2;padding:10px;gap:8px;align-items:stretch}
-.mock.doc .rail{width:22%;background:#111;border-radius:6px}
-.mock.doc .sheet{flex:1;background:#fff;border-radius:6px;padding:12px;display:flex;flex-direction:column;gap:8px;text-align:left}
-.mock.doc b{font-size:14px}
-.mock.doc i{display:block;height:8px;border-radius:4px;background:#e2e2de}
-.mock.doc i.s{width:60%}
+.mock.doc{background:#eceae4;padding:8px;gap:8px;align-items:stretch;justify-content:stretch;overflow:hidden}
+.mock.doc .rail{width:30%;background:#141414;color:#f4f4ef;border-radius:8px;padding:10px 8px;display:flex;flex-direction:column;gap:7px;text-align:left}
+.mock.doc .rail b{font-size:11px;letter-spacing:-.03em;color:#c6f432}
+.mock.doc .rail em{font-style:normal;font-size:10px;color:#c8c8c2;padding:3px 6px;border-radius:4px}
+.mock.doc .rail em.on{background:#c6f432;color:#141414;font-weight:700}
+.mock.doc .sheet{flex:1;background:#fff;border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:6px;text-align:left;min-width:0;overflow:hidden}
+.mock.doc .top{display:flex;justify-content:space-between;align-items:baseline}
+.mock.doc .top b{font-size:14px;color:#141414}
+.mock.doc .top small{font-size:9px;color:#6e6e6a}
+.mock.doc .cal{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.mock.doc .cal i{font-style:normal;font-size:8px;text-align:center;padding:2px 0;border-radius:3px;color:#3a3a36;background:#f4f4ef}
+.mock.doc .cal i.hit{background:#c6f432;color:#141414;font-weight:700}
+.mock.doc .rows{display:flex;flex-direction:column;gap:3px}
+.mock.doc .rows > span{display:grid;grid-template-columns:1fr auto auto;gap:4px;align-items:center;font-size:8px;color:#141414}
+.mock.doc .rows em{font-style:normal}
+.mock.doc .rows .ok,.mock.doc .rows .wait{border-radius:99px;padding:1px 5px;font-size:7px;font-weight:700}
+.mock.doc .rows .ok{background:#d9f5a8;color:#2d4a00}
+.mock.doc .rows .wait{background:#ffe1b0;color:#7a4b00}
 .mock.tee{background:#f2f2ef}
 .mock.tee .garment{width:58%;height:72%;background:#111;color:#c6f432;border-radius:18px 18px 10px 10px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;line-height:1.2;position:relative}
 .mock.tee .garment:before,.mock.tee .garment:after{content:"";position:absolute;top:8%;width:22%;height:28%;background:#111;border-radius:10px}
