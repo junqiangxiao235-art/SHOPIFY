@@ -9,8 +9,11 @@ const S=window.STORE;if(!S)return;
 const KEY='cart_'+S.id;const CKEY='cur_'+S.id;
 const $=(q,el=document)=>el.querySelector(q),$$=(q,el=document)=>[...el.querySelectorAll(q)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const isLocal=id=>/^(media\/|\.\.\/|\/)/.test(String(id));
 const srcOf=(id,w)=>{
-  if(String(id).startsWith('http')){const u=new URL(id);u.searchParams.set('auto','format');u.searchParams.set('fit','crop');u.searchParams.set('q','75');u.searchParams.set('w',String(w));return u.toString()}
+  const s=String(id);
+  if(isLocal(s))return s;
+  if(s.startsWith('http')){const u=new URL(s);u.searchParams.set('auto','format');u.searchParams.set('fit','crop');u.searchParams.set('q','75');u.searchParams.set('w',String(w));return u.toString()}
   return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=75`;
 };
 const srcset=(id,widths)=>widths.map(w=>`${srcOf(id,w)} ${w}w`).join(', ');
@@ -128,12 +131,16 @@ function mockHTML(p){
  if(p.mock==='bag')return `<span class="mock bag" style="--c1:${c[0]};--c2:${c[1]}"><span class="pack"><span class="mk">◐ halfmoon</span><strong>${esc(p.name)}</strong><em>${esc(p.sub||'250g')}</em><i>${esc(p.badge||'Label-free bag')}</i></span></span>`;
  if(p.mock==='bottle')return `<span class="mock bottle" style="--c1:${c[0]};--c2:${c[1]}"><span class="vial"><span class="cap"></span><span class="lbl"><b>dewlune</b><strong>${esc(p.name)}</strong></span></span></span>`;
  if(p.mock==='enamel')return `<span class="mock enamel" style="--c1:${c[0]};--c2:${c[1]}"><span class="cup"><span class="handle"></span><span class="muglbl"><b>◐ halfmoon</b><strong>${esc(p.name)}</strong></span></span></span>`;
+ if(p.mock==='preset')return `<span class="mock preset" style="--c1:${c[0]};--c2:${c[1]}"><span class="split"><span class="before"><em>Before</em></span><span class="after"><svg viewBox="0 0 80 48" aria-hidden="true"><path d="M0 40 L18 22 L34 32 L52 12 L80 30 V48 H0Z"/><path d="M0 44 L24 28 L44 36 L80 18 V48 H0Z"/></svg><em>After</em></span></span><b>${esc((p.name||'').split('—')[0].trim())}</b></span>`;
+ if(p.mock==='cover')return `<span class="mock cover"><span>Course</span><strong>Photo to Profit</strong><em>42 lessons</em></span>`;
+ if(p.mock==='doc')return `<span class="mock doc"><span class="rail"></span><span class="sheet"><b>Creator OS</b><i></i><i></i><i class="s"></i><i></i></span></span>`;
+ if(p.mock==='tee')return `<span class="mock tee"><span class="garment"><b>Chase<br>the light</b></span></span>`;
  return '';
 }
 function photoHTML(id,alt,opts={}){
  const w=opts.w||800,h=opts.h||1000;
  const lazy=opts.priority?'fetchpriority="high"':'loading="lazy"';
- const set=opts.widths?` srcset="${srcset(id,opts.widths)}" sizes="${opts.sizes||'100vw'}"`:'';
+ const set=!isLocal(id)&&opts.widths?` srcset="${srcset(id,opts.widths)}" sizes="${opts.sizes||'100vw'}"`:'';
  return `<img src="${srcOf(id,w)}"${set} alt="${esc(alt)}" width="${w}" height="${h}" ${lazy} decoding="async">`;
 }
 function card(p, plain){
@@ -171,7 +178,7 @@ function openPicker(p){
  openLayer($('#pick'));($('[data-o]',body)||$('#pickAdd')).focus();
 }
 function grids(){
- $$('[data-grid]').forEach(g=>{const f=g.dataset.grid;let ps=S.products;if(f&&f!=='all')ps=ps.filter(p=>p.cat===f||(p.tags||[]).includes(f));if(g.dataset.limit)ps=ps.slice(0,+g.dataset.limit);const plain=g.hasAttribute('data-plain');g.innerHTML=ps.map(p=>card(p,plain)).join('')});
+ $$('[data-grid]').forEach(g=>{let ps=S.products;if(g.dataset.ids)ps=g.dataset.ids.split(',').map(id=>P(id.trim())).filter(Boolean);else{const f=g.dataset.grid;if(f&&f!=='all')ps=ps.filter(p=>p.cat===f||(p.tags||[]).includes(f));if(g.dataset.limit)ps=ps.slice(0,+g.dataset.limit)}const plain=g.hasAttribute('data-plain');g.innerHTML=ps.map(p=>card(p,plain)).join('')});
  revealCards();
  document.addEventListener('click',e=>{
   const filt=e.target.closest('[data-filter]');

@@ -8,6 +8,7 @@ Halfmoon Coffee uses one short hero video of coffee being poured into a plain mu
 
 Lumen & Loom, Dewlune Skin, and Mara Lin Studio each use one still hero image with a very slow Ken Burns drift. Nothing crossfades or rotates. A fitting hand-on-linen video was not found, so Lumen stays on one still.
 
-- Lumen linen: still from [Close up of a cloth being crumpled](https://www.pexels.com/video/close-up-of-a-cloth-being-crumpled-7233555/) by Artem Podrez on Pexels. File: `lumen-loom/media/linen.jpg`.
+- Lumen linen close-up: still from [Close up of a cloth being crumpled](https://www.pexels.com/video/close-up-of-a-cloth-being-crumpled-7233555/) by Artem Podrez on Pexels. File: `lumen-loom/media/linen.jpg`.
+- Lumen sunlit bed: [Cozy sunlit bed](https://www.pexels.com/photo/bed-bedroom-morning-home-4045542/) by cottonbro on Pexels. File: `lumen-loom/media/linen-bed.jpg`. The folded stack is an original drawing, `lumen-loom/media/linen-stack.svg`.
 - Dewlune dropper: Unsplash photo `1608571423902` (unlabelled bottle), saved as `dewlune-skin/media/serum.jpg`.
 - Mara portrait: Unsplash photo `1544005313`, saved as `mara-lin-studio/media/portrait.jpg`.
