@@ -63,7 +63,7 @@ p { margin: 0; }
 .hero h1 { animation: rise .7s var(--ease) both; }
 .hero p { max-width: 34ch; }
 .hero-photo { min-height: 420px; position: relative; }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; position: absolute; inset: 0; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 32%; display: block; position: absolute; inset: 0; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 46px; padding: 12px 22px; width: auto; align-self: flex-start;
@@ -74,14 +74,14 @@ p { margin: 0; }
 .btn:disabled { opacity: .45; cursor: not-allowed; }
 .btn.block { width: 100%; }
 
-.chapter { display: grid; grid-template-columns: 1.1fr .9fr; min-height: 420px; border-top: 1px solid var(--line); }
-.chapter:nth-child(even) { grid-template-columns: .9fr 1.1fr; }
-.chapter:nth-child(even) .chapter-copy { order: 2; }
-.chapter a.shot, .chapter-copy { min-height: 320px; }
-.chapter .shot { display: block; overflow: hidden; background: var(--well); }
-.chapter img { width: 100%; height: 100%; object-fit: cover; object-position: center 16%; display: block; transition: transform .5s var(--ease); }
+.chapter { display: grid; grid-template-columns: 1fr 1fr; height: 520px; border-top: 1px solid var(--line); }
+.chapter:nth-child(even) .chapter-copy { order: -1; }
+.chapter .shot { position: relative; display: block; height: 100%; min-height: 0; aspect-ratio: auto; overflow: hidden; background: var(--well); }
+.chapter .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transition: transform .5s var(--ease); }
 .chapter a.shot:hover img { transform: scale(1.03); }
-.chapter-copy { display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 40px 48px; }
+.chapter-copy { display: flex; flex-direction: column; justify-content: center; gap: 12px; padding: 40px 48px; }
+.chapter:nth-child(odd) .chapter-copy { padding-right: max(48px, calc((100vw - var(--max)) / 2)); }
+.chapter:nth-child(even) .chapter-copy { padding-left: max(48px, calc((100vw - var(--max)) / 2)); }
 .chapter-copy a { align-self: flex-start; text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
 
 .edit { padding: 56px 0 24px; }
@@ -146,7 +146,7 @@ p { margin: 0; }
 }
 .engrave-live.script { font-family: var(--script); font-size: 17px; letter-spacing: 0; color: #5c4318; }
 .engrave-live.serif { font-family: var(--serif); font-style: italic; }
-.buy { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding-top: 8px; }
+.buy { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding-top: 4px; width: 100%; }
 .price { font-size: 18px; }
 .price.tick { animation: tick .35s var(--ease); }
 .field { width: 100%; display: flex; flex-direction: column; gap: 8px; }
@@ -162,13 +162,14 @@ p { margin: 0; }
   transition: box-shadow .3s ease-in-out;
 }
 .swatch[aria-pressed="true"] i { box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--ink), inset 0 0 0 1px rgba(42,36,34,.2); }
-.sizes { display: flex; flex-wrap: wrap; width: 100%; border: 1px solid var(--line); }
+.sizes { display: flex; flex-wrap: nowrap; width: 100%; overflow-x: auto; border: 1px solid var(--line); scrollbar-width: thin; }
 .size {
-  flex: 0 0 52px; width: 52px; height: 44px; background: #fff; border: 0;
-  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); cursor: pointer;
+  flex: 1 0 0; min-width: 0; height: 44px; background: #fff; border: 0;
+  border-right: 1px solid var(--line); cursor: pointer; font-size: 14px; padding: 0;
 }
+.size:last-child { border-right: 0; }
 .size[aria-pressed="true"] { background: var(--ink); color: #fff; }
-.size:disabled { color: #c4beb8; text-decoration: line-through; cursor: not-allowed; }
+.size:disabled { color: #8f877f; text-decoration: line-through; text-decoration-thickness: 1px; cursor: not-allowed; }
 .linkish { background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; font-size: 14px; color: var(--stone); }
 .engrave-row { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
 .engrave-row input[type="text"] {
@@ -237,7 +238,13 @@ form .field input, form .field select {
   .bag { margin-left: 0; }
   .bag { margin-left: auto; }
   .menu { margin-left: 4px; }
-  .hero, .chapter, .chapter:nth-child(even) { grid-template-columns: 1fr; }
+  .hero, .chapter, .chapter:nth-child(even) { grid-template-columns: 1fr; height: auto; }
+  .chapter .shot { height: 78vw; min-height: 280px; max-height: 480px; }
+  .chapter:nth-child(even) .chapter-copy { order: 0; }
+  .chapter-copy, .chapter:nth-child(odd) .chapter-copy, .chapter:nth-child(even) .chapter-copy { padding: 28px 20px 36px; }
+  .buy { gap: 22px; padding: 22px 0 4px; align-items: stretch; }
+  .buy .btn { width: 100%; align-self: stretch; }
+  .size { font-size: 13px; }
   .pdp { display: flex; flex-direction: column; }
   .gallery { display: contents; }
   .gallery .frame:first-child { order: 0; }

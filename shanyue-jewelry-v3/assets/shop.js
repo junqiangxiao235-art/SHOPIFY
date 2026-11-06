@@ -256,7 +256,7 @@
 
     const state = { metal: metal, size: size, engrave: "", font: "serif" };
     const tabs = {
-      piece: p.line + (p.diamond ? " The center is a lab-grown diamond." : " Demi-fine metal, made to be worn often."),
+      piece: p.detail || p.line,
       ship: "In stock pieces leave in 2–4 days. Free shipping on orders over $80. Engraved pieces take 7–10 days and cannot be returned. Other pieces can be returned within 30 days.",
       care: "Wipe with a soft cloth. Keep vermeil away from perfume and pools. A one-year warranty covers a broken clasp or a lost stone.",
       reviews: "Reviews will show here after launch. This is a demo store, so the list is empty on purpose."
@@ -331,7 +331,14 @@
     const also = $("#also");
     if (also && !(keep && also.querySelector(".card-wrap"))) {
       const kin = SY.products.filter((x) => x.col === p.col && x.id !== p.id).slice(0, 3);
-      also.innerHTML = kin.map(card).join("");
+      const section = also.closest("section");
+      if (!kin.length) {
+        also.innerHTML = "";
+        if (section) section.hidden = true;
+      } else {
+        if (section) section.hidden = false;
+        also.innerHTML = kin.map(card).join("");
+      }
     }
   }
 
