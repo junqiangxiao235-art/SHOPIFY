@@ -6,40 +6,43 @@
 <script>
 /* ============================================================
    STUDIO CONFIG — 只改这里
-   TODO: 上线前替换邮箱、微信号、Formspree 地址、价格和自我介绍。
    页面上的店名、价格、联系方式都从这份配置读取。
+   formAction 留空、或仍含 TODO 时，联系表单用 mailto 打开邮件。
+   填入 https://formspree.io/f/xxxx 后，表单改为 POST 到该地址。
    ============================================================ */
 const STUDIO = {
-  name: "拾光独立站工作室",
-  shortName: "拾光",
-  email: "hello@example.com", /* 含 example.com 或 TODO 时，页面不展示邮箱 */
-  wechat: "TODO_WECHAT_ID", /* 含 TODO 或留空时，不展示微信 */
-  formAction: "https://formspree.io/f/TODO_FORM_ID", /* 含 TODO 或留空时，不展示表单，也不会打开邮件 */
+  name: "半岛设计",
+  nameEn: "Peninsula Studio",
+  shortName: "半岛设计",
+  email: "junqiangxiao235@gmail.com", /* 含 example.com 或 TODO 时，页面不展示邮箱 */
+  wechat: "XXXJQ224", /* 含 TODO 或留空时，不展示微信 */
+  formAction: "", /* Formspree 地址；留空则 mailto 到上面的邮箱 */
   subject: "独立站搭建咨询",
   prices: {
-    starter: "¥2,999 起",
-    standard: "¥6,999 起",
-    flagship: "面议"
+    starter: "¥1,980",
+    standard: "¥3,980",
+    brand: "¥7,980",
+    custom: "¥1 万起"
   },
-  who: "拾光做 Shopify 风格的独立站原型：先把首页、商品和结账做成可以点击的样子，确认结构和视觉后，再落到正式店铺。下面四个店都是虚构品牌，用来演示不同品类的购买路径。",
+  who: "半岛设计（Peninsula Studio）做 Shopify 风格的独立站原型：先把首页、商品和结账做成可以点击的样子，确认结构和视觉后，再落到正式店铺。下面四个店都是虚构品牌，用来演示不同品类的购买路径。",
   testimonials: [], /* 填入 {quote, name} 后才会显示评价区 */
-  seoTitle: "拾光独立站工作室 · Shopify 风格独立站作品集",
+  seoTitle: "半岛设计 · Peninsula Studio · Shopify 风格独立站作品集",
   seoDescription: "四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。"
 };
 </script>
-<title>拾光独立站工作室 · Shopify 风格独立站作品集</title>
+<title>半岛设计 · Peninsula Studio · Shopify 风格独立站作品集</title>
 <meta name="description" content="四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。">
 <link rel="canonical" href="https://junqiangxiao235-art.github.io/SHOPIFY/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:site_name" content="拾光独立站工作室">
-<meta property="og:title" content="拾光独立站工作室 · Shopify 风格独立站作品集">
+<meta property="og:site_name" content="半岛设计">
+<meta property="og:title" content="半岛设计 · Peninsula Studio · Shopify 风格独立站作品集">
 <meta property="og:description" content="四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。">
 <meta property="og:url" content="https://junqiangxiao235-art.github.io/SHOPIFY/">
 <meta property="og:image" content="https://junqiangxiao235-art.github.io/SHOPIFY/shots/og/hub.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="拾光独立站工作室 · Shopify 风格独立站作品集">
+<meta name="twitter:title" content="半岛设计 · Peninsula Studio · Shopify 风格独立站作品集">
 <meta name="twitter:description" content="四个可点击的 Shopify 风格示范店：跨境家居、精品咖啡、创作者小店、护肤品牌。购物车、规格加价和结账都能试用。品牌均为虚构。">
 <meta name="twitter:image" content="https://junqiangxiao235-art.github.io/SHOPIFY/shots/og/hub.jpg">
 <script type="application/ld+json" id="ldjson"></script>
@@ -96,10 +99,15 @@ section{padding:64px 0}
 .steps{counter-reset:s;display:grid;gap:12px}
 .steps li{list-style:none;background:#12141a;border:1px solid #23262f;border-radius:14px;padding:16px 16px 16px 64px;position:relative}
 .steps li:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:50%;background:#95bf47;color:#0b0c10;display:grid;place-items:center;font-weight:800}
-.price{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.price{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .price article{border:1px solid #23262f;border-radius:18px;padding:22px;background:#12141a;display:flex;flex-direction:column;gap:8px}
 .price .hot{border-color:#95bf47}
 .price b{font-size:32px}
+.price ul{margin:4px 0 8px;padding-left:18px;display:grid;gap:6px;color:#c5cad3;font-size:14px}
+.price article .btn{margin-top:auto}
+.price-note{margin-top:16px;padding:14px 16px;border:1px solid #333845;border-radius:12px;background:#12141a;color:#eef0f4;font-size:15px}
+.wx-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.wx-row .btn{min-height:44px}
 .slots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .slot{border:1px dashed #3a4150;border-radius:16px;padding:18px;color:#b7bec8}
 .slot strong{display:block;color:#eef0f4;margin-bottom:6px}
@@ -109,12 +117,16 @@ details p{color:#c5cad3;margin-top:8px}
 form{display:grid;gap:10px}
 label{font-size:13px;font-weight:700}
 input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #333845;background:#0e1016}
+input::placeholder,textarea::placeholder{color:#c5cad3;opacity:1}
 textarea{min-height:120px;resize:vertical}
 .note{font-size:13px;color:#c5cad3}
 .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px}
 .wechat{font-size:20px;font-weight:800}
 footer{padding:28px 0 96px;color:#c5cad3;font-size:13px;text-align:center}
 .mobile-cta{display:none}
+@media(max-width:1100px){
+  .price{grid-template-columns:1fr 1fr}
+}
 @media(max-width:820px){
   .cards,.grid3,.price,.who,.contact-grid,.slots,.kpis{grid-template-columns:1fr}
   .kpis{grid-template-columns:1fr 1fr}
@@ -126,13 +138,15 @@ footer{padding:28px 0 96px;color:#c5cad3;font-size:13px;text-align:center}
 <script>
 document.title = STUDIO.seoTitle;
 document.querySelector('meta[name="description"]').setAttribute('content', STUDIO.seoDescription);
+var ogSite=document.querySelector('meta[property="og:site_name"]');
+if(ogSite) ogSite.setAttribute('content', STUDIO.name);
 ['og:title','twitter:title'].forEach(function(p){var n=document.querySelector('meta[property="'+p+'"], meta[name="'+p+'"]'); if(n) n.setAttribute('content', STUDIO.seoTitle)});
 ['og:description','twitter:description'].forEach(function(p){var n=document.querySelector('meta[property="'+p+'"], meta[name="'+p+'"]'); if(n) n.setAttribute('content', STUDIO.seoDescription)});
 document.getElementById('ldjson').textContent = JSON.stringify({
   "@context":"https://schema.org",
   "@graph":[
-    {"@type":"Organization","name":STUDIO.name,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","logo":"https://junqiangxiao235-art.github.io/SHOPIFY/favicon.svg"},
-    {"@type":"WebSite","name":STUDIO.name,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","description":STUDIO.seoDescription}
+    {"@type":"Organization","name":STUDIO.name,"alternateName":STUDIO.nameEn,"email":STUDIO.email,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","logo":"https://junqiangxiao235-art.github.io/SHOPIFY/favicon.svg"},
+    {"@type":"WebSite","name":STUDIO.name,"alternateName":STUDIO.nameEn,"url":"https://junqiangxiao235-art.github.io/SHOPIFY/","description":STUDIO.seoDescription}
   ]
 });
 </script>
@@ -141,7 +155,7 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <a class="skip" href="#main">跳到主要内容</a>
 <div class="wrap">
 <header class="bar">
-<div class="logo"><span data-cfg="shortName">拾光</span><i>·</i>独立站</div>
+<div class="logo"><span data-cfg="name">半岛设计</span><i>·</i><span data-cfg="nameEn">Peninsula Studio</span></div>
 <nav aria-label="页内导航">
 <a href="#work">作品</a>
 <a href="#who">关于我</a>
@@ -150,7 +164,7 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <a href="#faq">常见问题</a>
 <a href="#contact">联系</a>
 </nav>
-<a class="btn tiny" href="#contact" data-contact-cta hidden>免费咨询</a>
+<a class="btn tiny" href="#contact" data-contact-cta>免费咨询</a>
 </header>
 <main id="main">
 <div class="hero">
@@ -210,7 +224,7 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <div>
 <h2>工作室</h2>
 <p class="sub">四个示范店是作品，不是在售商品。</p>
-<p data-cfg="who">拾光做 Shopify 风格的独立站原型：先把首页、商品和结账做成可以点击的样子，确认结构和视觉后，再落到正式店铺。下面四个店都是虚构品牌，用来演示不同品类的购买路径。</p>
+<p data-cfg="who">半岛设计（Peninsula Studio）做 Shopify 风格的独立站原型：先把首页、商品和结账做成可以点击的样子，确认结构和视觉后，再落到正式店铺。下面四个店都是虚构品牌，用来演示不同品类的购买路径。</p>
 </div>
 <div class="panel">
 <h3>这些店证明什么</h3>
@@ -245,30 +259,38 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 
 <section id="price">
 <h2>套餐</h2>
-<p class="sub">三档范围，最终按需求报价。</p>
+<p class="sub">四档起步价。页面和模块确认后，再定最终范围。</p>
 <div class="price">
 <article>
 <span>入门</span>
-<b data-cfg="prices.starter">¥2,999 起</b>
+<b data-cfg="prices.starter">¥1,980</b>
 <p class="note">适合先把一个店的首页、商品页和购物车做出来。</p>
 <ul><li>约 7 天</li><li>最多 20 个商品的结构</li><li>手机端主路径</li></ul>
-<button class="btn" type="button" data-inquiry="入门店铺" data-contact-cta hidden>咨询这个套餐</button>
+<button class="btn" type="button" data-inquiry="入门" data-contact-cta>咨询这个套餐</button>
 </article>
 <article class="hot">
 <span>标准 · 更多人从这里开始</span>
-<b data-cfg="prices.standard">¥6,999 起</b>
-<p class="note">适合要多币种、订阅或一套完整购买路径的品牌。</p>
+<b data-cfg="prices.standard">¥3,980</b>
+<p class="note">适合要多币种、订阅或一套完整购买路径的店。</p>
 <ul><li>视觉按品牌重做</li><li>多币种与运费/关税说明</li><li>约 14 天，含 1 个月修改</li></ul>
-<button class="btn" type="button" data-inquiry="品牌标准店" data-contact-cta hidden>咨询这个套餐</button>
+<button class="btn" type="button" data-inquiry="标准" data-contact-cta>咨询这个套餐</button>
 </article>
 <article>
-<span>旗舰</span>
-<b data-cfg="prices.flagship">面议</b>
-<p class="note">订阅规则、数字商品、应用对接这类要单独估。</p>
+<span>品牌</span>
+<b data-cfg="prices.brand">¥7,980</b>
+<p class="note">适合把视觉和一条完整购买路径一次做齐。</p>
+<ul><li>首页到结账按品牌重做</li><li>订阅、数字商品或尺码/肤质中的一条路径</li><li>两轮改稿，上线后 30 天小修改</li></ul>
+<button class="btn" type="button" data-inquiry="品牌" data-contact-cta>咨询这个套餐</button>
+</article>
+<article>
+<span>面议</span>
+<b data-cfg="prices.custom">¥1 万起</b>
+<p class="note">超出上面三档的范围，单独估。</p>
 <ul><li>定制模块</li><li>第三方应用怎么接</li><li>可以按月继续改</li></ul>
-<button class="btn ghost" type="button" data-inquiry="定制旗舰店" data-contact-cta hidden>咨询这个套餐</button>
+<button class="btn ghost" type="button" data-inquiry="面议" data-contact-cta>咨询这个套餐</button>
 </article>
 </div>
+<p class="price-note">以上报价均不含 Shopify 月租、域名、付费主题和插件。</p>
 </section>
 
 <section id="voices" hidden>
@@ -286,20 +308,23 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 
 <section id="contact">
 <h2>联系</h2>
-<p class="sub" id="contactSoon">联系方式即将公布。四个示范店现在就可以点开试用。</p>
+<p class="sub" id="contactSoon" hidden>联系方式即将公布。四个示范店现在就可以点开试用。</p>
 <div class="contact-grid">
 <div>
-<div id="emailBlock" hidden>
+<div id="emailBlock">
 <p class="note">邮箱</p>
-<p><a id="mailLink" href="mailto:hello@example.com">hello@example.com</a></p>
+<p><a id="mailLink" href="mailto:junqiangxiao235@gmail.com">junqiangxiao235@gmail.com</a></p>
 </div>
-<div id="wechatBlock" hidden>
+<div id="wechatBlock">
 <p class="note" style="margin-top:16px">微信</p>
-<p class="wechat"><span data-cfg="wechat">TODO_WECHAT_ID</span></p>
+<div class="wx-row">
+<p class="wechat" id="wechatId"><span data-cfg="wechat">XXXJQ224</span></p>
 <button class="btn ghost tiny" type="button" id="copyWx">复制微信号</button>
 </div>
+<p class="note" id="copyStatus" aria-live="polite"></p>
 </div>
-<form id="contactForm" hidden>
+</div>
+<form id="contactForm" action="mailto:junqiangxiao235@gmail.com?subject=%E7%8B%AC%E7%AB%8B%E7%AB%99%E6%90%AD%E5%BB%BA%E5%92%A8%E8%AF%A2" method="POST" enctype="text/plain">
 <label for="c-name">怎么称呼你</label>
 <input id="c-name" name="name" required autocomplete="name">
 <label for="c-email">邮箱</label>
@@ -315,11 +340,11 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 </section>
 </main>
 <footer>
-<p>© 2026 <span data-cfg="name">拾光独立站工作室</span> · 四个店里的品牌都是虚构示范，没有在售商品。</p>
-<p>图片来自 Unsplash，或是店内自己画的包装示意。价格、邮箱和微信在本页顶部的配置里替换。</p>
+<p>© 2026 <span data-cfg="name">半岛设计</span> · <span data-cfg="nameEn">Peninsula Studio</span> · 四个店里的品牌都是虚构示范，没有在售商品。</p>
+<p>图片来自 Unsplash，或是店内自己画的包装示意。</p>
 </footer>
 </div>
-<div class="mobile-cta" data-contact-cta hidden><a class="btn" href="#contact">免费咨询</a></div>
+<div class="mobile-cta" data-contact-cta><a class="btn" href="#contact">免费咨询</a></div>
 <script>
 document.querySelectorAll('[data-cfg]').forEach(function(el){
   var v=STUDIO, path=el.dataset.cfg.split('.');
@@ -334,6 +359,39 @@ function unset(v){
   if(/example\.com/i.test(s)) return true;
   return false;
 }
+function copyText(text){
+  function fallback(){
+    var ta=document.createElement('textarea');
+    ta.value=text;
+    ta.setAttribute('readonly','');
+    ta.style.position='fixed';
+    ta.style.top='0';
+    ta.style.left='0';
+    ta.style.opacity='0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    var ok=false;
+    try{ ok=document.execCommand('copy'); }catch(err){ ok=false; }
+    ta.remove();
+    return ok?Promise.resolve():Promise.reject();
+  }
+  if(navigator.clipboard && window.isSecureContext && navigator.clipboard.writeText){
+    return navigator.clipboard.writeText(text).catch(fallback);
+  }
+  return fallback();
+}
+function mailBody(){
+  var name=document.getElementById('c-name').value.trim();
+  var from=document.getElementById('c-email').value.trim();
+  var wx=document.getElementById('c-wechat').value.trim();
+  var msg=document.getElementById('c-msg').value.trim();
+  var lines=['称呼：'+name,'邮箱：'+from];
+  if(wx) lines.push('微信：'+wx);
+  lines.push('');
+  lines.push(msg);
+  return lines.join('\n');
+}
 var emailOk=!unset(STUDIO.email);
 var wechatOk=!unset(STUDIO.wechat);
 var formOk=!unset(STUDIO.formAction);
@@ -344,16 +402,35 @@ if(emailOk){
   mail.href='mailto:'+STUDIO.email+'?subject='+encodeURIComponent(STUDIO.subject);
 }
 document.getElementById('wechatBlock').hidden=!wechatOk;
-if(wechatOk) document.getElementById('copyWx').onclick=function(){
-  navigator.clipboard&&navigator.clipboard.writeText(STUDIO.wechat);
-  this.textContent='已复制';
-};
+if(wechatOk) document.getElementById('copyWx').addEventListener('click', function(){
+  var btn=this;
+  var status=document.getElementById('copyStatus');
+  copyText(STUDIO.wechat).then(function(){
+    btn.textContent='已复制';
+    status.textContent='微信号已复制';
+  }).catch(function(){
+    status.textContent='复制失败，请手动选择微信号';
+  });
+});
 var form=document.getElementById('contactForm');
-form.hidden=!formOk;
+var showForm=formOk||emailOk;
+form.hidden=!showForm;
 if(formOk){
-  document.getElementById('formNote').textContent='表单会提交到你配置的地址。';
+  document.getElementById('formNote').textContent='表单会提交到已配置的 Formspree 地址。';
   form.action=STUDIO.formAction;
   form.method='POST';
+  form.enctype='application/x-www-form-urlencoded';
+}else if(emailOk){
+  document.getElementById('formNote').textContent='发送后会打开邮件应用，寄到工作室邮箱。页面不保存这些内容。';
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var subject=STUDIO.subject;
+    var msg=document.getElementById('c-msg').value;
+    var tier=msg.match(/我想咨询「([^」]+)」/);
+    if(tier) subject=subject+' · '+tier[1];
+    var href='mailto:'+STUDIO.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(mailBody());
+    window.location.assign(href);
+  });
 }
 var anyContact=emailOk||wechatOk||formOk;
 document.getElementById('contactSoon').hidden=anyContact;
@@ -368,13 +445,15 @@ else {
   }).join('');
 }
 document.querySelectorAll('[data-inquiry]').forEach(function(b){
-  b.onclick=function(){
-    if(!formOk) return;
+  b.addEventListener('click', function(){
     var box=document.getElementById('c-msg');
-    box.value='我想咨询「'+b.dataset.inquiry+'」。\n产品：\n目标市场：';
-    document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-    box.focus();
-  };
+    if(!form.hidden){
+      box.value='我想咨询「'+b.dataset.inquiry+'」。\n产品：\n目标市场：';
+      box.focus();
+    }
+    var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.getElementById('contact').scrollIntoView({behavior:reduce?'auto':'smooth'});
+  });
 });
 </script>
 </body>
