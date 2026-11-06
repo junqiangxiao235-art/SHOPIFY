@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Checkout · SHANYUE</title><meta name="description" content="Demo checkout. No payment is taken."><link rel="preload" href="assets/fonts/fraunces-400.woff2" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="assets/fonts/fonts.css"><link rel="stylesheet" href="assets/shop.css"><meta name="robots" content="noindex"></head><body><main id="main" class="wrap"><p class="demo-note">Demo store, no real payment. This checkout does not charge a card.</p><div class="co"><div>
+<a class="logo" href="index.html">SHANYUE <span class="seal">山月</span></a>
+<div id="coErrors" class="form-errors" role="alert" tabindex="-1" hidden></div>
+<form id="coForm" novalidate><h1 style="font-size:40px;margin:8px 0">Checkout</h1>
+<label class="field">Email<input name="email" type="email" autocomplete="email"></label>
+<label class="field">Country<select name="country"><option>United States</option><option>Australia</option><option>United Kingdom</option></select></label>
+<div class="two"><label class="field">First name<input name="first" autocomplete="given-name"></label><label class="field">Last name<input name="last" autocomplete="family-name"></label></div>
+<label class="field">Address<input name="address" autocomplete="address-line1"></label>
+<div class="two"><label class="field">City<input name="city"></label><label class="field">Postal code<input name="postal"></label></div>
+<label class="field">Card number<input name="card" inputmode="numeric" autocomplete="cc-number" placeholder="16 digits"></label>
+<div class="two"><label class="field">Expiry<input name="exp" placeholder="MM/YY"></label><label class="field">CVC<input name="cvc" inputmode="numeric" placeholder="123"></label></div>
+<button class="btn block" type="submit">Place demo order</button></form>
+<div id="coDone" hidden><h1>Order <span id="coNum"></span> confirmed</h1><p>This is a demo checkout. No payment was taken.</p><p style="margin-top:10px"><a class="btn" href="index.html">Back to the shop</a></p></div>
+</div><div><h2>Your bag</h2><div id="coSummary"></div></div></div></main><script src="assets/catalog.js"></script><script src="assets/shop.js"></script></body></html>
