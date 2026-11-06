@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout · Shanyue</title>
+<meta name="description" content="Shanyue is a fictional demi-fine jewelry shop. Lab-grown diamonds and gold, made with a factory in Dongguan.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/shop.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<p class="ann">Free shipping on orders over $80.</p>
+<header class="bar"><div class="wrap bar-in">
+<a class="logo" href="index.html">Shanyue <span class="sc">山月</span></a>
+<nav class="nav" aria-label="Primary">
+<a href="collection.html?collection=moonrise">Moonrise</a>
+<a href="collection.html?collection=tide">Tide</a>
+<a href="collection.html?collection=zodiac">Zodiac</a>
+<a href="collection.html?collection=lantern">Lantern</a>
+<a href="story.html">Story</a>
+</nav>
+<button class="bag" id="bagBtn" type="button">Bag <span id="bagN">0</span></button>
+<details class="menu"><summary>Menu</summary><nav aria-label="Mobile">
+<a href="collection.html?collection=moonrise">Moonrise</a>
+<a href="collection.html?collection=tide">Tide</a>
+<a href="collection.html?collection=zodiac">Zodiac</a>
+<a href="collection.html?collection=lantern">Lantern</a>
+<a href="story.html">Story</a>
+</nav></details>
+</div></header>
+<main id="main">
+<div class="wrap co">
+<form id="checkForm" novalidate>
+<p class="stone">Checkout</p>
+<h1>Where should it go?</h1>
+<p class="note">Demo, no real payment. Nothing is charged and nothing is shipped.</p>
+<label class="field">Name<input name="name" autocomplete="name" required></label>
+<label class="field">Email<input name="email" type="email" autocomplete="email" required></label>
+<label class="field">Address<input name="address" autocomplete="street-address" required></label>
+<label class="field">City<input name="city" autocomplete="address-level2" required></label>
+<p class="err" id="formErr" role="alert"></p>
+<button class="btn" type="submit">Place demo order</button>
+</form>
+<aside>
+<h2>Your bag</h2>
+<div id="sumLines"></div>
+</aside>
+</div>
+<div class="wrap ok" id="thanks" hidden>
+<h1>Order noted.</h1>
+<p>This was a demo. No payment ran, and the bag is clear.</p>
+<p style="margin-top:12px"><a href="index.html">Back to the shop</a></p>
+</div>
+</main>
+<footer class="ft wrap">
+<div><p class="serif" style="font-size:22px">Shanyue <span class="sc">山月</span></p><p class="fine">A fictional portfolio brand by 半岛设计 / Peninsula Studio. Prices and stories are for the demo. No real payment.</p></div>
+<div><a href="collection.html">All pieces</a><a href="story.html">Story</a><a href="product.html?id=lantern-solitaire">Lantern solitaire</a><a href="product.html?id=year-pendant">Year pendant</a></div>
+<div><p>One-year warranty.</p><p>Engraving ships in 7–10 days and cannot be returned.</p><p>Dongguan, Guangdong.</p></div>
+</footer>
+<script src="assets/catalog.js"></script>
+<script src="assets/shop.js"></script>
+</body>
+</html>
