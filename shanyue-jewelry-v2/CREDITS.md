@@ -26,8 +26,7 @@ Unsplash photos: [Unsplash License](https://unsplash.com/license). Pexels photos
 | wrist | https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg | Pexels |
 | cuffs | https://images.pexels.com/photos/3641056/pexels-photo-3641056.jpeg | Pexels |
 | studs | https://images.pexels.com/photos/2735970/pexels-photo-2735970.jpeg | Pexels |
-| model-a | https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg | Pexels |
-| model-b | https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg | Pexels |
-| model-c | https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg | Pexels |
+| model-a | https://images.pexels.com/photos/1454171/pexels-photo-1454171.jpeg | Pexels |
+| model-b | https://images.pexels.com/photos/4937223/pexels-photo-4937223.jpeg | Pexels |
 | model-d | https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg | Pexels |
 | factory | https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg | Pexels |

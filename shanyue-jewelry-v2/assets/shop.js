@@ -134,15 +134,18 @@
     let i = 0, timer = null;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     function tick() { i = (i + 1) % msgs.length; el.textContent = msgs[i]; }
-    function start() { stop(); timer = setInterval(tick, 4000); }
     function stop() { if (timer) clearInterval(timer); timer = null; }
-    const pause = $("#annPause");
-    if (!reduce) start();
-    if (pause) pause.addEventListener("click", function () {
-      const on = pause.getAttribute("aria-pressed") === "true";
-      if (on) { pause.setAttribute("aria-pressed", "false"); pause.textContent = "Pause"; start(); }
-      else { pause.setAttribute("aria-pressed", "true"); pause.textContent = "Play"; stop(); }
-    });
+    function start() { stop(); if (!reduce) timer = setInterval(tick, 4000); }
+    const ann = el.closest(".ann");
+    if (ann) {
+      ann.addEventListener("mouseenter", stop);
+      ann.addEventListener("mouseleave", start);
+      ann.addEventListener("focusin", stop);
+      ann.addEventListener("focusout", function (e) {
+        if (!ann.contains(e.relatedTarget)) start();
+      });
+    }
+    start();
   }
   function bindHero() {
     const track = $("#heroTrack");
@@ -159,6 +162,9 @@
         if (on) s.removeAttribute("aria-hidden");
         else s.setAttribute("aria-hidden", "true");
       });
+      $$(".hero-ui .dot").forEach(function (d) {
+        d.setAttribute("aria-current", Number(d.getAttribute("data-go")) === i ? "true" : "false");
+      });
     }
     function start() { stop(); timer = setInterval(function () { go(i + 1); }, 6000); }
     function stop() { if (timer) clearInterval(timer); timer = null; }
@@ -167,8 +173,24 @@
     if (next) next.addEventListener("click", function () { go(i + 1); });
     if (pause) pause.addEventListener("click", function () {
       const on = pause.getAttribute("aria-pressed") === "true";
-      if (on) { pause.setAttribute("aria-pressed", "false"); pause.textContent = "Pause"; if (!reduce) start(); }
-      else { pause.setAttribute("aria-pressed", "true"); pause.textContent = "Play"; stop(); }
+      const play = pause.querySelector(".ic-play");
+      const hold = pause.querySelector(".ic-pause");
+      if (on) {
+        pause.setAttribute("aria-pressed", "false");
+        pause.setAttribute("aria-label", "Pause carousel");
+        if (play) play.hidden = true;
+        if (hold) hold.hidden = false;
+        if (!reduce) start();
+      } else {
+        pause.setAttribute("aria-pressed", "true");
+        pause.setAttribute("aria-label", "Play carousel");
+        if (play) play.hidden = false;
+        if (hold) hold.hidden = true;
+        stop();
+      }
+    });
+    $$(".hero-ui .dot").forEach(function (d) {
+      d.addEventListener("click", function () { go(Number(d.getAttribute("data-go"))); });
     });
     go(0);
     if (!reduce) start();
