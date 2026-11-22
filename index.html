@@ -104,6 +104,7 @@ section{padding:64px 0}
 .price .hot{border-color:#95bf47}
 .price b{font-size:32px}
 .price ul{margin:4px 0 8px;padding-left:18px;display:grid;gap:6px;color:#c5cad3;font-size:14px}
+.price li.muted{color:#7f8794}
 .price article .btn{margin-top:auto}
 .price-note{margin-top:16px;padding:14px 16px;border:1px solid #333845;border-radius:12px;background:#12141a;color:#eef0f4;font-size:15px}
 .wx-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
@@ -174,8 +175,8 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <div class="cta"><a class="btn" href="#work">看五个案例</a><a class="btn ghost" href="#contact">谈一个你的店</a></div>
 <div class="kpis">
 <div><b>7–14 天</b><span>标准店铺的交付周期</span></div>
-<div><b>1–3 轮</b><span>每档都含改稿</span></div>
-<div><b>30 天</b><span>上线后免费修改</span></div>
+<div><b>1–3 轮</b><span>入门 1 轮，标准 2 轮，品牌 3 轮</span></div>
+<div><b>30 天</b><span>标准档起上线后免费小修改</span></div>
 <div><b>24 小时</b><span>工作日咨询回复</span></div>
 </div>
 </div>
@@ -246,9 +247,9 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <p class="sub">四步，不把“上线”说成第一步就结束。</p>
 <ol class="steps">
 <li><b>听产品和市场</b><p>你卖什么、卖给谁、现在卡在信任、订阅还是结账。</p></li>
-<li><b>定结构和视觉</b><p>首页模块、商品页、购物车和结账先做成可点击的原型，像下面这些店。</p></li>
+<li><b>定结构和视觉</b><p>标准档和品牌档先把首页、商品页、购物车做成可点击的原型。入门档不含这一步，直接套主题。</p></li>
 <li><b>落到 Shopify</b><p>确认后再做主题、商品和基础应用。原型阶段不假装已经是可运营的后台。</p></li>
-<li><b>交接到你手里</b><p>上架说明、按套餐的改稿轮数，以及上线后 30 天内的修改。</p></li>
+<li><b>交接到你手里</b><p>上架说明。改稿是入门 1 轮、标准 2 轮、品牌 3 轮。上线后 30 天内的小修改从标准档起。</p></li>
 </ol>
 </section>
 
@@ -261,7 +262,7 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M7 21h10"/></svg><h3>和品类有关的模块</h3><p>咖啡的订阅、护肤的测试、跨境的关税、数字商品的免运费，不四家套同一句话。</p></article>
 <article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/></svg><h3>跨境信息</h3><p>多币种、关税说明、按国家变化的运费。语言切换如果要做，会单独写进范围，不在这里假装已经有了。</p></article>
 <article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20H2"/></svg><h3>品牌视觉</h3><p>字体、颜色和组件跟着品牌走，并且文字和按钮对比度达到可读的标准。</p></article>
-<article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><h3>交接</h3><p>你能自己改公告、商品和价格的说明，加上上线后 30 天的修改。</p></article>
+<article class="panel"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg><h3>交接</h3><p>你能自己改公告、商品和价格的说明。上线后 30 天的小修改从标准档起。</p></article>
 </div>
 </section>
 
@@ -272,33 +273,58 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <article>
 <span>入门</span>
 <b data-cfg="prices.starter">¥1,980</b>
-<p class="note">适合先把一个店的首页、商品页和购物车做出来。</p>
-<ul><li>约 7 天</li><li>最多 20 个商品的结构</li><li>手机端主路径</li><li>1 轮视觉改稿</li></ul>
+<p class="note">适合先试水的小卖家</p>
+<ul>
+<li>套用一个免费主题，换上品牌色、字体和 logo</li>
+<li>首页，加商品页、购物车、关于、联系这几个基础模板</li>
+<li>帮忙上架最多 10 个商品（客户提供图片和文案）</li>
+<li>生成并修改退货、隐私、条款、运费四个政策页</li>
+<li>改稿 1 轮，大约 7 天交付</li>
+<li class="muted">不含：原型确认、文案撰写、插件配置</li>
+</ul>
 <button class="btn" type="button" data-inquiry="入门" data-contact-cta>咨询这个套餐</button>
 </article>
 <article class="hot">
 <span>标准 · 推荐</span>
 <b data-cfg="prices.standard">¥3,980</b>
-<p class="note">适合要多币种、订阅或一套完整购买路径的店。</p>
-<ul><li>视觉按品牌重做</li><li>多币种与运费/关税说明</li><li>约 14 天，含 1 个月修改</li><li>2 轮视觉改稿</li></ul>
+<p class="note">主推档，适合要一套完整购买路径的店</p>
+<ul>
+<li>先做可点击的原型（首页、商品页、购物车），确认后再落到 Shopify</li>
+<li>首页按品类和目标市场重新排版</li>
+<li>最多 30 个商品，配好系列分类和导航</li>
+<li>英文首页和商品页文案润色</li>
+<li>基础运费和包税说明设置，接 PayPal 收款</li>
+<li>配置 1 到 2 个常用插件（比如评价、邮件订阅）</li>
+<li>改稿 2 轮，7 到 14 天交付，上线后 30 天内小修改免费</li>
+</ul>
 <button class="btn" type="button" data-inquiry="标准" data-contact-cta>咨询这个套餐</button>
 </article>
 <article>
 <span>品牌</span>
 <b data-cfg="prices.brand">¥7,980</b>
-<p class="note">适合把视觉和一条完整购买路径一次做齐。</p>
-<ul><li>首页到结账按品牌重做</li><li>订阅、数字商品或尺码/肤质中的一条路径</li><li>3 轮视觉改稿，上线后 30 天小修改</li></ul>
+<p class="note">适合有品牌调性要求的客户</p>
+<ul>
+<li>包含标准档全部内容</li>
+<li>品牌视觉方向：配色、字体、风格参考，加一页简单的视觉规范</li>
+<li>首页和关键页面按品牌定制设计，不只是换主题配色</li>
+<li>一个特色功能，比如肤质测试、订阅、刻字选项或尺码表</li>
+<li>英文品牌故事和关于页文案</li>
+<li>最多 50 个商品，配基础 SEO（页面标题、描述、图片 alt）</li>
+<li>改稿 3 轮，上线后给一次后台操作讲解</li>
+</ul>
 <button class="btn" type="button" data-inquiry="品牌" data-contact-cta>咨询这个套餐</button>
 </article>
 <article>
-<span>面议</span>
+<span>定制</span>
 <b data-cfg="prices.custom">¥1 万起</b>
-<p class="note">超出上面三档的范围，单独估。</p>
-<ul><li>定制模块</li><li>第三方应用怎么接</li><li>可以按月继续改</li></ul>
-<button class="btn ghost" type="button" data-inquiry="面议" data-contact-cta>咨询这个套餐</button>
+<p class="note">超出上面三档，按需求报价</p>
+<ul>
+<li>多语言多币种、复杂商品规格、会员或批发功能、对接 ERP 等，按需求单独报价</li>
+</ul>
+<button class="btn ghost" type="button" data-inquiry="定制" data-contact-cta>咨询这个套餐</button>
 </article>
 </div>
-<p class="price-note">以上报价均不含 Shopify 月租、域名、付费主题和插件。</p>
+<p class="price-note">全部价格都不含 Shopify 月费、域名、付费主题和插件费用。</p>
 </section>
 
 <section id="voices" hidden>
@@ -311,7 +337,7 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <details open><summary>这是已经装好的 Shopify 主题吗？</summary><p>不是。你现在点的是静态原型，用来确认长什么样、怎么买。确认后才在 Shopify 里实现。所以这里没有后台，也不能真的扣款。</p></details>
 <details><summary>可以做多语言吗？</summary><p>可以做进项目范围，但五个示范店没有语言切换。不要把“多语言”理解成已经交付。</p></details>
 <details><summary>我需要先准备什么？</summary><p>产品、大致价格、目标市场，以及你在意的一个购买理由（包税、订阅、数字下载或肤质）。没有品牌手册也可以先做一版方向。</p></details>
-<details><summary>改稿和上线后的修改怎么算？</summary><p>入门含 1 轮、标准含 2 轮、品牌含 3 轮视觉改稿，上线后 30 天内的小修改不另收费。新模块另计。</p></details>
+<details><summary>改稿和上线后的修改怎么算？</summary><p>入门含 1 轮、标准含 2 轮、品牌含 3 轮视觉改稿。上线后 30 天内的小修改从标准档起，不另收费。入门不含可点击原型。新模块另计。</p></details>
 </section>
 
 <section id="contact">
