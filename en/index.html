@@ -19,9 +19,10 @@ const STUDIO = {
   formAction: "", 
   subject: "Website project enquiry",
   prices: {
-    starter: "Request a quote",
-    standard: "Request a quote",
-    brand: "Request a quote",
+    local: "From £550",
+    starter: "From £850",
+    standard: "From £1,600",
+    brand: "From £2,800",
     custom: "Request a quote"
   },
   who: "Peninsula Studio creates clickable ecommerce concepts to test a brand’s visual direction, product presentation and customer journey before building the live store. These seven fictional projects show different approaches across retail categories.",
@@ -101,7 +102,8 @@ section{padding:64px 0}
 .steps{counter-reset:s;display:grid;gap:12px}
 .steps li{list-style:none;background:#12141a;border:1px solid #23262f;border-radius:14px;padding:16px 16px 16px 64px;position:relative}
 .steps li:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:50%;background:#95bf47;color:#0b0c10;display:grid;place-items:center;font-weight:800}
-.price{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.price{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.price article:last-child{grid-column:1/-1}
 .price article{border:1px solid #23262f;border-radius:18px;padding:22px;background:#12141a;display:flex;flex-direction:column;gap:8px}
 .price .hot{border-color:#95bf47}
 .price b{font-size:32px}
@@ -132,6 +134,7 @@ footer{padding:28px 0 96px;color:#c5cad3;font-size:13px;text-align:center}
 }
 @media(max-width:820px){
   .cards,.grid3,.price,.who,.contact-grid,.slots,.kpis{grid-template-columns:1fr}
+  .price article:last-child{grid-column:auto}
   .kpis{grid-template-columns:1fr 1fr}
   .mobile-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#0b0c10;border-top:1px solid #23262f}
   .mobile-cta .btn{width:100%}
@@ -177,9 +180,9 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <p class="lead">Seven fictional brand projects exploring everything from visual identity to product interactions. Some include carts, subscriptions and simulated checkout flows. Open a case to see what it was designed to solve.</p>
 <div class="cta"><a class="btn" href="#work">Explore the seven projects</a><a class="btn ghost" href="#contact">Tell me about your store</a></div>
 <div class="kpis">
-<div><b>7–14 days</b><span>Typical delivery for a standard store</span></div>
+<div><b>10–15 days</b><span>Working days for a Starter store after materials are ready</span></div>
 <div><b>1–3 rounds</b><span>Revision rounds, depending on scope</span></div>
-<div><b>30 days</b><span>Small post-launch changes on selected packages</span></div>
+<div><b>14–30 days</b><span>Issue fixes within the agreed scope after launch</span></div>
 <div><b>24 hours</b><span>Typical weekday enquiry response</span></div>
 </div>
 </div>
@@ -266,8 +269,8 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <p class="sub">A straightforward route from the first conversation to handover.</p>
 <ol class="steps">
 <li><b>Understand your business</b><p>We discuss your products, audience and the point where customers hesitate.</p></li>
-<li><b>Design the journey</b><p>For selected packages, we make key pages clickable before the Shopify build. A starter store begins with an existing theme.</p></li>
-<li><b>Build in Shopify</b><p>After approval, we set up the agreed theme, products and essential apps in your Shopify account.</p></li>
+<li><b>Design the journey</b><p>For Growth and Brand-led stores, we make key pages clickable before the Shopify build. Starter begins with an existing theme; Local Presence is a single-page website.</p></li>
+<li><b>Build in Shopify</b><p>For store packages, we set up the agreed theme, products and apps in your Shopify account.</p></li>
 <li><b>Hand over</b><p>You receive guidance for updating the store. Revision rounds and post-launch support are agreed in the proposal.</p></li>
 </ol>
 </section>
@@ -286,64 +289,75 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 </section>
 
 <section id="price">
-<h2>Ways to work together</h2>
-<p class="sub">Every shop has different content, integrations and launch needs. Tell us what you need and we will quote a clear scope.</p>
+<h2>Services and starting prices</h2>
+<p class="sub">Choose a starting point. We confirm a fixed scope and final fee after reviewing your products, content and required features.</p>
 <div class="price">
 <article>
-<span>Starter</span>
-<b data-cfg="prices.starter">Request a quote</b>
-<p class="note">For a small catalogue and a clear first launch</p>
+<span>Local Presence</span>
+<b data-cfg="prices.local">From £550</b>
+<p class="note">For a café or local shop that needs a clear online presence</p>
 <ul>
-<li>Set up a free Shopify theme with your colours, type and logo</li>
-<li>Core page templates: home, product, cart, about and contact</li>
-<li>Add up to 10 products using your images and copy</li>
-<li>Help you prepare store policy pages for your own review</li>
-<li>One revision round; timing agreed before work starts</li>
-<li class="muted">Does not include a clickable concept, copywriting or app setup</li>
+<li>One responsive page with your brand, menu or product highlights</li>
+<li>Opening hours, location, map and contact details</li>
+<li>Basic page title and description, launch and mobile checks</li>
+<li>About 5–7 working days; one revision round</li>
+<li class="muted">No cart or online payments</li>
 </ul>
-<button class="btn" type="button" data-inquiry="Starter" data-contact-cta>Ask about this option</button>
+<button class="btn" type="button" data-inquiry="Local Presence" data-contact-cta>Ask about this option</button>
+</article>
+<article>
+<span>Shopify Starter</span>
+<b data-cfg="prices.starter">From £850</b>
+<p class="note">For a first online store with a small catalogue</p>
+<ul>
+<li>Brand setup on a free Shopify theme</li>
+<li>Core templates for home, products, collections, About and Contact</li>
+<li>Up to 10 products using your supplied images and copy</li>
+<li>Standard payment, shipping and domain setup; policy templates for your review</li>
+<li>Desktop and mobile test order, plus a store handover guide</li>
+<li>About 10–15 working days; one revision round; 14 days of in-scope issue fixes</li>
+</ul>
+<button class="btn" type="button" data-inquiry="Shopify Starter" data-contact-cta>Ask about this option</button>
 </article>
 <article class="hot">
-<span>Growth · Popular</span>
-<b data-cfg="prices.standard">Request a quote</b>
-<p class="note">For a considered shopping journey</p>
+<span>Shopify Growth · Popular</span>
+<b data-cfg="prices.standard">From £1,600</b>
+<p class="note">For a stronger product story and shopping journey</p>
 <ul>
-<li>Clickable concept for the home, product and cart pages before implementation</li>
-<li>Homepage structure tailored to your category and customers</li>
-<li>Up to 30 products, collections and navigation</li>
-<li>English homepage and product copy editing</li>
-<li>Basic shipping information and payment setup in your store</li>
-<li>One or two agreed apps, such as reviews or email sign-up</li>
-<li>Two revision rounds; post-launch support agreed in writing</li>
+<li>Shopify Starter foundation, expanded as listed below</li>
+<li>Clickable home, product and cart concept before implementation</li>
+<li>Up to 25 products, collections and navigation</li>
+<li>English homepage and key product copy editing</li>
+<li>Basic SEO, analytics setup and one agreed app</li>
+<li>About 3–4 weeks; two revision rounds; 30 days of in-scope issue fixes</li>
 </ul>
-<button class="btn" type="button" data-inquiry="Growth" data-contact-cta>Ask about this option</button>
+<button class="btn" type="button" data-inquiry="Shopify Growth" data-contact-cta>Ask about this option</button>
 </article>
 <article>
-<span>Brand-led</span>
-<b data-cfg="prices.brand">Request a quote</b>
-<p class="note">For businesses that need a distinctive visual system</p>
+<span>Brand-led Store</span>
+<b data-cfg="prices.brand">From £2,800</b>
+<p class="note">For a distinctive retail brand experience</p>
 <ul>
-<li>Includes the Growth scope</li>
-<li>A visual direction covering colour, typography and references</li>
-<li>Custom design for the homepage and key pages</li>
-<li>One agreed feature, such as a quiz, subscription, engraving or size guide</li>
-<li>English brand story and About page copy</li>
-<li>Up to 50 products with basic page titles, descriptions and image alt text</li>
-<li>Three revision rounds and a store handover session</li>
+<li>Shopify Growth foundation, expanded as listed below</li>
+<li>Visual direction and a concise brand style guide</li>
+<li>Custom homepage and key product page sections</li>
+<li>Up to 40 products and one clearly scoped feature or app setup</li>
+<li>Brand story and About page copy, plus an admin walkthrough</li>
+<li>About 4–6 weeks; three revision rounds; 30 days of in-scope issue fixes</li>
 </ul>
-<button class="btn" type="button" data-inquiry="Brand-led" data-contact-cta>Ask about this option</button>
+<button class="btn" type="button" data-inquiry="Brand-led Store" data-contact-cta>Ask about this option</button>
 </article>
 <article>
-<span>Custom</span>
+<span>Custom Project</span>
 <b data-cfg="prices.custom">Request a quote</b>
-<p class="note">For complex requirements and integrations</p>
+<p class="note">For needs that require technical scoping</p>
 <ul>
-<li>Multilingual selling, complex variants, wholesale or integrations quoted separately</li>
+<li>Multilingual or multi-market stores, subscriptions, wholesale, complex migration and external integrations are quoted to a written specification.</li>
 </ul>
-<button class="btn ghost" type="button" data-inquiry="Custom" data-contact-cta>Ask about this option</button>
+<button class="btn ghost" type="button" data-inquiry="Custom Project" data-contact-cta>Ask about this option</button>
 </article>
 </div>
-<p class="price-note">Your proposal will state the project fee. Shopify subscriptions, domains, paid themes and apps are separate.</p>
+<p class="price-note">Prices are starting project fees in GBP. Timelines begin once the agreed content and access are ready. Shopify subscriptions, domains, paid themes and apps are separate. VAT treatment is stated in your proposal. Shipping, tax and policy details are confirmed by the business.</p>
 </section>
 
 <section id="voices" hidden>
@@ -356,7 +370,7 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <details open><summary>Are these live Shopify stores?</summary><p>No. These are static concepts and clickable demos. They have no Shopify admin or live payments. A real store build is a separate project.</p></details>
 <details><summary>Can you build a multilingual store?</summary><p>Yes, if included in the agreed scope. These demos do not themselves include language switching.</p></details>
 <details><summary>What do I need to prepare?</summary><p>Your products, approximate prices, target customers and any existing brand assets. We can help shape a direction if you do not have a brand guide.</p></details>
-<details><summary>How do revisions and post-launch changes work?</summary><p>The number of revision rounds and the support period will be written into your proposal. New features outside the agreed scope are quoted separately.</p></details>
+<details><summary>How do revisions and post-launch changes work?</summary><p>Each package lists its revision rounds and period for fixing issues within the agreed scope. One consolidated set of feedback counts as a round. New pages or features are quoted separately.</p></details>
 </section>
 
 <section id="contact">
