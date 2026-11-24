@@ -137,6 +137,82 @@ footer{padding:28px 0 96px;color:#c5cad3;font-size:13px;text-align:center}
   .mobile-cta .btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card:hover .shot img{transform:none}}
+
+/* Editorial portfolio focus */
+.wrap{max-width:1320px}
+header.bar{padding:24px 0 12px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,5vw,84px);align-items:center;min-height:650px;padding:34px 0 72px}
+.hero-copy{min-width:0}
+.hero-kicker{color:#b6e07a;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.hero h1{font-family:Georgia,serif;font-size:clamp(56px,5.5vw,84px);font-weight:400;line-height:1.02;letter-spacing:-.065em;margin:26px 0 28px}
+.hero h1 em{display:block;font-style:italic;font-weight:400;color:#b6e07a}
+.hero .lead{max-width:540px;font-size:17px;line-height:1.75}
+.hero .cta{margin-top:30px}
+.hero-meta{margin-top:38px;color:#aeb7b0;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.hero-gallery{position:relative;height:570px;min-width:0}
+.hero-tile{position:absolute;display:block;overflow:hidden;background:#30352f;isolation:isolate}
+.hero-tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.hero-tile:hover img{transform:scale(1.045)}
+.hero-tile::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(10,15,12,.75));pointer-events:none}
+.hero-tile-main{top:0;right:0;width:76%;height:88%}
+.hero-tile-main img{object-position:64% center}
+.hero-tile-side{bottom:0;left:0;width:47%;height:43%;border:8px solid #0b0c10}
+.hero-tile-side img{object-position:64% center}
+.hero-tile-label{position:absolute;z-index:1;bottom:22px;left:24px;right:20px;display:grid;grid-template-columns:1fr auto;gap:2px;color:#fff;text-shadow:0 1px 9px #0008}
+.hero-tile-label small{grid-column:1/-1;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.hero-tile-label strong{font:normal 25px Georgia,serif}
+.hero-tile-label .arrow{align-self:end;font-size:22px}
+.hero-tile-side .hero-tile-label{bottom:13px;left:16px;right:12px}
+.hero-tile-side .hero-tile-label strong{font-size:20px}
+#work{border-top:1px solid #333942;padding-top:70px}
+#work h2{font:normal clamp(42px,4.6vw,62px)/1.1 Georgia,serif;letter-spacing:-.045em;margin-bottom:14px}
+#work .sub{max-width:720px;margin-bottom:38px}
+.cards{gap:28px}
+.card{border-radius:4px;background:#17191e;border-color:#30343a;transition:border-color .25s,transform .25s}
+.card:hover{border-color:#798d71;transform:translateY(-4px)}
+.shot{aspect-ratio:1.42;background:#252a28}
+.shot img,.card.static-shot .shot img{width:100%;height:100%;object-fit:cover;object-position:center 27%;transition:transform .7s ease}
+.card.static-shot .shot img{object-position:center}
+.card:hover .shot img,.card.static-shot:hover .shot img{transform:scale(1.045);transition:transform .7s ease}
+.body{padding:26px 28px 30px;gap:13px}
+.card h3{font:normal 31px/1.2 Georgia,serif;letter-spacing:-.025em}
+.chips{gap:8px 18px}
+.chips span{border:0;border-radius:0;padding:0;color:#b6e07a;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.case{gap:9px;line-height:1.7}
+.case b{color:#f0f2ed}
+.go{padding-top:8px}
+@media(max-width:980px){
+.hero{grid-template-columns:1fr;min-height:0;gap:36px;padding:38px 0 64px}
+.hero-gallery{height:520px;max-width:760px;width:100%}
+.hero h1{max-width:800px}
+}
+@media(max-width:600px){
+.wrap{padding:0 18px}
+.hero{padding:30px 0 56px;gap:28px}
+.hero-kicker{font-size:10px;letter-spacing:.13em}
+.hero h1{font-size:clamp(44px,11vw,62px);margin:19px 0 22px}
+.hero .lead{font-size:15px;line-height:1.65}
+.hero-meta{margin-top:25px;font-size:10px;letter-spacing:.08em}
+.hero-gallery{height:420px}
+.hero-tile-main{width:82%;height:88%}
+.hero-tile-side{width:52%;height:40%;border-width:5px}
+.hero-tile-label{bottom:14px;left:14px;right:12px}
+.hero-tile-label strong{font-size:20px}
+.hero-tile-side .hero-tile-label strong{font-size:16px}
+.hero-tile-label small{font-size:8px}
+#work{padding-top:54px}
+#work h2{font-size:44px}
+#work .sub{margin-bottom:26px}
+.cards{gap:22px}
+.shot{aspect-ratio:1.28}
+.body{padding:21px;gap:11px}
+.card h3{font-size:27px}
+}
+@media(prefers-reduced-motion:reduce){
+.hero-tile img,.card,.shot img{transition:none}
+.hero-tile:hover img,.card:hover .shot img,.card.static-shot:hover .shot img{transform:none}
+.card:hover{transform:none}
+}
 </style>
 <script>
 document.title = STUDIO.seoTitle;
@@ -172,61 +248,30 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 </header>
 <main id="main">
 <div class="hero">
-<p style="color:#95bf47;font-weight:700;font-size:13px;letter-spacing:.08em">SHOPIFY 风格交互原型 · 设计 + 结构 + 可点击的结账</p>
-<h1>为品牌做一个<br><em>真的能试用的</em>独立站</h1>
-<p class="lead">七个虚构品牌案例，展示从首页视觉到商品交互的不同做法。部分案例可试用购物车、订阅与模拟结账；每张卡都写了值得看的细节。</p>
-<div class="cta"><a class="btn" href="#work">看七个案例</a><a class="btn ghost" href="#contact">谈一个你的店</a></div>
-<div class="kpis">
-<div><b>7–14 天</b><span>标准店铺的交付周期</span></div>
-<div><b>1–3 轮</b><span>入门 1 轮，标准 2 轮，品牌 3 轮</span></div>
-<div><b>30 天</b><span>标准档起上线后免费小修改</span></div>
-<div><b>24 小时</b><span>工作日咨询回复</span></div>
+<div class="hero-copy">
+<p class="hero-kicker">PENINSULA STUDIO · 独立品牌网站设计</p>
+<h1>让你的品牌，<em>一眼被记住。</em></h1>
+<p class="lead">用鲜明的视觉和清晰的购买路径，为独立品牌设计值得停留的网站。七个原创概念案例，展示从珠宝到宠物用品的不同做法。</p>
+<div class="cta"><a class="btn" href="#work">浏览作品</a><a class="btn ghost" href="#contact">聊聊你的店</a></div>
+<p class="hero-meta">07 个原创概念 / 可点击的交互演示</p>
+</div>
+<div class="hero-gallery" aria-label="精选作品">
+<a class="hero-tile hero-tile-main" href="liora/index.html" aria-label="查看 Liora Atelier 珠宝概念网站"><img src="liora/assets/hero.jpg" width="1536" height="1024" alt="" fetchpriority="high"><span class="hero-tile-label"><small>01 / 珠宝概念</small><strong>Liora Atelier</strong><span class="arrow" aria-hidden="true">↗</span></span></a>
+<a class="hero-tile hero-tile-side" href="wagmorrow/index.html" aria-label="查看 Wagmorrow 宠物用品概念店"><img src="wagmorrow/assets/hero.jpg" width="1536" height="1024" alt="" loading="lazy"><span class="hero-tile-label"><small>02 / 宠物用品</small><strong>Wagmorrow</strong><span class="arrow" aria-hidden="true">↗</span></span></a>
 </div>
 </div>
 
 <section id="work">
-<h2>作品案例</h2>
-<p class="sub">每张卡写了挑战、设计决定、以及你进店后该点哪里。店里的品牌、评价和价格都是示范，不是在售商品。</p>
+<h2>精选作品</h2>
+<p class="sub">七个虚构品牌概念，展示不同视觉风格与购买路径。点开案例，可以实际体验页面和交互；案例中的品牌与商品均非真实在售。</p>
 <div class="cards">
-<a class="card" href="lumen-loom/index.html">
-<div class="shot"><img src="shots/thumbs/lumen-loom.webp" width="960" height="1600" alt="Lumen & Loom 示范店整页截图" loading="lazy" decoding="async"></div>
+<a class="card static-shot" href="liora/index.html">
+<div class="shot"><img src="liora/assets/hero.jpg" width="1536" height="1024" alt="Liora Atelier 珠宝概念网站主图" loading="lazy" decoding="async"></div>
 <div class="body">
-<div class="chips"><span>跨境家居</span><span>多币种</span><span>包税</span></div>
-<h3>Lumen &amp; Loom</h3>
-<div class="case"><span><b>挑战</b> 欧美买家怕到货再被收关税，床品又怕选错尺码。</span><span><b>决定</b> 公告、商品页和结账都写明包税，并给被套一张尺码表。手机菜单里保留币种切换。</span><span><b>看这里</b> 杂志式首页：左侧亚麻特写，右侧大标题，再一屏只讲一件商品。</span></div>
-<span class="go">试试切换币种和尺码表 →</span>
-</div></a>
-<a class="card" href="halfmoon-coffee/index.html">
-<div class="shot"><img src="shots/thumbs/halfmoon-coffee.webp" width="960" height="1600" alt="Halfmoon Coffee 示范店整页截图" loading="lazy" decoding="async"></div>
-<div class="body">
-<div class="chips"><span>精品咖啡</span><span>订阅</span></div>
-<h3>Halfmoon Coffee</h3>
-<div class="case"><span><b>挑战</b> 首页在讲订阅省 15%，但以前点套餐卡没有反应。</span><span><b>决定</b> 套餐卡可选，商品页可以在一次购买和订阅之间切换，结账写明续费。</span><span><b>看这里</b> 首屏就是一袋自己的豆子，旁边切换一次购买或订阅。</span></div>
-<span class="go">试试选一个订阅方案 →</span>
-</div></a>
-<a class="card" href="mara-lin-studio/index.html">
-<div class="shot"><img src="shots/thumbs/mara-lin-studio.webp" width="960" height="2000" alt="Mara Lin Studio 示范店整页截图" loading="lazy" decoding="async"></div>
-<div class="body">
-<div class="chips"><span>创作者</span><span>数字产品</span></div>
-<h3>Mara Lin Studio</h3>
-<div class="case"><span><b>挑战</b> 预设是下载品，却和卫衣走同一套收货地址，还收运费。</span><span><b>决定</b> 购物车里全是数字商品时，结账藏起地址，运费显示为免费的数字交付。画作尺寸加价会进总价。</span><span><b>看这里</b> 把 ALPINE 预设加入购物车再去结账；或打开 Dolomites 选 A2。</span></div>
-<span class="go">试试数字商品结账 →</span>
-</div></a>
-<a class="card" href="dewlune-skin/index.html">
-<div class="shot"><img src="shots/thumbs/dewlune-skin.webp" width="960" height="1600" alt="Dewlune 示范店整页截图" loading="lazy" decoding="async"></div>
-<div class="body">
-<div class="chips"><span>护肤</span><span>肤质</span></div>
-<h3>Dewlune</h3>
-<div class="case"><span><b>挑战</b> “做个肤质测试”之前只是滚到页面下面，规格加价也不进价格。</span><span><b>决定</b> 三题小测试会推荐一个产品；50 ml / 300 ml 的加价写进按钮和购物车。前后对比改成步骤图，不再用假的同一张脸。</span><span><b>看这里</b> 第二屏是肤质测试；成分各占一整屏，瓶子是自己的标签。</span></div>
-<span class="go">试试肤质小测试 →</span>
-</div></a>
-<a class="card" href="./shanyue-jewelry-v3/">
-<div class="shot"><img src="shots/thumbs/shanyue-jewelry-v3.webp" width="960" height="2000" alt="山月 Shanyue 示范店整页截图" loading="lazy" decoding="async"></div>
-<div class="body">
-<div class="chips"><span>珠宝</span><span>培育钻石</span></div>
-<h3>Shanyue 山月</h3>
-<div class="case"><span><b>挑战</b> 半细珠宝要让金属和尺码一眼能选，页面又不能做成模板。</span><span><b>决定</b> 参考 Zaiyou 的白底和细线。金属是色点，尺码排成一行，刻字直接落在吊坠上。</span><span><b>看这里</b> 实验室培育钻石和镀金的示范店。打开灯笼戒指选金属和尺码，或在生肖吊坠上试刻字。</span></div>
-<span class="go">试试选金属和刻字 →</span>
+<div class="chips"><span>珠宝</span><span>动态首屏</span><span>编辑式陈列</span></div>
+<h3>Liora Atelier</h3>
+<div class="case"><span><b>挑战</b> 珠宝网站既要有情绪氛围，也要让八件作品各有位置。</span><span><b>决定</b> 以慢节奏视频开场，穿插单件特写、横向目录与人物画面，建立杂志式浏览体验。</span><span><b>看这里</b> 滚动浏览八件作品，打开详情并加入心选清单。此案例没有真实结账。</span></div>
+<span class="go">查看珠宝概念网站 →</span>
 </div></a>
 <a class="card static-shot" href="wagmorrow/index.html">
 <div class="shot"><img src="shots/thumbs/wagmorrow-pet.jpg" width="1600" height="1000" alt="Wagmorrow 宠物用品概念店首屏" loading="lazy" decoding="async"></div>
@@ -236,13 +281,45 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <div class="case"><span><b>挑战</b> 宠物用品常按类别堆放，品牌个性和商品差异不够鲜明。</span><span><b>决定</b> 用明快配色和生活场景建立品牌识别，再让商品速览、颜色信息和购物袋接住购买兴趣。</span><span><b>看这里</b> 打开商品速览，加入购物袋并试试数量调整。结账按钮仅作演示。</span></div>
 <span class="go">查看宠物用品概念店 →</span>
 </div></a>
-<a class="card static-shot" href="liora/index.html">
-<div class="shot"><img src="liora/assets/hero.jpg" width="1536" height="1024" alt="Liora Atelier 珠宝概念网站主图" loading="lazy" decoding="async"></div>
+<a class="card" href="halfmoon-coffee/index.html">
+<div class="shot"><img src="shots/thumbs/halfmoon-coffee.webp" width="960" height="1600" alt="Halfmoon Coffee 示范店整页截图" loading="lazy" decoding="async"></div>
 <div class="body">
-<div class="chips"><span>珠宝</span><span>动态首屏</span><span>编辑式陈列</span></div>
-<h3>Liora Atelier</h3>
-<div class="case"><span><b>挑战</b> 珠宝网站既要有情绪氛围，也要让八件作品各有位置。</span><span><b>决定</b> 以慢节奏视频开场，穿插单件特写、横向目录与人物画面，建立杂志式浏览体验。</span><span><b>看这里</b> 滚动浏览八件作品，打开详情并加入心选清单。此案例没有真实结账。</span></div>
-<span class="go">查看珠宝概念网站 →</span>
+<div class="chips"><span>精品咖啡</span><span>订阅</span></div>
+<h3>Halfmoon Coffee</h3>
+<div class="case"><span><b>挑战</b> 首页在讲订阅省 15%，但以前点套餐卡没有反应。</span><span><b>决定</b> 套餐卡可选，商品页可以在一次购买和订阅之间切换，结账写明续费。</span><span><b>看这里</b> 首屏就是一袋自己的豆子，旁边切换一次购买或订阅。</span></div>
+<span class="go">试试选一个订阅方案 →</span>
+</div></a>
+<a class="card" href="lumen-loom/index.html">
+<div class="shot"><img src="shots/thumbs/lumen-loom.webp" width="960" height="1600" alt="Lumen & Loom 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>跨境家居</span><span>多币种</span><span>包税</span></div>
+<h3>Lumen &amp; Loom</h3>
+<div class="case"><span><b>挑战</b> 欧美买家怕到货再被收关税，床品又怕选错尺码。</span><span><b>决定</b> 公告、商品页和结账都写明包税，并给被套一张尺码表。手机菜单里保留币种切换。</span><span><b>看这里</b> 杂志式首页：左侧亚麻特写，右侧大标题，再一屏只讲一件商品。</span></div>
+<span class="go">试试切换币种和尺码表 →</span>
+</div></a>
+<a class="card" href="dewlune-skin/index.html">
+<div class="shot"><img src="shots/thumbs/dewlune-skin.webp" width="960" height="1600" alt="Dewlune 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>护肤</span><span>肤质</span></div>
+<h3>Dewlune</h3>
+<div class="case"><span><b>挑战</b> “做个肤质测试”之前只是滚到页面下面，规格加价也不进价格。</span><span><b>决定</b> 三题小测试会推荐一个产品；50 ml / 300 ml 的加价写进按钮和购物车。前后对比改成步骤图，不再用假的同一张脸。</span><span><b>看这里</b> 第二屏是肤质测试；成分各占一整屏，瓶子是自己的标签。</span></div>
+<span class="go">试试肤质小测试 →</span>
+</div></a>
+<a class="card" href="mara-lin-studio/index.html">
+<div class="shot"><img src="shots/thumbs/mara-lin-studio.webp" width="960" height="2000" alt="Mara Lin Studio 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>创作者</span><span>数字产品</span></div>
+<h3>Mara Lin Studio</h3>
+<div class="case"><span><b>挑战</b> 预设是下载品，却和卫衣走同一套收货地址，还收运费。</span><span><b>决定</b> 购物车里全是数字商品时，结账藏起地址，运费显示为免费的数字交付。画作尺寸加价会进总价。</span><span><b>看这里</b> 把 ALPINE 预设加入购物车再去结账；或打开 Dolomites 选 A2。</span></div>
+<span class="go">试试数字商品结账 →</span>
+</div></a>
+<a class="card" href="./shanyue-jewelry-v3/">
+<div class="shot"><img src="shots/thumbs/shanyue-jewelry-v3.webp" width="960" height="2000" alt="山月 Shanyue 示范店整页截图" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>珠宝</span><span>培育钻石</span></div>
+<h3>Shanyue 山月</h3>
+<div class="case"><span><b>挑战</b> 半细珠宝要让金属和尺码一眼能选，页面又不能做成模板。</span><span><b>决定</b> 参考 Zaiyou 的白底和细线。金属是色点，尺码排成一行，刻字直接落在吊坠上。</span><span><b>看这里</b> 实验室培育钻石和镀金的示范店。打开灯笼戒指选金属和尺码，或在生肖吊坠上试刻字。</span></div>
+<span class="go">试试选金属和刻字 →</span>
 </div></a>
 </div>
 </section>

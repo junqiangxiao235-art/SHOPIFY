@@ -140,6 +140,82 @@ footer{padding:28px 0 96px;color:#c5cad3;font-size:13px;text-align:center}
   .mobile-cta .btn{width:100%}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card:hover .shot img{transform:none}}
+
+/* Editorial portfolio focus */
+.wrap{max-width:1320px}
+header.bar{padding:24px 0 12px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(32px,5vw,84px);align-items:center;min-height:650px;padding:34px 0 72px}
+.hero-copy{min-width:0}
+.hero-kicker{color:#b6e07a;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.hero h1{font-family:Georgia,serif;font-size:clamp(56px,5.5vw,84px);font-weight:400;line-height:1.02;letter-spacing:-.065em;margin:26px 0 28px}
+.hero h1 em{display:block;font-style:italic;font-weight:400;color:#b6e07a}
+.hero .lead{max-width:540px;font-size:17px;line-height:1.75}
+.hero .cta{margin-top:30px}
+.hero-meta{margin-top:38px;color:#aeb7b0;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.hero-gallery{position:relative;height:570px;min-width:0}
+.hero-tile{position:absolute;display:block;overflow:hidden;background:#30352f;isolation:isolate}
+.hero-tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.hero-tile:hover img{transform:scale(1.045)}
+.hero-tile::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(10,15,12,.75));pointer-events:none}
+.hero-tile-main{top:0;right:0;width:76%;height:88%}
+.hero-tile-main img{object-position:64% center}
+.hero-tile-side{bottom:0;left:0;width:47%;height:43%;border:8px solid #0b0c10}
+.hero-tile-side img{object-position:64% center}
+.hero-tile-label{position:absolute;z-index:1;bottom:22px;left:24px;right:20px;display:grid;grid-template-columns:1fr auto;gap:2px;color:#fff;text-shadow:0 1px 9px #0008}
+.hero-tile-label small{grid-column:1/-1;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.hero-tile-label strong{font:normal 25px Georgia,serif}
+.hero-tile-label .arrow{align-self:end;font-size:22px}
+.hero-tile-side .hero-tile-label{bottom:13px;left:16px;right:12px}
+.hero-tile-side .hero-tile-label strong{font-size:20px}
+#work{border-top:1px solid #333942;padding-top:70px}
+#work h2{font:normal clamp(42px,4.6vw,62px)/1.1 Georgia,serif;letter-spacing:-.045em;margin-bottom:14px}
+#work .sub{max-width:720px;margin-bottom:38px}
+.cards{gap:28px}
+.card{border-radius:4px;background:#17191e;border-color:#30343a;transition:border-color .25s,transform .25s}
+.card:hover{border-color:#798d71;transform:translateY(-4px)}
+.shot{aspect-ratio:1.42;background:#252a28}
+.shot img,.card.static-shot .shot img{width:100%;height:100%;object-fit:cover;object-position:center 27%;transition:transform .7s ease}
+.card.static-shot .shot img{object-position:center}
+.card:hover .shot img,.card.static-shot:hover .shot img{transform:scale(1.045);transition:transform .7s ease}
+.body{padding:26px 28px 30px;gap:13px}
+.card h3{font:normal 31px/1.2 Georgia,serif;letter-spacing:-.025em}
+.chips{gap:8px 18px}
+.chips span{border:0;border-radius:0;padding:0;color:#b6e07a;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.case{gap:9px;line-height:1.7}
+.case b{color:#f0f2ed}
+.go{padding-top:8px}
+@media(max-width:980px){
+.hero{grid-template-columns:1fr;min-height:0;gap:36px;padding:38px 0 64px}
+.hero-gallery{height:520px;max-width:760px;width:100%}
+.hero h1{max-width:800px}
+}
+@media(max-width:600px){
+.wrap{padding:0 18px}
+.hero{padding:30px 0 56px;gap:28px}
+.hero-kicker{font-size:10px;letter-spacing:.13em}
+.hero h1{font-size:clamp(44px,11vw,62px);margin:19px 0 22px}
+.hero .lead{font-size:15px;line-height:1.65}
+.hero-meta{margin-top:25px;font-size:10px;letter-spacing:.08em}
+.hero-gallery{height:420px}
+.hero-tile-main{width:82%;height:88%}
+.hero-tile-side{width:52%;height:40%;border-width:5px}
+.hero-tile-label{bottom:14px;left:14px;right:12px}
+.hero-tile-label strong{font-size:20px}
+.hero-tile-side .hero-tile-label strong{font-size:16px}
+.hero-tile-label small{font-size:8px}
+#work{padding-top:54px}
+#work h2{font-size:44px}
+#work .sub{margin-bottom:26px}
+.cards{gap:22px}
+.shot{aspect-ratio:1.28}
+.body{padding:21px;gap:11px}
+.card h3{font-size:27px}
+}
+@media(prefers-reduced-motion:reduce){
+.hero-tile img,.card,.shot img{transition:none}
+.hero-tile:hover img,.card:hover .shot img,.card.static-shot:hover .shot img{transform:none}
+.card:hover{transform:none}
+}
 </style>
 <script>
 document.title = STUDIO.seoTitle;
@@ -175,61 +251,30 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 </header>
 <main id="main">
 <div class="hero">
-<p style="color:#95bf47;font-weight:700;font-size:13px;letter-spacing:.08em">ECOMMERCE DESIGN · CLICKABLE CONCEPTS · BRAND EXPERIENCES</p>
-<h1>An online store<br><em>you can explore</em> before you build</h1>
-<p class="lead">Seven fictional brand projects exploring everything from visual identity to product interactions. Some include carts, subscriptions and simulated checkout flows. Open a case to see what it was designed to solve.</p>
-<div class="cta"><a class="btn" href="#work">Explore the seven projects</a><a class="btn ghost" href="#contact">Tell me about your store</a></div>
-<div class="kpis">
-<div><b>10–15 days</b><span>Working days for a Starter store after materials are ready</span></div>
-<div><b>1–3 rounds</b><span>Revision rounds, depending on scope</span></div>
-<div><b>14–30 days</b><span>Issue fixes within the agreed scope after launch</span></div>
-<div><b>24 hours</b><span>Typical weekday enquiry response</span></div>
+<div class="hero-copy">
+<p class="hero-kicker">PENINSULA STUDIO · INDEPENDENT COMMERCE DESIGN</p>
+<h1>A storefront<em>worth remembering.</em></h1>
+<p class="lead">Distinctive visual direction and clear buying journeys for independent brands. Explore seven original concepts, from fine jewellery to pet goods, and see the decisions behind each one.</p>
+<div class="cta"><a class="btn" href="#work">Explore the work</a><a class="btn ghost" href="#contact">Discuss your store</a></div>
+<p class="hero-meta">07 ORIGINAL CONCEPTS / CLICKABLE JOURNEYS</p>
+</div>
+<div class="hero-gallery" aria-label="Featured projects">
+<a class="hero-tile hero-tile-main" href="../liora/index.html" aria-label="Explore Liora Atelier jewellery concept"><img src="../liora/assets/hero.jpg" width="1536" height="1024" alt="" fetchpriority="high"><span class="hero-tile-label"><small>01 / JEWELLERY CONCEPT</small><strong>Liora Atelier</strong><span class="arrow" aria-hidden="true">↗</span></span></a>
+<a class="hero-tile hero-tile-side" href="../wagmorrow/index.html" aria-label="Explore Wagmorrow pet goods concept"><img src="../wagmorrow/assets/hero.jpg" width="1536" height="1024" alt="" loading="lazy"><span class="hero-tile-label"><small>02 / PET GOODS</small><strong>Wagmorrow</strong><span class="arrow" aria-hidden="true">↗</span></span></a>
 </div>
 </div>
 
 <section id="work">
 <h2>Selected work</h2>
-<p class="sub">Each case explains the brief, the design decision and what to try. All brands, reviews and prices inside the demos are fictional.</p>
+<p class="sub">Seven fictional brand concepts, each with a distinct visual direction and shopping journey. Open a project to explore the pages and interactions. No products in these demos are for sale.</p>
 <div class="cards">
-<a class="card" href="../lumen-loom/index.html">
-<div class="shot"><img src="../shots/thumbs/lumen-loom.webp" width="960" height="1600" alt="Lumen & Loom demo preview" loading="lazy" decoding="async"></div>
+<a class="card static-shot" href="../liora/index.html">
+<div class="shot"><img src="../liora/assets/hero.jpg" width="1536" height="1024" alt="Liora Atelier jewellery concept preview" loading="lazy" decoding="async"></div>
 <div class="body">
-<div class="chips"><span>International homeware</span><span>Multi-currency</span><span>Duties explained</span></div>
-<h3>Lumen &amp; Loom</h3>
-<div class="case"><span><b>Brief</b> International buyers need clear duties and reliable bedding sizes.</span><span><b>Approach</b> Duties are explained throughout the journey; the duvet cover has a size guide, and currency selection remains visible on mobile.</span><span><b>Explore</b> An editorial homepage with linen photography and focused product storytelling.</span></div>
-<span class="go">Try the currency switch and size guide →</span>
-</div></a>
-<a class="card" href="../halfmoon-coffee/index.html">
-<div class="shot"><img src="../shots/thumbs/halfmoon-coffee.webp" width="960" height="1600" alt="Halfmoon Coffee demo preview" loading="lazy" decoding="async"></div>
-<div class="body">
-<div class="chips"><span>Speciality coffee</span><span>Subscriptions</span></div>
-<h3>Halfmoon Coffee</h3>
-<div class="case"><span><b>Brief</b> A coffee subscription needs a clear choice between one-off and recurring orders.</span><span><b>Approach</b> Selectable plans and a clear purchase toggle carry the subscription choice through to the simulated checkout.</span><span><b>Explore</b> Compare a one-off bag of coffee with a subscription.</span></div>
-<span class="go">Try a subscription plan →</span>
-</div></a>
-<a class="card" href="../mara-lin-studio/index.html">
-<div class="shot"><img src="../shots/thumbs/mara-lin-studio.webp" width="960" height="2000" alt="Mara Lin Studio demo preview" loading="lazy" decoding="async"></div>
-<div class="body">
-<div class="chips"><span>Creator commerce</span><span>Digital products</span></div>
-<h3>Mara Lin Studio</h3>
-<div class="case"><span><b>Brief</b> Digital presets should not require a shipping address or delivery fee.</span><span><b>Approach</b> A digital-only cart removes shipping fields; artwork size changes update the total.</span><span><b>Explore</b> Add the ALPINE preset to the cart, or choose an A2 art print.</span></div>
-<span class="go">Try the digital checkout demo →</span>
-</div></a>
-<a class="card" href="../dewlune-skin/index.html">
-<div class="shot"><img src="../shots/thumbs/dewlune-skin.webp" width="960" height="1600" alt="Dewlune demo preview" loading="lazy" decoding="async"></div>
-<div class="body">
-<div class="chips"><span>Skincare</span><span>Skin quiz</span></div>
-<h3>Dewlune</h3>
-<div class="case"><span><b>Brief</b> A skin quiz and product sizes need to affect the actual shopping path.</span><span><b>Approach</b> A three-question quiz recommends a product; bottle sizes update the button and cart price.</span><span><b>Explore</b> Try the quiz and explore the ingredient-led product story.</span></div>
-<span class="go">Try the skin quiz →</span>
-</div></a>
-<a class="card" href="../shanyue-jewelry-v3/">
-<div class="shot"><img src="../shots/thumbs/shanyue-jewelry-v3.webp" width="960" height="2000" alt="Shanyue demo preview" loading="lazy" decoding="async"></div>
-<div class="body">
-<div class="chips"><span>Jewellery</span><span>Lab-grown diamonds</span></div>
-<h3>Shanyue</h3>
-<div class="case"><span><b>Brief</b> Fine jewellery needs clear metal and size choices without losing its own character.</span><span><b>Approach</b> Minimal styling supports metal swatches, a clear size selector and a pendant engraving preview.</span><span><b>Explore</b> Choose a metal and size on the ring, or test the pendant engraving. This demo has Chinese UI.</span></div>
-<span class="go">Try metal, size and engraving →</span>
+<div class="chips"><span>Jewellery</span><span>Motion-led hero</span><span>Editorial layout</span></div>
+<h3>Liora Atelier</h3>
+<div class="case"><span><b>Brief</b> A jewellery site needs atmosphere while giving each of eight pieces room to stand out.</span><span><b>Approach</b> A slow-moving film leads into product close-ups, a horizontal collection and editorial portraits.</span><span><b>Explore</b> Browse eight pieces, open a detail view and save favourites. This English-language concept has no checkout.</span></div>
+<span class="go">Explore the jewellery concept →</span>
 </div></a>
 <a class="card static-shot" href="../wagmorrow/index.html">
 <div class="shot"><img src="../shots/thumbs/wagmorrow-pet.jpg" width="1600" height="1000" alt="Wagmorrow pet goods concept preview" loading="lazy" decoding="async"></div>
@@ -239,13 +284,45 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <div class="case"><span><b>Brief</b> Pet products often look interchangeable when shown only as categories.</span><span><b>Approach</b> Bold colour and lived-in photography give the brand personality, while quick view and the bag support browsing.</span><span><b>Explore</b> Open quick view, add an item to the bag and adjust the quantity. Checkout is a demo only.</span></div>
 <span class="go">Explore the pet goods concept →</span>
 </div></a>
-<a class="card static-shot" href="../liora/index.html">
-<div class="shot"><img src="../liora/assets/hero.jpg" width="1536" height="1024" alt="Liora Atelier jewellery concept preview" loading="lazy" decoding="async"></div>
+<a class="card" href="../halfmoon-coffee/index.html">
+<div class="shot"><img src="../shots/thumbs/halfmoon-coffee.webp" width="960" height="1600" alt="Halfmoon Coffee demo preview" loading="lazy" decoding="async"></div>
 <div class="body">
-<div class="chips"><span>Jewellery</span><span>Motion-led hero</span><span>Editorial layout</span></div>
-<h3>Liora Atelier</h3>
-<div class="case"><span><b>Brief</b> A jewellery site needs atmosphere while giving each of eight pieces room to stand out.</span><span><b>Approach</b> A slow-moving film leads into product close-ups, a horizontal collection and editorial portraits.</span><span><b>Explore</b> Browse eight pieces, open a detail view and save favourites. This English-language concept has no checkout.</span></div>
-<span class="go">Explore the jewellery concept →</span>
+<div class="chips"><span>Speciality coffee</span><span>Subscriptions</span></div>
+<h3>Halfmoon Coffee</h3>
+<div class="case"><span><b>Brief</b> A coffee subscription needs a clear choice between one-off and recurring orders.</span><span><b>Approach</b> Selectable plans and a clear purchase toggle carry the subscription choice through to the simulated checkout.</span><span><b>Explore</b> Compare a one-off bag of coffee with a subscription.</span></div>
+<span class="go">Try a subscription plan →</span>
+</div></a>
+<a class="card" href="../lumen-loom/index.html">
+<div class="shot"><img src="../shots/thumbs/lumen-loom.webp" width="960" height="1600" alt="Lumen & Loom demo preview" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>International homeware</span><span>Multi-currency</span><span>Duties explained</span></div>
+<h3>Lumen &amp; Loom</h3>
+<div class="case"><span><b>Brief</b> International buyers need clear duties and reliable bedding sizes.</span><span><b>Approach</b> Duties are explained throughout the journey; the duvet cover has a size guide, and currency selection remains visible on mobile.</span><span><b>Explore</b> An editorial homepage with linen photography and focused product storytelling.</span></div>
+<span class="go">Try the currency switch and size guide →</span>
+</div></a>
+<a class="card" href="../dewlune-skin/index.html">
+<div class="shot"><img src="../shots/thumbs/dewlune-skin.webp" width="960" height="1600" alt="Dewlune demo preview" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>Skincare</span><span>Skin quiz</span></div>
+<h3>Dewlune</h3>
+<div class="case"><span><b>Brief</b> A skin quiz and product sizes need to affect the actual shopping path.</span><span><b>Approach</b> A three-question quiz recommends a product; bottle sizes update the button and cart price.</span><span><b>Explore</b> Try the quiz and explore the ingredient-led product story.</span></div>
+<span class="go">Try the skin quiz →</span>
+</div></a>
+<a class="card" href="../mara-lin-studio/index.html">
+<div class="shot"><img src="../shots/thumbs/mara-lin-studio.webp" width="960" height="2000" alt="Mara Lin Studio demo preview" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>Creator commerce</span><span>Digital products</span></div>
+<h3>Mara Lin Studio</h3>
+<div class="case"><span><b>Brief</b> Digital presets should not require a shipping address or delivery fee.</span><span><b>Approach</b> A digital-only cart removes shipping fields; artwork size changes update the total.</span><span><b>Explore</b> Add the ALPINE preset to the cart, or choose an A2 art print.</span></div>
+<span class="go">Try the digital checkout demo →</span>
+</div></a>
+<a class="card" href="../shanyue-jewelry-v3/">
+<div class="shot"><img src="../shots/thumbs/shanyue-jewelry-v3.webp" width="960" height="2000" alt="Shanyue demo preview" loading="lazy" decoding="async"></div>
+<div class="body">
+<div class="chips"><span>Jewellery</span><span>Lab-grown diamonds</span></div>
+<h3>Shanyue</h3>
+<div class="case"><span><b>Brief</b> Fine jewellery needs clear metal and size choices without losing its own character.</span><span><b>Approach</b> Minimal styling supports metal swatches, a clear size selector and a pendant engraving preview.</span><span><b>Explore</b> Choose a metal and size on the ring, or test the pendant engraving. This demo has Chinese UI.</span></div>
+<span class="go">Try metal, size and engraving →</span>
 </div></a>
 </div>
 </section>
