@@ -550,7 +550,7 @@ var form=document.getElementById('contactForm');
 var showForm=formOk||emailOk;
 form.hidden=!showForm;
 if(formOk){
-  document.getElementById('formNote').textContent=new URLSearchParams(location.search).has('sent')?'谢谢，你的咨询已经提交。':'咨询内容将通过 FormSubmit 发送到工作室邮箱。';
+  document.getElementById('formNote').textContent=new URLSearchParams(location.search).has('sent')?'谢谢，你的咨询已经提交。':'你的称呼、邮箱、可选微信号和留言会通过 FormSubmit 发送到工作室邮箱。';
   document.getElementById('formNext').value=location.origin+location.pathname+'?sent=1#contact';
   form.action=STUDIO.formAction;
   form.method='POST';

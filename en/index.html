@@ -564,7 +564,7 @@ var form=document.getElementById('contactForm');
 var showForm=formOk||emailOk;
 form.hidden=!showForm;
 if(formOk){
-  document.getElementById('formNote').textContent=new URLSearchParams(location.search).has('sent')?'Thanks, your enquiry has been sent.':'Your enquiry is processed by FormSubmit and emailed to Peninsula Studio.';
+  document.getElementById('formNote').textContent=new URLSearchParams(location.search).has('sent')?'Thanks, your enquiry has been sent.':'Your name, email, optional website and message are sent via FormSubmit to Peninsula Studio.';
   document.getElementById('formNext').value=location.origin+location.pathname+'?sent=1#contact';
   form.action=STUDIO.formAction;
   form.method='POST';
