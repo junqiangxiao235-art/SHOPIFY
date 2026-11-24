@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e8ebdf">
+  <meta name="description" content="Liora Atelier 珠宝概念首页：以杂志式叙事呈现八件原创概念作品。">
+  <title>Liora Atelier | 日常，自有光芒</title>
+  <link rel="preload" href="assets/hero.jpg" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Liora Atelier 首页">LIORA <span>ATELIER</span></a>
+    <nav class="desktop-nav" aria-label="主导航">
+      <a href="#feature">本期主角</a>
+      <a href="#selection">作品目录</a>
+      <a href="#story">品牌手记</a>
+    </nav>
+    <div class="header-actions">
+      <button class="text-icon cart-trigger" type="button" aria-label="打开心选清单">心选 <span class="cart-count" aria-live="polite">0</span></button>
+      <button class="menu-trigger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="手机导航" hidden>
+      <a href="#feature">本期主角</a><a href="#selection">作品目录</a><a href="#story">品牌手记</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-visual">
+        <img src="assets/hero.jpg" alt="自然光下佩戴浅绿色宝石金戒指的手部特写" fetchpriority="high">
+        <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+          <source data-src="assets/hero-motion.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="hero-topline"><span>LIORA JOURNAL / ISSUE 01</span><span>JEWELS FOR THE EVERYDAY</span></div>
+      <div class="hero-copy">
+        <p class="eyebrow">把喜欢的时刻，留在身边</p>
+        <h1 id="hero-title">日常，<br><em>自有光芒。</em></h1>
+        <p>柔和的金色、细微的绿意。八件作品，写给那些值得慢慢感受的日子。</p>
+        <a class="editorial-link" href="#feature">翻开本期作品 <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="hero-credit">A quiet kind of radiance · 01 / 08</p>
+    </section>
+
+    <section class="manifesto" id="story" aria-labelledby="manifesto-title">
+      <p class="section-index">01 / A NOTE FROM LIORA</p>
+      <div>
+        <h2 id="manifesto-title">让每一束光，<br><em>都有停留的地方。</em></h2>
+        <p>我们把目光放在佩戴者身上：抬手、转身、走进光里。珠宝的美，从这些真实而轻微的动作开始。</p>
+      </div>
+    </section>
+
+    <section class="feature" id="feature" aria-labelledby="feature-title">
+      <div class="feature-visual"><img src="assets/ring.jpg" alt="浅绿宝石金色晨露戒指的近景" loading="lazy"><span>OBJECT STUDY 01 / 08</span></div>
+      <div class="feature-copy">
+        <p class="eyebrow">THE FEATURED OBJECT / 01</p>
+        <h2 id="feature-title">一滴晨光，<br><em>停在指间。</em></h2>
+        <p>椭圆的浅绿与柔和的金色，在最简单的线条里相遇。晨露戒指，为日常留下一个轻盈的注脚。</p>
+        <div class="feature-actions">
+          <button class="editorial-link" type="button" data-product="ring">细看晨露戒指 <span aria-hidden="true">↗</span></button>
+          <button class="text-add" type="button" data-add="ring">加入心选 <span aria-hidden="true">＋</span></button>
+        </div>
+        <span class="feature-footnote">DEW RING · A STUDY IN SOFT LIGHT</span>
+      </div>
+    </section>
+
+    <section class="selection" id="selection" aria-labelledby="selection-title">
+      <div class="section-intro">
+        <div><p class="section-index">02—05 / THE OBJECTS</p><h2 id="selection-title">一页作品，<br><em>四种心情。</em></h2></div>
+        <p>从耳畔到腕间，挑选与你的节奏相近的那一件。<span>横向滑动，继续浏览 →</span></p>
+      </div>
+      <div class="product-rail" tabindex="0" aria-label="横向浏览四件珠宝作品">
+        <article class="product-card">
+          <button class="product-open" type="button" data-product="earrings" aria-label="查看叶语耳环详情"><span class="product-image"><img src="assets/earrings.jpg" alt="一对浅绿宝石金色垂坠耳环" loading="lazy"></span><span class="product-number">02 / 08</span><span class="product-name">叶语耳环 <small>Leaf Drop Earrings</small></span><span class="product-type">耳畔的一点微绿</span></button>
+          <button class="product-plus" type="button" data-add="earrings" aria-label="将叶语耳环加入心选清单">＋</button>
+        </article>
+        <article class="product-card">
+          <button class="product-open" type="button" data-product="necklace" aria-label="查看微光项链详情"><span class="product-image"><img src="assets/necklace.jpg" alt="浅绿宝石金色吊坠项链" loading="lazy"></span><span class="product-number">03 / 08</span><span class="product-name">微光项链 <small>Soft Light Pendant</small></span><span class="product-type">让光停在心口</span></button>
+          <button class="product-plus" type="button" data-add="necklace" aria-label="将微光项链加入心选清单">＋</button>
+        </article>
+        <article class="product-card">
+          <button class="product-open" type="button" data-product="cuff" aria-label="查看溪纹手镯详情"><span class="product-image"><img src="assets/cuff.jpg" alt="带浅绿宝石的波浪形金色开口手镯" loading="lazy"></span><span class="product-number">04 / 08</span><span class="product-name">溪纹手镯 <small>Stream Cuff</small></span><span class="product-type">顺着手腕流动的弧线</span></button>
+          <button class="product-plus" type="button" data-add="cuff" aria-label="将溪纹手镯加入心选清单">＋</button>
+        </article>
+        <article class="product-card">
+          <button class="product-open" type="button" data-product="studs" aria-label="查看苔光耳钉详情"><span class="product-image"><img src="assets/studs.jpg" alt="一对不规则浅绿宝石金色耳钉" loading="lazy"></span><span class="product-number">05 / 08</span><span class="product-name">苔光耳钉 <small>Moss Studs</small></span><span class="product-type">细小，却很难忽略</span></button>
+          <button class="product-plus" type="button" data-add="studs" aria-label="将苔光耳钉加入心选清单">＋</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="editorial-story" id="journal" aria-labelledby="journal-title">
+      <div class="editorial-copy">
+        <p class="eyebrow">LIORA NOTEBOOK / NO. 01</p>
+        <h2 id="journal-title">珠宝最动人的时候，<br><em>是你忘记它存在的时候。</em></h2>
+        <p>它随着你走路、工作、见朋友，在某个不经意的转身里接住光。这就是我们想留下的日常。</p>
+        <a class="editorial-link" href="#final-edit">继续翻阅 <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="editorial-visual"><img src="assets/editorial.jpg" alt="佩戴浅绿色吊坠的女性在自然光中" loading="lazy"><span>LIGHT, WORN CLOSE · 2026</span></div>
+    </section>
+
+    <section class="final-edit" id="final-edit" aria-labelledby="final-title">
+      <div class="section-intro">
+        <div><p class="section-index">06—08 / THE FINAL EDIT</p><h2 id="final-title">留给不同心情的，<br><em>最后三件。</em></h2></div>
+        <p>有时是一条细链，有时是一枚微微张开的戒指。每件作品都有自己的安静时刻。</p>
+      </div>
+      <div class="final-grid">
+        <article class="product-card">
+          <button class="product-open" type="button" data-product="bracelet" aria-label="查看漫光手链详情"><span class="product-image"><img src="assets/bracelet.jpg" alt="三颗浅绿宝石点缀的细链手链" loading="lazy"></span><span class="product-number">06 / 08</span><span class="product-name">漫光手链 <small>Wandering Light Bracelet</small></span><span class="product-type">三点微光，沿腕间散开</span></button>
+          <button class="product-plus" type="button" data-add="bracelet" aria-label="将漫光手链加入心选清单">＋</button>
+        </article>
+        <article class="product-card">
+          <button class="product-open" type="button" data-product="petalRing" aria-label="查看双芽戒指详情"><span class="product-image"><img src="assets/petal-ring.jpg" alt="镶有两颗浅绿宝石的金色开口戒指" loading="lazy"></span><span class="product-number">07 / 08</span><span class="product-name">双芽戒指 <small>Twin Bud Ring</small></span><span class="product-type">两端相望的柔和弧线</span></button>
+          <button class="product-plus" type="button" data-add="petalRing" aria-label="将双芽戒指加入心选清单">＋</button>
+        </article>
+        <article class="product-card">
+          <button class="product-open" type="button" data-product="brooch" aria-label="查看枝影胸针详情"><span class="product-image"><img src="assets/brooch.jpg" alt="叶片轮廓的金色胸针与小颗浅绿宝石" loading="lazy"></span><span class="product-number">08 / 08</span><span class="product-name">枝影胸针 <small>Branch Shadow Brooch</small></span><span class="product-type">给衣襟留一笔自然的线条</span></button>
+          <button class="product-plus" type="button" data-add="brooch" aria-label="将枝影胸针加入心选清单">＋</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div><a class="brand" href="#top">LIORA <span>ATELIER</span></a><p>Everyday, beautifully yours.</p></div><a href="#top">回到顶部 ↑</a><small>© 2026 LIORA ATELIER · 原创概念设计，非真实在售商品</small></footer>
+
+  <div class="overlay" hidden></div>
+  <aside class="drawer" aria-label="心选清单" aria-modal="true" role="dialog" hidden><div class="drawer-top"><h2>心选清单 <span class="drawer-count">0</span></h2><button class="drawer-close" type="button" aria-label="关闭心选清单">×</button></div><div class="drawer-items"></div><div class="drawer-bottom"><p>这些是概念展示商品，暂不支持在线结账。</p><button class="button button-dark drawer-continue" type="button">继续探索</button></div></aside>
+  <dialog class="product-dialog"><button class="dialog-close" type="button" aria-label="关闭商品详情">×</button><div class="dialog-content"></div></dialog>
+</body>
+</html>
