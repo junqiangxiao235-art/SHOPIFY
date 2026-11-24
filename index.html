@@ -8,7 +8,7 @@
    STUDIO CONFIG — 只改这里
    页面上的店名、价格、联系方式都从这份配置读取。
    formAction 留空、或仍含 TODO 时，联系表单用 mailto 打开邮件。
-   填入 https://formspree.io/f/xxxx 后，表单改为 POST 到该地址。
+   填入表单服务地址后，表单改为 POST 到该地址。
    ============================================================ */
 const STUDIO = {
   name: "半岛设计",
@@ -16,7 +16,7 @@ const STUDIO = {
   shortName: "半岛设计",
   email: "junqiangxiao235@gmail.com", /* 含 example.com 或 TODO 时，页面不展示邮箱 */
   wechat: "XXXJQ224", /* 含 TODO 或留空时，不展示微信 */
-  formAction: "", /* Formspree 地址；留空则 mailto 到上面的邮箱 */
+  formAction: "https://formsubmit.co/junqiangxiao235@gmail.com", /* 表单服务地址；留空则 mailto */
   subject: "独立站搭建咨询",
   prices: {
     starter: "¥1,980",
@@ -117,7 +117,7 @@ section{padding:64px 0}
 details{border-top:1px solid #23262f;padding:14px 0}
 summary{cursor:pointer;font-weight:700}
 details p{color:#c5cad3;margin-top:8px}
-form{display:grid;gap:10px}
+form{display:grid;gap:10px}.honeypot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 label{font-size:13px;font-weight:700}
 input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #333845;background:#0e1016}
 input::placeholder,textarea::placeholder{color:#c5cad3;opacity:1}
@@ -264,23 +264,23 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 
 <section id="work">
 <h2>精选作品</h2>
-<p class="sub">七个虚构品牌概念，展示不同视觉风格与购买路径。点开案例，可以实际体验页面和交互；案例中的品牌与商品均非真实在售。</p>
+<p class="sub">七个虚构品牌概念，展示不同视觉风格与购买路径。先看 Liora 和 Wagmorrow 的设计解析，再体验其他可点击的原型；商品均非真实在售。</p>
 <div class="cards">
-<a class="card static-shot" href="liora/index.html">
+<a class="card static-shot" href="cases/liora-zh.html">
 <div class="shot"><img src="liora/assets/hero.jpg" width="1536" height="1024" alt="Liora Atelier 珠宝概念网站主图" loading="lazy" decoding="async"></div>
 <div class="body">
 <div class="chips"><span>珠宝</span><span>动态首屏</span><span>编辑式陈列</span></div>
 <h3>Liora Atelier</h3>
 <div class="case"><span><b>挑战</b> 珠宝网站既要有情绪氛围，也要让八件作品各有位置。</span><span><b>决定</b> 以慢节奏视频开场，穿插单件特写、横向目录与人物画面，建立杂志式浏览体验。</span><span><b>看这里</b> 滚动浏览八件作品，打开详情并加入心选清单。此案例没有真实结账。</span></div>
-<span class="go">查看珠宝概念网站 →</span>
+<span class="go">阅读珠宝案例解析 →</span>
 </div></a>
-<a class="card static-shot" href="wagmorrow/index.html">
+<a class="card static-shot" href="cases/wagmorrow-zh.html">
 <div class="shot"><img src="shots/thumbs/wagmorrow-pet.jpg" width="1600" height="1000" alt="Wagmorrow 宠物用品概念店首屏" loading="lazy" decoding="async"></div>
 <div class="body">
 <div class="chips"><span>宠物用品</span><span>品牌电商</span></div>
 <h3>Wagmorrow Pet Goods</h3>
 <div class="case"><span><b>挑战</b> 宠物用品常按类别堆放，品牌个性和商品差异不够鲜明。</span><span><b>决定</b> 用明快配色和生活场景建立品牌识别，再让商品速览、颜色信息和购物袋接住购买兴趣。</span><span><b>看这里</b> 打开商品速览，加入购物袋并试试数量调整。结账按钮仅作演示。</span></div>
-<span class="go">查看宠物用品概念店 →</span>
+<span class="go">阅读宠物用品案例解析 →</span>
 </div></a>
 <a class="card" href="halfmoon-coffee/index.html">
 <div class="shot"><img src="shots/thumbs/halfmoon-coffee.webp" width="960" height="1600" alt="Halfmoon Coffee 示范店整页截图" loading="lazy" decoding="async"></div>
@@ -456,6 +456,9 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 </div>
 </div>
 <form id="contactForm" action="mailto:junqiangxiao235@gmail.com?subject=%E7%8B%AC%E7%AB%8B%E7%AB%99%E6%90%AD%E5%BB%BA%E5%92%A8%E8%AF%A2" method="POST" enctype="text/plain">
+<input type="hidden" name="_subject" value="独立站搭建咨询 | 半岛设计">
+<input type="hidden" name="_next" id="formNext">
+<input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 <label for="c-name">怎么称呼你</label>
 <input id="c-name" name="name" required autocomplete="name">
 <label for="c-email">邮箱</label>
@@ -547,7 +550,8 @@ var form=document.getElementById('contactForm');
 var showForm=formOk||emailOk;
 form.hidden=!showForm;
 if(formOk){
-  document.getElementById('formNote').textContent='表单会提交到已配置的 Formspree 地址。';
+  document.getElementById('formNote').textContent=new URLSearchParams(location.search).has('sent')?'谢谢，你的咨询已经提交。':'咨询内容将通过 FormSubmit 发送到工作室邮箱。';
+  document.getElementById('formNext').value=location.origin+location.pathname+'?sent=1#contact';
   form.action=STUDIO.formAction;
   form.method='POST';
   form.enctype='application/x-www-form-urlencoded';

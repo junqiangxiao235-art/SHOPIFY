@@ -8,7 +8,7 @@
    STUDIO CONFIG
    The studio name and contact details come from this configuration.
    When formAction is empty, the contact form opens an email.
-   A Formspree URL changes the form to a POST request.
+   A configured form endpoint changes the form to a POST request.
    ============================================================ */
 const STUDIO = {
   name: "Peninsula Studio",
@@ -16,7 +16,7 @@ const STUDIO = {
   shortName: "Peninsula Studio",
   email: "junqiangxiao235@gmail.com", 
   wechat: "", 
-  formAction: "", 
+  formAction: "https://formsubmit.co/junqiangxiao235@gmail.com", 
   subject: "Website project enquiry",
   prices: {
     local: "From £550",
@@ -119,7 +119,7 @@ section{padding:64px 0}
 details{border-top:1px solid #23262f;padding:14px 0}
 summary{cursor:pointer;font-weight:700}
 details p{color:#c5cad3;margin-top:8px}
-form{display:grid;gap:10px}
+form{display:grid;gap:10px}.honeypot{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 label{font-size:13px;font-weight:700}
 input,textarea{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #333845;background:#0e1016}
 input::placeholder,textarea::placeholder{color:#c5cad3;opacity:1}
@@ -255,7 +255,7 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <div class="hero-copy">
 <p class="hero-kicker">PENINSULA STUDIO · INDEPENDENT COMMERCE DESIGN</p>
 <h1>A storefront<em>worth remembering.</em></h1>
-<p class="lead">Distinctive visual direction and clear buying journeys for independent brands. Explore seven original concepts, from fine jewellery to pet goods, and see the decisions behind each one.</p>
+<p class="lead">Shopify storefront design for independent retail brands, with distinctive visuals and clear buying journeys. Explore seven original concepts, from fine jewellery to pet goods.</p>
 <div class="cta"><a class="btn" href="#work">Explore the work</a><a class="btn ghost" href="#contact">Discuss your store</a></div>
 <p class="hero-meta">07 ORIGINAL CONCEPTS / CLICKABLE JOURNEYS</p>
 </div>
@@ -267,23 +267,23 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 
 <section id="work">
 <h2>Selected work</h2>
-<p class="sub">Seven fictional brand concepts, each with a distinct visual direction and shopping journey. Open a project to explore the pages and interactions. No products in these demos are for sale.</p>
+<p class="sub">Seven fictional brand concepts, each with a distinct visual direction and shopping journey. Start with the Liora and Wagmorrow case studies, then explore the other interactive demos. No products are for sale.</p>
 <div class="cards">
-<a class="card static-shot" href="../liora/index.html">
+<a class="card static-shot" href="../cases/liora.html">
 <div class="shot"><img src="../liora/assets/hero.jpg" width="1536" height="1024" alt="Liora Atelier jewellery concept preview" loading="lazy" decoding="async"></div>
 <div class="body">
 <div class="chips"><span>Jewellery</span><span>Motion-led hero</span><span>Editorial layout</span></div>
 <h3>Liora Atelier</h3>
 <div class="case"><span><b>Brief</b> A jewellery site needs atmosphere while giving each of eight pieces room to stand out.</span><span><b>Approach</b> A slow-moving film leads into product close-ups, a horizontal collection and editorial portraits.</span><span><b>Explore</b> Browse eight pieces, open a detail view and save favourites. This English-language concept has no checkout.</span></div>
-<span class="go">Explore the jewellery concept →</span>
+<span class="go">Read the jewellery case study →</span>
 </div></a>
-<a class="card static-shot" href="../wagmorrow/index.html">
+<a class="card static-shot" href="../cases/wagmorrow.html">
 <div class="shot"><img src="../shots/thumbs/wagmorrow-pet.jpg" width="1600" height="1000" alt="Wagmorrow pet goods concept preview" loading="lazy" decoding="async"></div>
 <div class="body">
 <div class="chips"><span>Pet goods</span><span>Brand-led retail</span></div>
 <h3>Wagmorrow Pet Goods</h3>
 <div class="case"><span><b>Brief</b> Pet products often look interchangeable when shown only as categories.</span><span><b>Approach</b> Bold colour and lived-in photography give the brand personality, while quick view and the bag support browsing.</span><span><b>Explore</b> Open quick view, add an item to the bag and adjust the quantity. Checkout is a demo only.</span></div>
-<span class="go">Explore the pet goods concept →</span>
+<span class="go">Read the pet goods case study →</span>
 </div></a>
 <a class="card" href="../halfmoon-coffee/index.html">
 <div class="shot"><img src="../shots/thumbs/halfmoon-coffee.webp" width="960" height="1600" alt="Halfmoon Coffee demo preview" loading="lazy" decoding="async"></div>
@@ -469,13 +469,16 @@ document.getElementById('ldjson').textContent = JSON.stringify({
 <p class="note" id="copyStatus" aria-live="polite"></p>
 </div>
 </div>
-<form id="contactForm" action="mailto:junqiangxiao235@gmail.com?subject=%E7%8B%AC%E7%AB%8B%E7%AB%99%E6%90%AD%E5%BB%BA%E5%92%A8%E8%AF%A2" method="POST" enctype="text/plain">
+<form id="contactForm" action="mailto:junqiangxiao235@gmail.com?subject=Website%20project%20enquiry" method="POST" enctype="text/plain">
+<input type="hidden" name="_subject" value="Website project enquiry | Peninsula Studio">
+<input type="hidden" name="_next" id="formNext">
+<input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 <label for="c-name">Your name</label>
 <input id="c-name" name="name" required autocomplete="name">
 <label for="c-email">Email</label>
 <input id="c-email" name="email" type="email" required autocomplete="email">
-<label for="c-wechat">WeChat (optional)</label>
-<input id="c-wechat" name="wechat" autocomplete="off">
+<label for="c-website">Website or Instagram (optional)</label>
+<input id="c-website" name="website" autocomplete="url">
 <label for="c-msg">Tell us about your project</label>
 <textarea id="c-msg" name="message" required placeholder="Your products, audience and any project you liked"></textarea>
 <button class="btn" type="submit">Send enquiry</button>
@@ -529,10 +532,10 @@ function copyText(text){
 function mailBody(){
   var name=document.getElementById('c-name').value.trim();
   var from=document.getElementById('c-email').value.trim();
-  var wx=document.getElementById('c-wechat').value.trim();
+  var website=document.getElementById('c-website').value.trim();
   var msg=document.getElementById('c-msg').value.trim();
   var lines=['Name: '+name,'Email: '+from];
-  if(wx) lines.push('WeChat: '+wx);
+  if(website) lines.push('Website or Instagram: '+website);
   lines.push('');
   lines.push(msg);
   return lines.join('\n');
@@ -561,7 +564,8 @@ var form=document.getElementById('contactForm');
 var showForm=formOk||emailOk;
 form.hidden=!showForm;
 if(formOk){
-  document.getElementById('formNote').textContent='This form submits to the configured Formspree address.';
+  document.getElementById('formNote').textContent=new URLSearchParams(location.search).has('sent')?'Thanks, your enquiry has been sent.':'Your enquiry is processed by FormSubmit and emailed to Peninsula Studio.';
+  document.getElementById('formNext').value=location.origin+location.pathname+'?sent=1#contact';
   form.action=STUDIO.formAction;
   form.method='POST';
   form.enctype='application/x-www-form-urlencoded';
