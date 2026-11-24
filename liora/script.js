@@ -1,14 +1,14 @@
 if (new URLSearchParams(location.search).get('capture') === '1') document.documentElement.classList.add('capture');
 
 const products = {
-  ring: { name: '晨露戒指', english: 'Dew Ring', image: 'assets/ring.jpg', description: '一抹浅绿，停在柔和的金色弧线上。适合每天佩戴的小小亮点。' },
-  earrings: { name: '叶语耳环', english: 'Leaf Drop Earrings', image: 'assets/earrings.jpg', description: '轻盈的垂坠线条，让浅绿宝石随着步伐微微闪动。' },
-  necklace: { name: '微光项链', english: 'Soft Light Pendant', image: 'assets/necklace.jpg', description: '细链与一颗浅绿宝石，把自然的温柔留在心口。' },
-  cuff: { name: '溪纹手镯', english: 'Stream Cuff', image: 'assets/cuff.jpg', description: '像溪流一样起伏的金色弧线，在腕间留下轻盈的光。' },
-  studs: { name: '苔光耳钉', english: 'Moss Studs', image: 'assets/studs.jpg', description: '两颗不规则的浅绿宝石，让简单的耳钉多了一点自然气息。' },
-  bracelet: { name: '漫光手链', english: 'Wandering Light Bracelet', image: 'assets/bracelet.jpg', description: '三点浅绿散落在细链上，随着每一次抬手轻轻移动。' },
-  petalRing: { name: '双芽戒指', english: 'Twin Bud Ring', image: 'assets/petal-ring.jpg', description: '两颗相望的浅绿宝石，勾勒出像新芽一样舒展的线条。' },
-  brooch: { name: '枝影胸针', english: 'Branch Shadow Brooch', image: 'assets/brooch.jpg', description: '一笔金色的叶片轮廓，为衣襟留下一点自然的痕迹。' }
+  ring: { name: 'Dew Ring', label: '01 / 08', image: 'assets/ring.jpg', description: 'A touch of pale green rests on a soft gold curve: a small highlight for every day.' },
+  earrings: { name: 'Leaf Drop Earrings', label: '02 / 08', image: 'assets/earrings.jpg', description: 'Light drop forms let pale green gemstones catch the light as you move.' },
+  necklace: { name: 'Soft Light Pendant', label: '03 / 08', image: 'assets/necklace.jpg', description: 'A fine chain and a pale green stone keep a touch of nature close.' },
+  cuff: { name: 'Stream Cuff', label: '04 / 08', image: 'assets/cuff.jpg', description: 'A flowing gold line curves around the wrist like a quiet stream.' },
+  studs: { name: 'Moss Studs', label: '05 / 08', image: 'assets/studs.jpg', description: 'Irregular pale green stones bring a natural note to simple studs.' },
+  bracelet: { name: 'Wandering Light Bracelet', label: '06 / 08', image: 'assets/bracelet.jpg', description: 'Three pale green stones sit along a fine chain and move softly with every gesture.' },
+  petalRing: { name: 'Twin Bud Ring', label: '07 / 08', image: 'assets/petal-ring.jpg', description: 'Two facing stones trace the open curve of a new bud.' },
+  brooch: { name: 'Branch Shadow Brooch', label: '08 / 08', image: 'assets/brooch.jpg', description: 'A gold leaf outline adds a subtle trace of nature to your lapel.' }
 };
 
 const cart = [];
@@ -26,7 +26,7 @@ function updateCart() {
   if (!cart.length) {
     const empty = document.createElement('p');
     empty.className = 'drawer-empty';
-    empty.textContent = '还没有心选作品。去自然系列里看看吧。';
+    empty.textContent = 'No saved pieces yet. Explore the collection to find one.';
     items.append(empty);
     return;
   }
@@ -41,11 +41,11 @@ function updateCart() {
     const name = document.createElement('strong');
     name.textContent = product.name;
     const subtitle = document.createElement('small');
-    subtitle.textContent = product.english;
+    subtitle.textContent = product.label;
     const remove = document.createElement('button');
     remove.className = 'remove-item';
     remove.type = 'button';
-    remove.textContent = '移除';
+    remove.textContent = 'Remove';
     remove.addEventListener('click', () => { cart.splice(index, 1); updateCart(); });
     details.append(name, subtitle, remove);
     row.append(img, details);
@@ -90,7 +90,7 @@ document.querySelectorAll('[data-product]').forEach(button => button.addEventLis
   info.className = 'dialog-info';
   const eyebrow = document.createElement('p');
   eyebrow.className = 'eyebrow';
-  eyebrow.textContent = product.english.toUpperCase();
+  eyebrow.textContent = product.label.toUpperCase();
   const heading = document.createElement('h2');
   heading.textContent = product.name;
   const description = document.createElement('p');
@@ -98,7 +98,7 @@ document.querySelectorAll('[data-product]').forEach(button => button.addEventLis
   const add = document.createElement('button');
   add.className = 'button button-dark';
   add.type = 'button';
-  add.textContent = '加入心选清单';
+  add.textContent = 'Save this piece';
   add.addEventListener('click', () => { cart.push(id); updateCart(); dialog.close(); openDrawer(); });
   info.append(eyebrow, heading, description, add);
   content.append(image, info);
@@ -110,12 +110,12 @@ dialog.addEventListener('click', event => { if (event.target === dialog) dialog.
 menuTrigger.addEventListener('click', () => {
   mobileNav.hidden = !mobileNav.hidden;
   menuTrigger.setAttribute('aria-expanded', String(!mobileNav.hidden));
-  menuTrigger.setAttribute('aria-label', mobileNav.hidden ? '打开菜单' : '关闭菜单');
+  menuTrigger.setAttribute('aria-label', mobileNav.hidden ? 'Open menu' : 'Close menu');
 });
 mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
   mobileNav.hidden = true;
   menuTrigger.setAttribute('aria-expanded', 'false');
-  menuTrigger.setAttribute('aria-label', '打开菜单');
+  menuTrigger.setAttribute('aria-label', 'Open menu');
 }));
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && !drawer.hidden) closeDrawer();

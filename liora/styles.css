@@ -1,4 +1,4 @@
-:root{--forest:#233b30;--deep:#192f26;--sage:#dce3d4;--cream:#f7f6f1;--paper:#eeefe8;--gold:#b39a64;--muted:#65766a;--line:rgba(35,59,48,.22);font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:var(--forest);background:var(--cream)}
+:root{--forest:#233b30;--deep:#192f26;--sage:#dce3d4;--cream:#f7f6f1;--paper:#eeefe8;--gold:#b39a64;--muted:#65766a;--line:rgba(35,59,48,.22);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--forest);background:var(--cream)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;min-width:320px}
@@ -29,7 +29,7 @@ button:focus-visible,a:focus-visible,.product-rail:focus-visible{outline:2px sol
 .hero-copy{position:absolute;z-index:2;left:7vw;bottom:clamp(95px,12vh,160px);width:min(590px,50vw)}
 .eyebrow,.section-index{font:11px Arial,sans-serif;letter-spacing:.22em}
 .hero-copy .eyebrow{margin:0 0 25px}
-.hero h1,.manifesto h2,.feature h2,.section-intro h2,.editorial-story h2{font-family:Georgia,"Songti SC",serif;font-weight:400}
+.hero h1,.manifesto h2,.feature h2,.section-intro h2,.editorial-story h2{font-family:Georgia,serif;font-weight:400}
 .hero h1{margin:0;font-size:clamp(64px,7vw,106px);line-height:1.18;letter-spacing:-.09em;white-space:nowrap}
 .hero h1 em,.manifesto h2 em,.feature h2 em,.section-intro h2 em,.editorial-story h2 em{font-weight:400;color:#526e50}
 .hero-copy>p:not(.eyebrow){max-width:365px;margin:32px 0 35px;font-size:15px;line-height:2;letter-spacing:.03em}
